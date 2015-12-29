@@ -4,9 +4,9 @@ package im.cia.sober.server.core.domain.model;
 public class SoberApp {
 
 	private String bid;// bunderId唯一
-	private String appName;// 关键字
-	private String appDesc;// 宣传语言
-	private String appIcon;// app图标
+	private String name;// 关键字
+	private String desc;// 宣传语言
+	private String icon;// app图标
 
 	public String getBid() {
 		return bid;
@@ -16,28 +16,28 @@ public class SoberApp {
 		this.bid = bid;
 	}
 
-	public String getAppName() {
-		return appName;
+	public String getName() {
+		return name;
 	}
 
-	public void setAppName(String appName) {
-		this.appName = appName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getAppDesc() {
-		return appDesc;
+	public String getDesc() {
+		return desc;
 	}
 
-	public void setAppDesc(String appDesc) {
-		this.appDesc = appDesc;
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 
-	public String getAppIcon() {
-		return appIcon;
+	public String getIcon() {
+		return icon;
 	}
 
-	public void setAppIcon(String appIcon) {
-		this.appIcon = appIcon;
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 }

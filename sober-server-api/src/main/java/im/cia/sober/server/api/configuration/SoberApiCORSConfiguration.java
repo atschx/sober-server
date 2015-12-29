@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * 跨域支持
  */
 @Configuration
-public class CORSConfiguration {
+public class SoberApiCORSConfiguration {
 
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
