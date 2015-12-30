@@ -1,6 +1,13 @@
 package im.cia.sober.server.core.domain.model;
 
-public class SoberUser {
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "sober_user")
+public class SoberUser extends IdEntity{
+
+	private static final long serialVersionUID = -1682971951403080170L;
 
 	private Long uid;
 
@@ -11,5 +18,6 @@ public class SoberUser {
 	public void setUid(Long uid) {
 		this.uid = uid;
 	}
+
 
 }

@@ -18,8 +18,8 @@ public class SoberStoreService {
 
 		SoberApp youjiaApp = new SoberApp();
 		youjiaApp.setName("友加");
-		youjiaApp.setDesc("全世界陪你说话");
-		youjiaApp.setBid("cn.youja.uplus");
+		youjiaApp.setSlug("全世界陪你说话");
+		youjiaApp.setBunderId("cn.youja.uplus");
 
 		Map<String, Object> youjaExtras = new HashMap<String, Object>();
 		youjaExtras.put("price", "6元");
@@ -28,8 +28,8 @@ public class SoberStoreService {
 
 		SoberApp jdApp = new SoberApp();
 		jdApp.setName("京东");
-		jdApp.setDesc("我就是大卖场");
-		jdApp.setBid("com.jd.store");
+		jdApp.setSlug("我就是大卖场");
+		jdApp.setBunderId("com.jd.store");
 		Map<String, Object> jdExtras = new HashMap<String, Object>();
 		jdExtras.put("price", "3元");
 		jdExtras.put("words", "购物");

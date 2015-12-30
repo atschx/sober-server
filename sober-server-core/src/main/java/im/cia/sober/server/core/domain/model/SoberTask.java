@@ -2,11 +2,23 @@ package im.cia.sober.server.core.domain.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 //用户点击列表中的SoberApp之后产生的任务，前端拿到expires后开始跑秒。
-public class SoberTask {
+
+@Entity
+@Table(name = "sober_task")
+public class SoberTask extends IdEntity {
+
+	private static final long serialVersionUID = -8747409750997971690L;
 
 	private String tid;// 任务号
+
+	@Column(nullable = false)
 	private Long uid;// 领取任务的用户
+	@Column(nullable = false)
 	private String appId;// 关联App
 
 	private byte status = 0;// 任务状态：0,已领取 1,已完成 -1,未完成
