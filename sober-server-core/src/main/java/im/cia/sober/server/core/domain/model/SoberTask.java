@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import im.cia.sober.server.core.domain.model.base.SoberIdEntity;
+
 //用户点击列表中的SoberApp之后产生的任务，前端拿到expires后开始跑秒。
 
 @Entity

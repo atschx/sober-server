@@ -1,4 +1,4 @@
-package im.cia.sober.server.core.domain.model;
+package im.cia.sober.server.core.domain.model.base;
 
 import java.io.Serializable;
 

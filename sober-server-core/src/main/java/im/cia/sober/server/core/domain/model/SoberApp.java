@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import im.cia.sober.server.core.domain.model.base.SoberBaseEntity;
+
 //对应上架的应用列表
 
 @Entity
