@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "sober_apps")
-public class SoberApp extends IdEntity {
+public class SoberApp extends SoberBaseEntity {
 
 	private static final long serialVersionUID = 8836027668574889084L;
 

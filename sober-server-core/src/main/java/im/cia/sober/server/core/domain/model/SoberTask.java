@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "sober_task")
-public class SoberTask extends IdEntity {
+public class SoberTask extends SoberIdEntity {
 
 	private static final long serialVersionUID = -8747409750997971690L;
 
