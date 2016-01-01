@@ -16,6 +16,7 @@
 		<maven.compiler.source>${jdk.version}</maven.compiler.source>
 		<maven.compiler.target>${jdk.version}</maven.compiler.target>
 		<project.build.encoding>utf-8</project.build.encoding>
+		<bootstrap.version>3.3.4</bootstrap.version>
 	</properties>
 
 	<dependencies>
@@ -32,6 +33,24 @@
 			<artifactId>sober-server-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>boot</artifactId>
+			<version>3.3.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>bootstrap-paginator</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>2.1.4</version>
+		</dependency>
 	</dependencies>
 
 	<packaging>war</packaging>
@@ -43,6 +62,29 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>application.properties</include>
+					<include>**/*.html</include>
+				</includes>
+			</resource>
+			<!-- <resource>
+				<directory>src/main/webapp</directory>
+			</resource>
+			<resource>
+				<directory>src/main/webapp</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.html</include>
+				</includes>
+			</resource> -->
+		</resources>
 	</build>
 
 </project>
