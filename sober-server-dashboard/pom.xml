@@ -36,8 +36,8 @@
 
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
-			<artifactId>boot</artifactId>
-			<version>3.3.4</version>
+			<artifactId>bootstrap</artifactId>
+			<version>${bootstrap.version}</version>
 		</dependency>
 
 		<dependency>
@@ -56,10 +56,25 @@
 	<packaging>war</packaging>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>im.cia.sober.server.dashboard.SoberDashboardApplication</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 		<resources>
