@@ -1,0 +1,356 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+.R_import,.R_import_l,.L_try_record,.L_card,.L_user,.tixian_info,.L_Invited,.L_card,.weixin_name,.AppID_name,.Try_income_L,.Now_money,.sk_currency,.lock_open,.lock_off,.zfb_add_operation li .Pay_treasure
+,.zfb_add_operation li .Micro_wallet,.zfb_add_operation li .Add_sign,.zfb_add_operation li .cancellation,.invitation_remind,.Phone_validation,.cs_godwealth{background:url(../images/Small_label_icon.png) no-repeat;}
+.R_import{background-position:right -280px;}
+.R_import_l{background-position:right -1408px;}
+.tixian_info{background-position:left 4px;}
+.L_try_record{background-position:left -56px;}
+.L_Invited{background-position:left -124px;}
+.L_card{background-position:left -175px;}
+.Try_income_L{background-position:left -228px;}
+.Now_money{background-position:left -778px}
+.sk_currency{background-position:left -1216px}
+.invitation_remind{background-position:left -1217px}
+.Phone_validation{background-position:left -1303px;}
+.my_weixin_icon,.my_zfb_icon,.tixian_WeChat .WeChat_icon,.tixian_zfb .zfb_icon,.my_income .Today_icon,.my_income .Try_icon,.my_income .Invite_icon,.my_income .all_icon{ background:url(../images/myinfo_small_icon.png) no-repeat;}
+.cs_godwealth{background-position:left -1358px}
+/*******我的信息********/
+
+.head_info{background:#fff; width:100%; padding-top:50px;}
+.head_info .my_head{ width:100%;}
+.head_info .my_head .my_photo{text-align:center; width:100%;}
+.head_info .my_head .my_photo span{background:#fff; width:180px; display:inline-block; height:180px;border:4px solid #fff; border-radius:100px; }
+.head_info .my_head .my_photo img{width:180px; height:180px;border-radius:140px;}
+.head_info .bor_bottom{padding-bottom:30px}
+.head_info .bor_bottom .My_QR_code{margin:38px 30px 0px 30px;  width: -moz-calc(100% - 60px);width: -webkit-calc(100% - 60px);width: calc(100% - 60px); text-align:center; float:left; display:block}
+.head_info .bor_bottom .My_QR_code a{border:1px solid #ddd; border-radius:8px;display:block;padding:10px 0px;}
+.head_info .bor_bottom .My_QR_code .QR_code{ color:#9a9a9a; background:url(../images/QR_code01.jpg) no-repeat left center; padding-left:60px; display:inline-block; line-height:40px;}
+
+
+
+.head_info .my_id{text-align:center;width:100%; margin:30px 0px 8px 0px; float:left;}
+.head_info .my_id label{color:#353535; font-size:34px; position:relative}
+.head_info .my_weixin{ width:47%; font-size:30px; text-align:right; color:#adadad; float:left;}
+.head_info .my_weixin .weixin_name,.head_info .my_AppID .AppID_name{font-size:30px;ine-height:30px;display:inline-block; overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.head_info .my_weixin span{font-size:30px;}
+.head_info .my_AppID{ text-align:left; color:#adadad; width:47%; float:right;}
+.head_info .my_weixin .weixin_name{background-position:left -595px; padding-left:38px;}
+.head_info .my_AppID .AppID_name{background-position:-3px -658px; padding-left:30px;}
+.head_info .separated_line{width:6%;float:left}
+.head_info .separated_line span{width:1px; display:block; background:#CCC; height:20px; margin:10px auto 0px auto;}
+
+
+.my_info_list{ width:100%; background:#fff;border-bottom:1px solid #ddd;border-top:1px solid #ddd;}
+.my_info_list li{width:100%;}
+.my_info_con{padding:32px 30px 32px 0px; margin-left:94px;border-bottom:1px solid #ddd;position:relative; }
+.remind_cn{padding:32px 30px 32px 0px; margin-left:94px;border-bottom:1px solid #ddd;position:relative; }
+.my_info_list li a{ display:block;}
+.my_info_list li .invitation_remind,.my_info_list li .tixian_info,.my_info_list li .L_try_record,.my_info_list li .L_Invited,.my_info_list li .L_card,.my_info_list li .Phone_validation{ width:200px; padding-left:64px;position:absolute; left:-64px; font-size:30px; color:#353535; float:left;}
+.my_info_list li .tixian_info_R,.my_info_list li .L_try_record_R,.my_info_list li .L_Invited_R,.my_info_list li .L_card_R{font-size:30px;min-height:38px; color:#adadad;  width: -moz-calc(100% - 275px);width: -webkit-calc(100% - 275px);width: calc(100% - 275px); float:right; text-align:right; padding-right:35px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.my_info_list li:last-child .my_info_con{border-bottom:none;}
+.my_info_list li .invitation_remind{ margin-top:5px;}
+.my_info_list li .remind_off{ width:78px; height:39px; padding:2px; border:1px solid #ddd; background:#fff; border-radius:30px; float:right;-webkit-tap-highlight-color:transparent;-webkit-transition:500ms;
+	-moz-transition:500ms;
+	-ms-transition:500ms;
+	-o-transition:500ms;
+	transition:500ms;}
+.my_info_list li .remind_off span{ width:39px; height:39px; border-radius:50px; background:#d6d6d6; display:block;font-size:30px;}
+.my_info_list li .remind_off.remind_on{border:1px solid #169bf8; background:#169bf8;-webkit-transition:500ms;
+	-moz-transition:500ms;
+	-ms-transition:500ms;
+	-o-transition:500ms;
+	transition:500ms;}
+.my_info_list li .remind_off.remind_on span{ background:#fff; float:right;}
+
+
+/************二维码****************/
+.my_qr_code{ text-align:center; width:100%;}
+.my_qr_code .img{padding-top:162px;margin:60px auto;background:url(../images/qr_code_topbj1.jpg) no-repeat center 25px;}
+.my_qr_code .img_ok{background:url(../images/qr_code_topbj.jpg) no-repeat center top;}
+.my_qr_code .img span{width:500px; height:500px; display:block; margin:0px auto } 
+.my_qr_code .img img{width:500px; height:500px;}
+.my_qr_code .time{ font-size:18px; margin-top:15px; color:#464646}
+.my_qr_code .qr_code_msg{ font-size:30px; color:#464646; line-height:40px; margin:40px 0px 60px 0px;}
+.my_qr_code .qr_code_buttom a,.my_qr_code .qr_code_buttom p{ width:466px; padding:28px 0px; border:#169bf8 solid 2px; border-radius:12px; display:inline-block; text-align:center; color:#169bf8; font-size:30px; margin-bottom:20px;}
+.my_qr_code .qr_code_buttom p span{color:#c3c3c3; background:url(../images/other_icon.png) no-repeat left top; display:inline-block; margin:0 auto; padding-left:45px;}
+.my_qr_code .qr_code_buttom p{border:#c3c3c3 solid 2px; }
+.my_qr_code .qr_code_buttom .btn02{background-color:rgba(0,140,238,1);}
+.my_qr_code .qr_code_msg font{ color:#969696; font-size:18px;}
+/********收入查询*******/
+.my_income{ padding:40px 0px 30px 0px;width:100%; border-bottom:1px solid #ddd; background:#ffffff}
+ul.my_income4 li{ width:25%}
+.my_income li{ width:33.33%; float:left;}
+.my_income dl{width:98%; text-align:center; float:left;}
+.my_income dl dt{ height:58px;margin-bottom:20px}
+.my_income dl dd{font-size:30px;color:#353535; margin-bottom:10px;}
+.my_income dl .price{ color:#adadad}
+.my_income dl dd.color169bf8{color:#169bf8}
+.my_income .Dividing_line{ width:2%; text-align:center; float:left}
+.my_income .Dividing_line span{ width:1px; height:35px; display:block; margin:60px auto 0px auto; background:#eeeeee}
+.my_income .Today_icon{ background-position: center -280px}
+.my_income .Try_icon{background-position: center -364px}
+.my_income .Invite_icon{background-position: center -444px}
+.my_income .all_icon{background-position: center -523px}
+
+
+.my_income_list{ margin-top:30px; background:#ffffff; border-bottom:1px solid #ddd; border-top:1px solid #ddd; clear:both}
+.my_income_list li{ width:100%;}
+.my_income_list li a{ display:block;}
+.my_income_list li .income_info{padding:32px 30px 32px 0px; position:relative; border-bottom:1px solid #ddd; margin-left:94px; clear:both}
+.my_income_list li .income_info label{width:210px; padding-left:60px; font-size:30px; color:#353535; float:left; position:absolute; left:-64px;}
+.my_income_list li .income_info p{font-size:30px; color:#adadad;  width: -moz-calc(100% - 285px);width: -webkit-calc(100% - 285px);width: calc(100% - 285px); float:right; text-align:right; padding-right:35px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.my_income_list li .income_info .Now_money_R,.my_income_list li .income_info .sk_currency_R{ color:#169bf8;}
+.my_income_list li .Try_income_L img{ margin-left:8px}
+.my_income_list li:last-child .income_info{border-bottom:none;}
+.tijiao_button{ margin:30px; width: -moz-calc(100% - 60px);width: -webkit-calc(100% - 60px);width: calc(100% - 60px);border-radius:15px;background-color:#169bf8;}
+.tijiao_button a{ font-size:30px; padding:25px 0px; color:#fff; width:100%;border-radius:15px; display:block; text-align:center;}
+
+/*******下拉层********/
+.drop_down_window{background:#fff; position:fixed; bottom:-500px;-webkit-transition:  bottom 500ms;-moz-transition: bottom 500ms;-ms-transition: bottom 500ms;-o-transition: bottom 500ms;z-index:100; width:100%; padding:30px 20px 0px 20px; border-top:1px solid #ddd; border-bottom:1px solid #ddd;}
+.drop_down_window_open{bottom:100px;-webkit-transition:  bottom 500ms;-moz-transition: bottom 500ms;-ms-transition: bottom 500ms;-o-transition: bottom 500ms;transition: bottom 500ms;}
+.drop_down_window a{ padding:25px 0px;font-size:30px; text-align:center; border-radius:12px; width:100%; display:block; margin-bottom:30px;width: -moz-calc(100% - 40px);width: -webkit-calc(100% - 40px);width: calc(100% - 40px);}
+.drop_down_window a label{ color:#fff; font-size:30px;}
+.drop_down_window .tixian_WeChat{ background:#51b848;}
+.drop_down_window .tixian_WeChat .WeChat_icon{ background-position:0px -137px; padding-left:64px;}
+.drop_down_window .tixian_zfb{background:#f6903b;}
+.drop_down_window .tixian_zfb .zfb_icon{ background-position:0px -204px; padding-left:70px;}
+.drop_down_window .drop_down_cancel{ background:#e1e1e1; border:1px solid #c2c2c2;font-size:30px;}
+.drop_down_window .tixian_WeChat.btn02{background-color:rgba(29,168,16,1);}
+.drop_down_window .tixian_zfb.btn02{background-color:rgba(229,125,38,1);}
+.drop_down_window .drop_down_cancel.btn02{background-color:rgba(180,180,180,1)}
+
+
+/**********邀请记录************/
+.Invite_options{ width:90%; margin:30px auto; text-align:center;}
+.Invite_options span{ width:49.8%; text-align:center; color:#169bf8; padding:15px 0px; font-size:30px; display:block; float:left;margin:0px auto;-webkit-tap-highlight-color:transparent;}
+.now_invite{border:1px solid #169bf8; border-right:0px; border-radius:12px 0px 0px 12px;}
+.invite_successful{border:1px solid #169bf8;border-left:0px; border-radius:0px 12px 12px 0px;}
+.Invite_options span.invite_visited{background:#169bf8; color:#fff;}
+.Invite_options_info .display_none{ display:none}
+.Invite_options_info .invite_time{ padding:10px 30px; display:block; background:#eaeaf0;font-weight:normal;font-size:24px;width: -moz-calc(100% - 60px);width: -webkit-calc(100% - 60px);width: calc(100% - 60px); }
+.Invite_options_info .invite_time span,.Invite_options_info .invite_time font{ color:#818181;font-weight:normal;font-size:24px; float:left;}
+.Invite_options_info .invite_time font{float:right;font-size:24px;}
+.Invite_options_info .No_record{ margin-top:20%; font-size:30px; text-align:center; width:100%;}
+.now_invite_list,.Invited_record{ background:#fff;border-top:1px solid #dddddd; border-bottom:1px solid #dddddd;}
+.now_invite_list li{ border-bottom:1px solid #dddddd;}
+.now_invite_list li { margin-left:30px; padding:28px 30px 28px 0px;width: -moz-calc(100% - 60px);width: -webkit-calc(100% - 60px);width: calc(100% - 60px); display:block; float:left}
+.now_invite_list li .name{font-size:30px; color:#353535}
+
+.Invited_record li a{display:block;}
+.Invited_record li a .R_import{ background-position:-999px -280px;}
+.Invited_record li a.Click_bj .R_import{ background-position:right -280px;}
+.Invited_record li .list_info{ margin-left:30px; border-bottom:1px solid #dddddd; padding:28px 30px 28px 0px;width: -moz-calc(100% - 60px);width: -webkit-calc(100% - 60px);width: calc(100% - 60px); font-size:30px;}
+.Invited_record li .list_info .yq_name{ width:58%; display:inline-block;text-align:left; overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:30px;}
+.Invited_record li .list_info .yq_state{ float:right;font-size:32px; padding-right:25px;color:#adadad}
+.Invited_record li .list_info .R_import{color:#169bf8}
+.now_invite_list li:last-child,.Invited_record li:last-child .list_info{border-bottom:none;}
+
+/*************提现信息************/
+.my_tixian_info{ background:#fff;border-bottom:1px #ddd solid}
+.my_tixian_info a{ display:block}
+.my_tixian_info .my_weixin_info,.my_tixian_info .my_zfb_info{ border-bottom:1px #ddd solid;padding:65px 30px 60px 0px; margin-left:30px; border-bottom:1px solid #dddddd; position:relative}
+.my_tixian_info .my_zfb_info{padding:40px 30px 40px 0px;}
+.my_tixian_info .my_weixin_icon,.my_tixian_info .my_zfb_icon{width:50px; height:45px; display:block; float:left;}
+.my_tixian_info .my_weixin_icon{background-position:0px 0px;}
+.my_tixian_info .my_zfb_icon{background-position:0px -64px; margin-top:20px;}
+.my_tixian_info .Pay_name{ font-size:30px; color:#353535;margin-left:30px; float:left;}
+.my_tixian_info .Pay_name font{font-size:24px; color:#afafaf; margin-top:20px; display:block; font-weight:normal;}
+
+.my_tixian_info .Pay_editor{ display:inline-block;text-align:right; float:right;}
+.my_tixian_info .Pay_editor label{font-size:30px;color:#afafaf; display:inline-block;}
+.zfb_add_operation{ background:#fff; margin-top:20px;border-top:1px solid #dddddd; border-bottom:1px solid #dddddd}
+.zfb_add_operation li{}
+.zfb_add_operation li a{ display:block;}
+.zfb_add_operation li .R_import{height:38px; font-size:30px; display:block; float:right;color:#afafaf; background:none}
+.zfb_add_operation li .Add_account,.zfb_add_operation li .Add_password{ padding:30px 30px 30px 0px; margin-left:94px;height:38px; border-bottom:1px solid #dddddd; position:relative}
+
+.zfb_add_operation li label{color:#353535; position:absolute; padding-left:64px;  font-size:30px; left:-64px;}
+.zfb_add_operation li .Pay_treasure{background-position:0px -1004px;}
+.zfb_add_operation li .Micro_wallet{background-position:0px -1049px;}
+.zfb_add_operation li .Add_sign{background-position:0px -1100px;}
+.zfb_add_operation li .lock_open{background-position:0px -827px;}
+.zfb_add_operation li .lock_off{background-position:0px -871px;}
+.zfb_add_operation li .cancellation{background-position:0px -1160px;}
+.zfb_add_operation li .countdown{ font-size:30px; color:#afafaf}
+.my_tixian_info li:last-child div,.zfb_add_operation li:last-child div{border-bottom:none;}
+
+
+/************支付宝信息***********/
+.zhifubao_info{ padding:30px;width: -moz-calc(100% - 60px);width: -webkit-calc(100% - 60px);width: calc(100% - 60px);}
+.zhifubao_info input{-webkit-tap-highlight-color:transparent;}
+.zhifubao_info .zhifubao_Fill{ background:#fff; border:1px solid #d1d1d1; border-radius:18px; width:100%; margin-bottom:20px; overflow:hidden;}
+.zhifubao_info .zhifubao_Fill .Fill_info{ padding:30px; position:relative; border-bottom:1px solid #d1d1d1}
+.zhifubao_info .zhifubao_Fill .Fill_info label{font-size:30px;}
+.zhifubao_info .zhifubao_Fill .Fill_info .name,.zhifubao_info .zhifubao_Fill .Fill_info .account{ position:absolute; top:0px; left:0px; padding:30px 60px 30px 180px;width: -moz-calc(100% - 240px);width: -webkit-calc(100% - 240px);width: calc(100% - 240px);  border:0px;border-radius:0px; font-size:30px; margin:0px;background:none; line-height:36px;}
+.zhifubao_info .zhifubao_Fill .Fill_info input.btn02{background-color:rgba(0,0,0,0.1);}
+.zhifubao_info .zhifubao_Fill .Fill_info .account{border-radius:0px 0px 15px 15px;}
+.zhifubao_info .zhifubao_Fill .Fill_info:last-child{border-bottom:none;}
+.zhifubao_info .wxts{ font-size:24px; color:#adadad; padding-left:10px;}
+.zhifubao_info .wxts em{ font-size:10px;}
+.zhifubao_info .tj_button{ padding:25px 0px; width:100%; text-align:center; display:inline-block; margin:20px auto; background:#169bf8; border-radius:15px; color:#fff; font-size:30px;}
+.zhifubao_info .Remove_binding{ font-size:24px; color:#169bf8;}
+.zhifubao_info a.btn02{background-color:rgba(22,155,248,0.8);}
+
+	/**********支付宝绑定信息***********/
+.Pay_treasure_bangding{ padding:40px 0px;text-align:center;}
+.Pay_treasure_bangding p{ margin-bottom:20px; color:#5a5a5a; font-size:30px}
+.Pay_treasure_bangding p a{ color:#189af8;font-size:30px}
+.Pay_treasure_bangding input{ margin-top:15px; width:80%;border:1px solid #d8d8d8;border-radius:8px; background:#f2f2f2; font-size:30px; text-align:center; padding:20px;-webkit-appearance: none;}
+.Pay_treasure_bangding input.colorF30::-webkit-input-placeholder{ color:#F30;}
+.Pay_treasure_bangding input.colorF30{ border:1px solid #F30}
+.Pay_treasure_bangding .forget_password{margin:0 auto; width:85%; margin-top:10px; text-align:right} 
+.Pay_treasure_bangding .forget_password a{ color:#189af8;font-size:24px}
+.msg_datainfo{ font-size:30px; color:#5a5a5a}
+.msg_datainfo span{ width:70%; padding-left:25%;font-size:30px; color:#5a5a5a; text-align:left; display:block}
+.weixin_bangding_img{ width:85%; overflow-x:scroll; margin:0 auto;}
+.weixin_bangding_img div{white-space:nowrap;}
+.weixin_bangding_img div img{ margin-right:15px;}
+
+.Phone_bandding{width:87%; margin:0 auto;}
+.Phone_bandding .send{width:42%; float:right; display:inline-block; border:0px; line-height:75px; border-radius:5px; margin-top:15px; font-size:30px; color:#fff; background:#169bf8;-webkit-tap-highlight-color:transparent; overflow:hidden;}
+.Phone_bandding .send.remaining{background:#848484;}
+/******微信图片绑定滚动****/
+.swiper-container {
+	margin:0 auto;
+	position:relative;
+	overflow:hidden;
+	-webkit-backface-visibility:hidden;
+	-moz-backface-visibility:hidden;
+	-ms-backface-visibility:hidden;
+	-o-backface-visibility:hidden;
+	backface-visibility:hidden;
+	/* Fix of Webkit flickering */
+	z-index:1;
+	 width:92%;
+  height:505px;
+}
+.swiper-wrapper {
+	position:relative;
+	width:100%;white-space:nowrap;
+	-webkit-transition-property:-webkit-transform, left, top;
+	-webkit-transition-duration:0s;
+	-webkit-transform:translate3d(0px,0,0);
+	-webkit-transition-timing-function:ease;
+	
+	-moz-transition-property:-moz-transform, left, top;
+	-moz-transition-duration:0s;
+	-moz-transform:translate3d(0px,0,0);
+	-moz-transition-timing-function:ease;
+	
+	-o-transition-property:-o-transform, left, top;
+	-o-transition-duration:0s;
+	-o-transform:translate3d(0px,0,0);
+	-o-transition-timing-function:ease;
+	-o-transform:translate(0px,0px);
+	
+	-ms-transition-property:-ms-transform, left, top;
+	-ms-transition-duration:0s;
+	-ms-transform:translate3d(0px,0,0);
+	-ms-transition-timing-function:ease;
+	
+	transition-property:transform, left, top;
+	transition-duration:0s;
+	transform:translate3d(0px,0,0);
+	transition-timing-function:ease;
+}
+.swiper-free-mode > .swiper-wrapper {
+	-webkit-transition-timing-function: ease-out;
+	-moz-transition-timing-function: ease-out;
+	-ms-transition-timing-function: ease-out;
+	-o-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+	margin: 0 auto;
+}
+.swiper-slide {
+	float: left; width:auto; padding:0px 6px;
+}
+.swiper-slide img{ border:1px solid #ddd;}
+
+
+/****************提现记录*************/
+.tixian_record{border-bottom:1px solid #ddd; border-top:1px solid #ddd; margin:30px 0px; width:100%;}
+.tixian_record .time{ background:#eaebf0; padding:10px 30px; display:block; font-size:24px; text-align:left; color:#818181; font-weight:normal;}
+.tixian_record .tixian_record_list{ background:#fff;}
+.tixian_record .tixian_record_list li{ width:100%; display:block;}
+.tixian_record .tixian_record_list li a{ display:block}
+.tixian_record .tixian_record_list li .tixian_record_info{ margin-left:30px; padding:15px 30px 15px 0px; border-bottom:1px solid #ddd;}
+.tixian_record .tixian_record_list li .tixian_record_info h4{ display:inline;float:left; margin-top:10px; font-size:30px; font-weight:normal}
+.tixian_record .tixian_record_list li .tixian_record_info .R_import{width:34px; height:34px; display:block; float:right; margin-top:9px;}
+.tixian_record .tixian_record_list li .tixian_record_info_r{ display:inline;text-align:right;}
+.tixian_record .tixian_record_list li .tixian_record_info_r p{font-size:24px;}
+.tixian_record .tixian_record_list li .tixian_record_info_r .price{ color:#818181}
+.tixian_record .tixian_record_list li .tixian_record_info_r .state_ongoing{ color:#259ef5}
+.tixian_record .tixian_record_list li .tixian_record_info_r .state_end{ color:#f7903b}
+.tixian_record .tixian_record_list li .tixian_record_info_r .state_failure{ color:#ed1c24}
+.tixian_record .tixian_record_list li .tixian_record_info_r .state_ongoing{ color:#259ef5}
+.tixian_record .tixian_record_list li:last-child .tixian_record_info{ border:0px;}
+/****财神爷绑定****/
+.godwealth_bdinput{position:absolute; left:-30px; top:0px; padding-left:20%; padding-right:30px; background:none;text-align:right; width:80%; border:0px; font-size:30px;height:106px;}
+.safari_top{ display:none;}
+.safari_top .safari_img{ width:100%; text-align:right;top:0px; right:0px; position:fixed; z-index:100;}
+.safari_top .safari_img img{margin:20px 80px 0px 0px;}
+input.godwealth_bdinput.colorF30::-webkit-input-placeholder{ color:#F30;}
+/**********提现***********/
+.withdrawals{ display:block}
+.withdrawals_list_info{ border-bottom:1px solid #ddd; border-top:1px solid #ddd; margin-bottom:30px;}
+.withdrawals_list_info li .withdrawals_info{ margin-left:30px; padding:30px 30px 30px 0px;border-bottom:1px solid #ddd; position:relative}
+
+.withdrawals_info .tx_choose{ position:absolute;width: -moz-calc(100% - 30px);width: -webkit-calc(100% - 30px);width: calc(100% - 30px); top:0px; left:-30px; border:0px; font-size:30px; margin:34px 30px 34px 0px; padding-right:30px; text-align:right; z-index:4}
+.withdrawals_info .select_list{ position:absolute; width:100%; top:0px; left:0px; border:0px; font-size:30px; height:96px; text-align:right; z-index:5; opacity:0;-webkit-tap-highlight-color:transparent;}
+.withdrawals_list_info li .withdrawals_info label{ color:#353535; float:left; font-size:30px;}
+.withdrawals_list_info li .withdrawals_info font{ color:#259ef5; float:right; font-size:30px;}
+.withdrawals_list_info li .withdrawals_info font.colorafafaf{ color:#afafaf}
+.withdrawals_list_info li:last-child .withdrawals_info{ border:0px}
+.withdrawals .ts{ padding:0px 30px;display:block; font-size:24px; color:#afafaf;}
+.withdrawals .tixian_button{ padding:0px 30px;margin-top:30px}
+.withdrawals .tixian_button a{ display:block; width:100%; font-size:30px; text-align:center; margin-bottom:30px;border-radius:12px; padding:28px 0px;}
+.withdrawals .tixian_button .tixian_169bf8{ background:#169bf8; color:#fff;border-radius:12px;}
+.withdrawals .tixian_button .tixian_169bf8.btn02{background-color:#0d89df;}
+.withdrawals .tixian_button .record_fff{ color:#353535; background:#fff; border:1px solid #ddd;border-radius:12px;}
+.withdrawals .tixian_button .record_fff.btn02{background-color:rgba(0,0,0,0.05)}
+.withdrawals_info .tx_choose.phone{background:none; width:100%;}
+
+.zfb_add_operation li.countdown_info{ display:none}
+.choose_tixian{ width:80%; margin:30px auto;text-align:center;}
+.choose_tixian span{ width:49.8%; text-align:center; color:#169bf8; padding:15px 0px; font-size:30px; display:block; float:left;margin:0px auto;-webkit-tap-highlight-color:transparent;}
+.choose_tixian .now_invite{border:1px solid #169bf8; border-right:0px; border-radius:12px 0px 0px 12px;}
+.choose_tixian .invite_successful{border:1px solid #169bf8;border-left:0px; border-radius:0px 12px 12px 0px;}
+.choose_tixian span.invite_visited{background:#169bf8; color:#fff;}
+
+.non_Servicerange{color:#259ef5; font-size:28px; line-height:40px;}
+.prompt_con .range_term{ width:100%; height:560px; overflow-y:auto; border-bottom:1px solid #ddd}
+.prompt_con .range_term li{ width:100%}
+.prompt_con .range_term li label{ width:120px; text-align:center; float:left;font-size:30px; padding:20px 0px;}
+.prompt_con .range_term li p{width: -moz-calc(100% - 162px);width: -webkit-calc(100% - 162px);width: calc(100% - 162px); border-left:2px solid #ddd; border-bottom:2px solid #ddd;float:left; padding:20px;font-size:30px;line-height:50px;}
+.prompt_con .range_term li:last-child p{border-bottom:0px;}
+/*******提现进行中*****/
+.tixian_during{ width:100%; text-align:center; min-height:800px;}
+.tixian_during_info{ margin-top:25%;}
+.tixian_during_info p{ margin-top:30px; font-size:24px; color:#696969}
+.tixian_during_info p font{font-size:24px;color:#41d4ff}
+.see_record{ width:100%; text-align:center; margin-bottom:20px;}
+.see_record a{ display:inline-block;padding:25px 65px; color:#fff; border-radius:12px; background:#0a9fdd; font-size:30px;}
+.see_record a.btn02{background-color:rgba(0,139,197,1);}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

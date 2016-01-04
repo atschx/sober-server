@@ -1,0 +1,308 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="Pragma" content="no-cache" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+<link href="css/sk_base3.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/footer.css" media="all">
+<script type="text/javascript" charset="utf-8" src="js/jquery.min.1.11.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/store.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/before_submit.js"></script>
+
+<script>
+	function isBlank (value){
+	  return (value == null || value == undefined ) || ($.trim(value) === '');
+	}
+	function isNotBlank(value){
+	  return !this.isBlank(value);
+	}
+	function count(o){
+	  var t = typeof o;
+	  if(t == 'string'){
+	    return o.length;
+	  }else if(t == 'object'){
+	    var n = 0;
+	    for(var i in o){
+	      n++;
+	    }
+	    return n;
+	  }
+	  return false;
+	};
+
+	var agent_str = navigator.userAgent;
+	if(agent_str.indexOf("iPhone") > -1 ){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("iPad") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("iPod") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("Android") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}
+$(function(){
+	$('.Click_bj').on('touchstart',function(){
+		$(this).addClass('btn02');
+		this.blur();
+	});
+	$('.Click_bj').on('touchend',function(){
+		$(this).removeClass('btn02');
+	});
+	$('.return_link').on('touchstart',function(){
+		$(this).addClass('return_link2');
+		this.blur();
+	});
+	$('.return_link').on('touchend',function(){
+		$(this).removeClass('return_link2');
+	});
+	
+ })
+</script> 
+  
+<style>
+.wrap {padding:0px 0px 0px 0px!important;}
+</style>
+
+<div id="alert_div"></div>
+
+<html>
+<head>
+    <title>个人中心</title>
+    <link href="css/my_info3.css?v=1.3" rel="stylesheet" type="text/css">
+    <script type="text/javascript" charset="utf-8" src="js/new_weixin.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(function(){
+        	get_invite_remind();
+            show_user_finance();
+            show_user_record();
+            update_user_info('');
+        });
+
+        function update_user_info(flag){
+
+            if(isNull(flag)) return;
+            $.post("/itry/personalcenter/updateUserInfo",{
+                        openid:flag
+                    },
+                    function(s){},
+                    "html");
+        }
+
+        function show_user_finance(){
+
+            var data = {
+                weChatMD5:'6016138C57E3B7502274E5FDE5EDEC5F',
+                cur_time:new Date().getTime()
+            };
+            $.post("/itry/personalcenter/getUserFinance",data,function(dataObj){
+                if (dataObj.finance != null) {
+                    $('#tixian > a').attr("href",dataObj.finance.bankUrl);
+                    $('#tixian > a > div > label').html(dataObj.finance.title);
+
+                    if(dataObj.finance.bankNum == null || dataObj.finance.bankNum == '' ){
+                    }else{
+                        $('#tixian > a > div > p').html(dataObj.finance.bankNum);
+                    }
+                }
+
+                if (dataObj.phone != null) {
+                    $('#phone_update').show();
+                    $('#phone_update > a').attr("href",dataObj.phone.bankUrl);
+                    $('#phone_update > a > div > label').html(dataObj.phone.title);
+
+                    if(dataObj.phone.bankNum == null || dataObj.phone.bankNum == '' ){
+                    }else{
+                        $('#phone_update > a > div > p').html(dataObj.phone.bankNum);
+                    }
+                }else{
+                    $('#phone_update').remove();
+                }
+
+            },"json");
+
+        }
+
+        function get_invite_remind(){
+
+            var data = {
+            		openidMD5:'6016138C57E3B7502274E5FDE5EDEC5F'
+            };
+            $.post("/itry/personalcenter/get_invite_remind",data,function(s){
+				if(s.invite_on_off=='1'){
+					$("#invitation_remind").toggleClass("remind_on");
+				}
+				if(s.app_on_off!='1'){
+					$("#app_remind").toggleClass("remind_on");
+				}
+            },"json");
+        }
+        
+        function show_user_record(){
+
+            var data = {
+                weChatMD5:'6016138C57E3B7502274E5FDE5EDEC5F',
+                cur_time:new Date().getTime()
+            };
+
+            $.post("/itry/personalcenter/getUserRecord",data,function(data){
+
+                if(data != null && data.length > 0){
+                    $.each(data,function(i,n){
+//                        alert(n.content+ ' -- '+isBlank(n.content));
+                        if(!isBlank(n.content)){
+                        	$('#li_'+i+' > a > div > p').removeClass('L_try_record_R');
+                        	$('#li_'+i+' > a > div > p').addClass('L_try_record_R R_import');
+                        }
+                        $('#li_'+i+' > a').attr("href",n.url);
+                        $('#li_'+i+' > a > div > p').append(n.content);
+                    })
+                }
+            },"json");
+        }
+        function alert_info(flag){
+
+            if(flag=='try'){
+                alert_msgs("您还没有试玩记录哦~");
+            }else if(flag=='invite'){
+                alert_msgs("您还没有邀请的小伙伴哦~");
+            }else if(flag=='withdraw'){
+                alert_msgs("您还没有提现记录哦~");
+            }
+        }
+        function alert_msgs(msg){
+        	$(".msg_encryption_ok").css("display","block");
+        	$("#msg_con").html(msg);
+        }
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <div class="my_info cf">
+        <div class="head_info cf">
+            <div class="my_head cf">
+                <div class="my_photo">
+                    <span>
+                        <img src="http://wx.qlogo.cn/mmopen/sx2aBaHR6SQQAOewiaOsNTQlUM7AAnbUXicRoa3veVHJXUyydKMedm6ibz9tvlehXsibTmkrBV8icuJ0IhCV4R42TJqiceibYZhcgac/0" alt="">
+                    </span>
+                </div>
+                <div class="cf bor_bottom">
+                    <div class="my_id">
+                        <label>ID：15460579</label>
+                    </div>
+                    
+                        
+                        
+                            <p class="my_weixin" style="width:100%; text-align:center">
+                                <span>Boston</span>
+                            </p>
+                        
+                    
+                    <div class="My_QR_code"><a href="/itry/personalcenter/qr_code" class="Click_bj"><span class="QR_code cf">邀请二维码</span></a></div>
+                </div>
+            </div>
+            <ul class="my_info_list cf" id="personal_bank_info">
+               <li>
+                    <div class="remind_cn cf">
+                        <label class="invitation_remind">邀请提醒</label>
+                        <p class="remind_off" id="invitation_remind"><span></span></p>
+                    </div>
+                </li>
+               <li style="display: none;">
+                    <div class="remind_cn cf">
+                        <label class="invitation_remind">领取任务提醒</label>
+                        <p class="remind_off" id="app_remind"><span></span></p>
+                    </div>
+                </li>
+                <li id="tixian">
+                    <a href="" class="Click_bj">
+                        <div class="my_info_con cf">
+                            <label class="tixian_info"></label>
+                            <p class="tixian_info_R R_import"></p>
+                        </div>
+                    </a>
+                </li>
+                <li id="phone_update">
+                    <a href="" class="Click_bj">
+                        <div class="my_info_con cf">
+                            <label class="Phone_validation"></label>
+                            <p class="tixian_info_R R_import"></p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <ul class="my_info_list cf" style=" margin:30px 0px" id="personal_record_info">
+            <li id="li_0">
+                <a href="" class="Click_bj">
+                    <div class="my_info_con cf">
+                        <label class="L_try_record">试玩记录</label>
+                        <p class="L_try_record_R"></p>
+                    </div>
+                </a>
+            </li>
+            <li id="li_1">
+                <a href="" class="Click_bj">
+                    <div class="my_info_con cf">
+                        <label class="L_Invited">邀请记录</label>
+                        <p class="L_try_record_R"></p>
+                    </div>
+                </a>
+            </li>
+            <li id="li_2">
+                <a href="" class="Click_bj">
+                    <div class="my_info_con cf">
+                        <label class="L_card">提现记录</label>
+                        <p class="L_try_record_R"></p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="msg_encryption_ok" style="display:none">
+    	<div class="fcbj" style="display:block"></div>
+        <div class="prompt_con cf" style="display:block">
+        	<h4 class="msg" id='msg_title'>温馨提示</h4>
+            <div class="Pay_treasure_bangding">
+            	<p class="msg_datainfo" id="msg_con"><p>
+            </div>
+            <div class="prompt_submit">
+                <a href="javascript:$('.msg_encryption_ok').css('display','none');" class="backe74646 Click_bj msg_encryption_know" id='iknow'>我知道了</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/after_load.js"></script>
+<script>
+$("#invitation_remind").click(function(){
+    $(this).toggleClass("remind_on");
+    var on_off = 1;
+    if($("#invitation_remind").attr('class').indexOf('remind_on')==-1){
+    	on_off = 0;
+    }else{
+    	on_off = 1;
+    }
+    $.post("/itry/personalcenter/update_invite_remind",{openidMD5:'6016138C57E3B7502274E5FDE5EDEC5F',on_off:on_off},function(data){
+		//alert(data.res);
+    },"json");
+});
+$("#app_remind").click(function(){
+    $(this).toggleClass("remind_on");
+    var on_off = 0;
+    if($("#app_remind").attr('class').indexOf('remind_on')==-1){
+    	on_off = 1;
+    }else{
+    	on_off = 0;
+    }
+    $.post("/itry/personalcenter/update_app_remind",{openidMD5:'6016138C57E3B7502274E5FDE5EDEC5F',on_off:on_off},function(data){
+		//alert(data.res);
+    },"json");
+})
+</script>
+</body>
+</html>

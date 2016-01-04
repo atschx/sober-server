@@ -1,0 +1,518 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="Pragma" content="no-cache" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+<link href="css/sk_base3.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/footer.css" media="all">
+<script type="text/javascript" charset="utf-8" src="js/jquery.min.1.11.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/store.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/before_submit.js"></script>
+
+<script>
+	function isBlank (value){
+		return (value == null || value == undefined ) || ($.trim(value) === '');
+	}
+	function isNotBlank(value){
+		return !this.isBlank(value);
+	}
+	function count(o){
+		var t = typeof o;
+		if(t == 'string'){
+			return o.length;
+		}else if(t == 'object'){
+			var n = 0;
+			for(var i in o){
+				n++;
+			}
+			return n;
+		}
+		return false;
+	};
+
+	var agent_str = navigator.userAgent;
+	if(agent_str.indexOf("iPhone") > -1 ){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("iPad") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("iPod") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("Android") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}
+	$(function(){
+		$('.Click_bj').on('touchstart',function(){
+			$(this).addClass('btn02');
+			this.blur();
+		});
+		$('.Click_bj').on('touchend',function(){
+			$(this).removeClass('btn02');
+		});
+		$('.return_link').on('touchstart',function(){
+			$(this).addClass('return_link2');
+			this.blur();
+		});
+		$('.return_link').on('touchend',function(){
+			$(this).removeClass('return_link2');
+		});
+
+	})
+</script>
+
+<script>
+	var nav4 =(function(){
+		bindClick = function(els, mask){
+			if(!els || !els.length){return;}
+			var isMobile = "ontouchstart" in window;
+			for(var i=0,ci; ci = els[i]; i++){
+				ci.addEventListener("click", evtFn, false);
+			}
+
+			function evtFn(evt, ci){
+				ci = this;
+				for(var j=0,cj; cj = els[j]; j++){
+					if(cj != ci){
+						cj.classList.remove("on");
+					}
+				}
+				if(ci == mask){mask.classList.remove("on");return;}
+				switch(evt.type){
+					case "click":
+						var on = ci.classList.toggle("on");
+						mask.classList[on?"add":"remove"]("on");
+						break;
+				}
+			}
+			mask.addEventListener(isMobile?"touchstart":"click", evtFn, false);
+		}
+		return {"bindClick":bindClick};
+	})();
+
+	function setMenu(){
+		$(".wrap:not(.noNav)").before("<div class='return_index'><a href='javascript:history.go(-1);' class='return_link'></a><h1></h1></div>");
+		if(history.length==1){
+			$('.return_index a').attr('href','http://itry.com/html/menu.html');
+		}
+		if(document.title=='排行榜'){
+			$(".ranking_content .time").attr({"top":"199px"});
+		}
+
+		$(".return_index h1").html(document.title);
+
+		$('.wrap:not(.noMenu)').append('<div class="nav4">\
+		        <nav>\
+	            <div id="nav4_ul" class="nav_4">\
+	                <ul class="box">\
+	                	<li style="width:15%">\
+                			<a href="http://itry.com/html/menu.html" class="Click_bj"><span class="Home_page"></span></a>\
+                		</li>\
+	                    <li>\
+	                        <a href="appList.html" class="Click_bj"><span>开始赚钱</span></a>\
+	                    </li>\
+	                    <li>\
+	                        <a href="javascript:void(0);" class="Click_bj"><em class="connav2"></em><span>我的信息</span></a>\
+	                        <dl>\
+	                            <dd><a href="toPersonalCenter.html" class="Click_bj"><span>个人中心</span></a></dd>\
+	                            <dd><a href="toInviteFriendsOfXB.html?type=2" class="Click_bj"><span>邀请好友</span></a></dd>\
+	                            <dd><a href="toRankingList.html" class="Click_bj"><span>排行榜</span></a></dd>\
+	                            <dd><a href="toIncomeInfo.html" class="Click_bj"><span style="border-bottom:0px;">收入查询</span></a></dd>\
+	                            <span class="sk_foot_b"></span>\
+	                        </dl>\
+	                    </li>\
+	                    <li>\
+	                        <a href="javascript:void(0);" class="Click_bj"><em class="connav2"></em><span>更多</span></a>\
+	                        <dl>\
+	                            <dd><a href="aboutus.html" class="Click_bj"><span>关于我们</span></a></dd>\
+	                            <dd><a href="download.html" class="Click_bj"><span>下载小兵</span></a></dd>\
+	                            <dd><a href="notescontact.html" class="Click_bj"><span style="border-bottom:0px;">常见问题</span></a></dd>\
+	                            <span class="sk_foot_b"></span>\
+	                        </dl>\
+	                    </li>\
+	                </ul>\
+	            </div>\
+	        </nav>\
+	        <div id="nav4_masklayer" class="masklayer_div on">&nbsp;</div>\
+	    </div>');
+		if(document.getElementById("nav4_ul") && document.getElementById("nav4_masklayer")){
+			nav4.bindClick(document.getElementById("nav4_ul").querySelectorAll("li>a"), document.getElementById("nav4_masklayer"));
+		}
+
+		$("#nav4_ul dl>dd a").click(function(){
+			$('.on').removeClass('on');
+		});
+	}
+	$(function(){
+		if(!/micromessenger/i.test(navigator.userAgent)){
+			setMenu();
+			if(document.title=='排行榜'){
+				$(" .ranking_content .time").attr({"top":"199px"});
+			}
+		}
+	})
+</script>
+
+<div id="alert_div"></div>
+
+<!doctype html>
+<html>
+<head>
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta http-equiv="Cache-Control" name="no-store" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta content="email=no" name="format-detection" />
+	<meta charset="utf-8">
+	<title>排行榜</title>
+	<link href="css/sk_base3.css" rel="stylesheet" type="text/css">
+	<link href="css/other_info.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="js/zepto.js"></script>
+	<script type="text/javascript" src="js/Shared_js.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(function(){
+			do_info("day");
+		});
+		function do_info(rankType){
+			var isme="";
+			var url = 'http://itry.com/itry/weixin/getRankingList';
+			$.post(url,{rankType:rankType},function(dataObj){
+				$('#showDate').html(dataObj.showDate); //显示日期
+				if (rankType == 'day' || rankType == 'week' || rankType == 'month' || rankType == 'total') {
+					$("#5line"+rankType+"").on('touchstart',function(){
+						$(this).addClass('btn02');
+						this.blur();
+					});
+					$('#'+rankType).empty();
+
+					$.each(dataObj.list,function(i,n){
+						if(n.user_id=='{user_id}'){
+							isme="class='my dispIsHide"+rankType+"'";
+						}else{
+							isme="class='dispIsHide"+rankType+"'";
+						}
+						if(i==0){
+							rankdis="<span class='no1'></span>";
+						}else if(i==1){
+							rankdis="<span class='no2'></span>";
+						}else if(i==2){
+							rankdis="<span class='no3'></span>";
+						}else{
+							rankdis="<label>"+(i+1)+"</label>";
+						}
+						var w_name = n.w_name;
+						var w_headimg = n.w_headimg;
+						if(!isNull(n.user_id) && n.user_id == '56954'){   // 哈喽，迪迪
+							w_name = '哈喽，迪迪';
+							w_headimg = 'images/hellodd.jpg';
+						}
+						if(i<4){
+							$('#'+rankType).append(
+									"<li "+isme+">"+
+									"<div class='rankinguser-info'>"+
+									"<div class='rankinguser-portrait'>"+
+									"<img src='"+w_headimg+"' alt=''>"+
+									"</div>"+
+									"<div class='ranking-name'>"+
+									rankdis+
+									"<p>"+w_name+"</p>"+
+									"</div>"+
+									"<div class='ranking-income'>"+n.total_income_str+'元'+"</div>"+
+									"</div>"+
+									"</li>"
+							);
+						}else if(i==4){
+							$('#'+rankType).append(
+									//"<div class='dispIsHide"+rankType+"' style='display:none;''>"+
+									"<li "+isme+" >"+
+									"<div class='rankinguser-info' style='border-bottom-width: 0px;'>"+
+									"<div class='rankinguser-portrait'>"+
+									"<img src='"+w_headimg+"' alt=''>"+
+									"</div>"+
+									"<div class='ranking-name'>"+
+									rankdis+
+									"<p>"+w_name+"</p>"+
+									"</div>"+
+									"<div class='ranking-income'>"+n.total_income_str+'元'+"</div>"+
+									"</div>"+
+									"</li>"
+									//"</div>"
+							);
+						}else if(i>=5 && i<20){
+							$('#'+rankType).append(
+									//"<div class='dispIsHide"+rankType+"' style='display:none;''>"+
+									"<li "+isme+"  style='display:none;'>"+
+									"<div class='rankinguser-info'>"+
+									"<div class='rankinguser-portrait'>"+
+									"<img src='"+w_headimg+"' alt=''>"+
+									"</div>"+
+									"<div class='ranking-name'>"+
+									rankdis+
+									"<p>"+w_name+"</p>"+
+									"</div>"+
+									"<div class='ranking-income'>"+n.total_income_str+'元'+"</div>"+
+									"</div>"+
+									"</li>"
+									//"</div>"
+							);
+						}
+
+					});
+					showPersonalP(rankType);
+				}
+			},"json");
+		}
+		function showPersonalP(rankType){
+			var c;
+			var isme="";
+			var data = {
+				rankType:rankType,
+				oid_md5:''
+			};
+			$.ajax({
+				type : "post",
+				url : "/itry/weixin/getPersonalList",
+				data : data,
+				dataType: 'json',
+				async : true,
+				success : function(dataObj){
+					$('#5'+rankType).empty();
+					$.each(dataObj,function(i,n){
+						if(isNotBlank(n.oid_md5) && n.oid_md5 == ""){
+							isme="class='my'";
+						}else{
+							isme="";
+						}
+						var w_name = n.w_name;
+						var w_headimg = n.w_headimg;
+						if(!isNull(n.user_id) && n.user_id == '56954'){   // 哈喽，迪迪
+							w_name = '哈喽，迪迪';
+							w_headimg = 'images/hellodd.jpg';
+						}
+						$('#5'+rankType).append(
+								"<li "+isme+">"+
+								"<div class='rankinguser-info'>"+
+								"<div class='rankinguser-portrait'>"+
+								"<img src='"+w_headimg+"' alt=''>"+
+								"</div>"+
+								"<div class='ranking-name'>"+
+								"<label>"+n.rank+"</label>"+
+								"<p>"+w_name+"</p>"+
+								"</div>"+
+								"<div class='ranking-income'>"+n.total_income_str+'元'+"</div>"+
+								"</div>"+
+								"</li>"
+						);
+
+
+
+
+						/*		if(dataObj.length==3){
+						 if(i==2){
+						 isme="class='my'";
+						 }else{
+						 isme="";
+						 }
+						 if(i==0){
+						 c="<li>"+
+						 "<div class='rankinguser-info'>"+
+						 "<div class='rankinguser-portrait'>"+
+						 "<img src='"+n.w_headimg+"' alt=''>"+
+						 "</div>"+
+						 "<div class='ranking-name'>"+
+						 "<label>"+n.rank+"</label>"+
+						 "<p>"+n.w_name+"</p>"+
+						 "</div>"+
+						 "<div class='ranking-income'>"+n.total_income_str+'元'+"</div>"+
+						 "</div>"+
+						 "</li>";
+						 }else{
+						 if(i==2){
+						 $('#5'+rankType).append(c);
+						 }
+						 $('#5'+rankType).append(
+						 "<li "+isme+">"+
+						 "<div class='rankinguser-info'>"+
+						 "<div class='rankinguser-portrait'>"+
+						 "<img src='"+n.w_headimg+"' alt=''>"+
+						 "</div>"+
+						 "<div class='ranking-name'>"+
+						 "<label>"+n.rank+"</label>"+
+						 "<p>"+n.w_name+"</p>"+
+						 "</div>"+
+						 "<div class='ranking-income'>"+n.total_income_str+'元'+"</div>"+
+						 "</div>"+
+						 "</li>"
+						 );
+						 }
+
+						 }else if(dataObj.length==4){
+						 if(i==1){
+						 isme="class='my'";
+						 }else{
+						 isme="";
+						 }
+						 $('#5'+rankType).append(
+						 "<li "+isme+">"+
+						 "<div class='rankinguser-info'>"+
+						 "<div class='rankinguser-portrait'>"+
+						 "<img src='"+n.w_headimg+"' alt=''>"+
+						 "</div>"+
+						 "<div class='ranking-name'>"+
+						 "<label>"+n.rank+"</label>"+
+						 "<p>"+n.w_name+"</p>"+
+						 "</div>"+
+						 "<div class='ranking-income'>"+n.total_income_str+'元'+"</div>"+
+						 "</div>"+
+						 "</li>"
+						 );
+						 }else if(dataObj.length==6){
+						 if(i==0){
+						 isme="class='my'";
+						 }else{
+						 isme="";
+						 }
+						 if(i!=3 && i!=4 && i!=5){
+						 $('#5'+rankType).append(
+						 "<li "+isme+">"+
+						 "<div class='rankinguser-info'>"+
+						 "<div class='rankinguser-portrait'>"+
+						 "<img src='"+n.w_headimg+"' alt=''>"+
+						 "</div>"+
+						 "<div class='ranking-name'>"+
+						 "<label>"+n.rank+"</label>"+
+						 "<p>"+n.w_name+"</p>"+
+						 "</div>"+
+						 "<div class='ranking-income'>"+n.total_income_str+'元'+"</div>"+
+						 "</div>"+
+						 "</li>"
+						 );
+						 }
+						 }else{
+						 if(i==0){
+						 c="<li>"+
+						 "<div class='rankinguser-info'>"+
+						 "<div class='rankinguser-portrait'>"+
+						 "<img src='"+n.w_headimg+"' alt=''>"+
+						 "</div>"+
+						 "<div class='ranking-name'>"+
+						 "<label>"+n.rank+"</label>"+
+						 "<p>"+n.w_name+"</p>"+
+						 "</div>"+
+						 "<div class='ranking-income'>"+n.total_income_str+'元'+"</div>"+
+						 "</div>"+
+						 "</li>";
+						 }else{
+						 if(i==2){
+						 isme="class='my'";
+						 $('#5'+rankType).append(c);
+						 }else{
+						 isme="";
+						 }
+						 $('#5'+rankType).append(
+						 "<li "+isme+">"+
+						 "<div class='rankinguser-info'>"+
+						 "<div class='rankinguser-portrait'>"+
+						 "<img src='"+n.w_headimg+"' alt=''>"+
+						 "</div>"+
+						 "<div class='ranking-name'>"+
+						 "<label>"+n.rank+"</label>"+
+						 "<p>"+n.w_name+"</p>"+
+						 "</div>"+
+						 "<div class='ranking-income'>"+n.total_income_str+'元'+"</div>"+
+						 "</div>"+
+						 "</li>"
+						 );
+						 }
+						 }*/
+					});
+					$(".more").each(function(i,n){
+						n.style.display="block";
+					});
+				},
+				error:function (){
+					showLeaveRanking(rankType);
+					$(".more").each(function(i,n){
+						n.style.display="none";
+					});
+				}
+			});
+		}
+		function showLeaveRanking(showType){
+			$('#'+showType+' li:eq(4) div').removeAttr('style');
+//			$('#'+showType+' li:eq(4) div').attr('style','border-bottom-width: 1px;');
+			$(".dispIsHide"+showType+"").each(function(i,n){
+				n.style.display="block";
+			});
+			//$("#5line"+showType+"").removeClass("Click_bj");
+			$("#5line"+showType+"").off("touchstart");
+		}
+	</script>
+
+</head>
+<body>
+<div class="wrap">
+	<div class="">
+		<div style="height:168px; width:100%">
+			<div id="nowork" class="" style="position:fixed; top:85px; width:100%">
+				<ul class="ranking_nav cf">
+					<li class="Click_bj click_no"><a href="javascript:do_info('day');">日榜</a></li>
+					<li class="Click_bj"><a href="javascript:do_info('week');">周榜</a></li>
+					<li class="Click_bj"><a href="javascript:do_info('month');">月榜</a></li>
+					<li class="Click_bj"><a href="javascript:do_info('total');">总榜</a></li>
+				</ul>
+				<p class="time" style="top:192px"><span id="showDate"></span></p>
+			</div>
+		</div>
+
+		<div class="ranking_content cf">
+			<div class="ranking cf ranking_day"  style="display:block;">
+				<ul id="day" class='top_three cf'>
+				</ul>
+				<div id="5lineday" class='more Click_bj' onclick="showLeaveRanking('day')">●●●</div>
+				<ul id="5day" class="top_three cf">
+				</ul>
+			</div>
+			<div class="ranking cf ranking_weeks">
+				<ul id="week" class='top_three cf'>
+				</ul>
+				<div id="5lineweek" class='more Click_bj' onclick="showLeaveRanking('week')">●●●</div>
+				<ul id="5week" class="top_three cf">
+				</ul>
+			</div>
+			<div class="ranking cf ranking_month">
+				<ul id="month" class='top_three cf'>
+				</ul>
+				<div id="5linemonth" class='more Click_bj' onclick="showLeaveRanking('month')">●●●</div>
+				<ul id="5month" class="top_three cf">
+				</ul>
+			</div>
+			<div class="ranking cf ranking_total">
+				<ul id="total" class='top_three cf'>
+				</ul>
+				<div id="5linetotal" class='more Click_bj' onclick="showLeaveRanking('total')">●●●</div>
+				<ul id="5total" class="top_three cf">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function () {
+		$(".ranking_nav li").click(function () {
+			var nowindex = $(this).index();
+			$(".ranking_nav li").attr("class", "");
+			$(".ranking_content .ranking").hide();
+			$(".ranking_nav li").eq(nowindex).attr("class","click_no");
+			$(".ranking_content .ranking").eq(nowindex).show();
+		});
+
+	})
+</script>
+</body>
+</html>

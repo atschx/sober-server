@@ -1,0 +1,239 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="Pragma" content="no-cache" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+<link href="css/sk_base3.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/footer.css" media="all">
+<script type="text/javascript" charset="utf-8" src="js/jquery.min.1.11.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/store.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/before_submit.js"></script>
+
+<script>
+	function isBlank (value){
+	  return (value == null || value == undefined ) || ($.trim(value) === '');
+	}
+	function isNotBlank(value){
+	  return !this.isBlank(value);
+	}
+	function count(o){
+	  var t = typeof o;
+	  if(t == 'string'){
+	    return o.length;
+	  }else if(t == 'object'){
+	    var n = 0;
+	    for(var i in o){
+	      n++;
+	    }
+	    return n;
+	  }
+	  return false;
+	};
+
+	var agent_str = navigator.userAgent;
+	if(agent_str.indexOf("iPhone") > -1 ){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("iPad") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("iPod") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("Android") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}
+$(function(){
+	$('.Click_bj').on('touchstart',function(){
+		$(this).addClass('btn02');
+		this.blur();
+	});
+	$('.Click_bj').on('touchend',function(){
+		$(this).removeClass('btn02');
+	});
+	$('.return_link').on('touchstart',function(){
+		$(this).addClass('return_link2');
+		this.blur();
+	});
+	$('.return_link').on('touchend',function(){
+		$(this).removeClass('return_link2');
+	});
+	
+ })
+</script> 
+  
+<style>
+.wrap {padding:0px 0px 0px 0px!important;}
+</style>
+
+<div id="alert_div"></div>
+
+<html>
+<head>
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta http-equiv="Cache-Control" name="no-store" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+<meta charset="utf-8">
+<title>邀请好友</title>
+<link href="css/sk_base3.css?v=2015" rel="stylesheet" type="text/css">
+<link href="css/yaoqing3.css?v=20150916" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/zepto.js"></script>
+<script type="text/javascript" src="js/Shared_js.js"></script>
+<script type="text/javascript" src="js/wx_utils.js"></script>
+<script type="text/javascript" src="js/region_config.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+hecheng();
+function hecheng(){
+var arrayObj = new Array(4);
+var imgCount=0;
+var imgQR=new Image();
+var uil = 'http://itry.com';
+imgQR.src="http://itry.com/itry/invite/getQr_url?userID=15460579";
+if (imgQR.complete) {
+    imgCount++; 
+    $.joinImg(uil+'images/yqimg001.jpg',3.6,65,510,'img1');
+    $.joinImg(uil+'images/yqimg002.jpg',2.3,20,5,'img2');
+    $.joinImg(uil+'images/yqimg003.jpg',3.7,15,5,'img3');
+    $.joinImg(uil+'images/yqimg004.jpg',3.7,15,5,'img4');
+    $.joinImg(uil+'images/yqimg005.jpg',3.7,15,5,'img5');
+    $.joinImg(uil+'images/yqimg006.jpg',2.4,145,236,'img6');
+    $.joinImg(uil+'images/yqimg007.jpg',2.4,145,236,'img7');
+    $.joinImg(uil+'images/yqimg008.jpg',2.4,145,236,'img8');
+    $.joinImg(uil+'images/yqimg009.jpg',2.4,145,236,'img9');
+} else {
+	imgQR.onload = function () {
+        imgCount++; 
+        imgQR.onload = null;
+        $.joinImg(uil+'images/yqimg001.jpg',3.6,65,510,'img1');
+        $.joinImg(uil+'images/yqimg002.jpg',2.3,20,5,'img2');
+        $.joinImg(uil+'images/yqimg003.jpg',3.7,15,5,'img3');
+        $.joinImg(uil+'images/yqimg004.jpg',3.7,15,5,'img4');
+        $.joinImg(uil+'images/yqimg005.jpg',3.7,15,5,'img5');
+        $.joinImg(uil+'images/yqimg006.jpg',2.4,145,236,'img6');
+        $.joinImg(uil+'images/yqimg007.jpg',2.4,145,236,'img7');
+        $.joinImg(uil+'images/yqimg008.jpg',2.4,145,236,'img8');
+        $.joinImg(uil+'images/yqimg009.jpg',2.4,145,236,'img9');
+
+    };
+}
+$.joinImg = function(src,qrScale,marginX,marginY,id){
+		var imgSrc=new Image();
+		imgSrc.onload=function(){
+			
+			imgCount++;
+			if(imgCount>1){
+				var target=document.createElement('canvas');
+				
+				var width=target.width=imgSrc.width;
+				
+				var height=target.height=imgSrc.height;
+				var cxt=target.getContext("2d");
+
+				cxt.drawImage(imgSrc,0,0,width,height);
+				var qrHeight=imgQR.height/qrScale;
+				var qrWidth=imgQR.width/qrScale;
+				cxt.drawImage(imgQR,width-qrWidth-marginX,height-qrHeight-marginY,qrWidth,qrHeight);
+				
+				var tmp = target.toDataURL('image/jpeg');
+				var names = document.getElementsByName(id);
+				for(var i=0;i<names.length;i++){
+					names[i].src=tmp;
+				}
+			}
+		};
+		imgSrc.src=src; 
+		
+		}
+}
+
+</script>
+</head>
+<body>
+<div class="wrap noMenu"> 
+	<div class="yq_Img cf"> 
+	 <div style="background:url(/images/yqimg_top1.png) no-repeat center center; width:633px; height:219px; display:block; margin:0px auto 0px auto;"></div> 
+        <div class="swiper-container" style="padding-top: 1px;"> 
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="absolute_img"><img id="img1" name="img1" class="img"  src="images/yqimg001.jpg" alt=""></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="absolute_img"><img id="img2"name="img2" class="img" src="images/yqimg002.jpg" alt=""></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="absolute_img"><img id="img3" name="img3" class="img" src="images/yqimg003.jpg" alt=""></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="absolute_img"><img id="img4" name="img4" class="img" src="images/yqimg004.jpg" alt=""></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="absolute_img"><img id="img5" name="img5" class="img" src="images/yqimg005.jpg" alt=""></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="absolute_img"><img id="img6" name="img6" class="img" src="images/yqimg006.jpg" alt=""></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="absolute_img"><img id="img7" name="img7" class="img" src="images/yqimg007.jpg" alt=""></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="absolute_img"><img id="img8" name="img8" class="img" src="images/yqimg008.jpg" alt=""></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="absolute_img"><img id="img9" name="img9" class="img" src="images/yqimg009.jpg" alt="" onclick=""></div>
+                </div>
+                
+        	</div>
+        </div>
+        <p class="img_msg">请<strong style="color:#000">长按图片</strong>存储图像，发给好友完成邀请</p>
+         <div style="text-align:center; width:100%"><div class="pagination"></div></div>
+    </div>
+
+    <div class="invitation_menu">
+    <span class="Click_bj open"><a href="toInviteFriendsOfXB.html?type=2">图片版</a></span>
+    	<span class="Click_bj"><a href="toInviteFriendsOfXB.html?type=1">普通版</a></span>
+    	
+        <span class="Click_bj"><a href="toInviteFriendsOfXB.html?type=3">定制版</a></span>
+        <span class="Click_bj"><a href="toInviteFriendsOfXB.html?type=4">晒单版</a></span>
+    </div>
+</div>
+<script src="js/idangerous.swiper-2.0.min.js"></script>
+<script src="js/idangerous.swiper.3dflow-2.0.js"></script>
+
+<script type="text/javascript">
+
+  $(function(){
+	  var timer = null;
+	  var mySwiper = new Swiper('.swiper-container',{
+			slidesPerView:2,
+			pagination: '.pagination',
+			paginationClickable: true,
+			centeredSlides: true,
+			loop:true,
+			//Enable 3D Flow
+			tdFlow: {
+				rotate : 5,
+				stretch :10,
+				depth: 200,
+				modifier : 1,
+				shadows:true			
+				}			
+		});
+	  if($('.absolute_img .img').height()==0){
+		  $('.swiper-wrapper,.swiper-slide').css('height','555');  
+	  }else{
+		  $('.swiper-wrapper,.swiper-slide').css('height',$('.absolute_img .img').height());
+	  }
+	});
+  window.onload = function() {
+	  $('.swiper-wrapper,.swiper-slide').css('height',$('.absolute_img .img').height());
+  }
+</script>
+</body>
+</html>

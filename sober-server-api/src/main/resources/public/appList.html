@@ -1,0 +1,843 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="Pragma" content="no-cache" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+<link href="css/sk_base3.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/footer.css" media="all">
+<script type="text/javascript" charset="utf-8" src="js/jquery.min.1.11.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/store.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/before_submit.js"></script>
+
+<script>
+	function isBlank (value){
+	  return (value == null || value == undefined ) || ($.trim(value) === '');
+	}
+	function isNotBlank(value){
+	  return !this.isBlank(value);
+	}
+	function count(o){
+	  var t = typeof o;
+	  if(t == 'string'){
+	    return o.length;
+	  }else if(t == 'object'){
+	    var n = 0;
+	    for(var i in o){
+	      n++;
+	    }
+	    return n;
+	  }
+	  return false;
+	};
+
+	var agent_str = navigator.userAgent;
+	if(agent_str.indexOf("iPhone") > -1 ){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("iPad") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("iPod") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("Android") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}
+$(function(){
+	$('.Click_bj').on('touchstart',function(){
+		$(this).addClass('btn02');
+		this.blur();
+	});
+	$('.Click_bj').on('touchend',function(){
+		$(this).removeClass('btn02');
+	});
+	$('.return_link').on('touchstart',function(){
+		$(this).addClass('return_link2');
+		this.blur();
+	});
+	$('.return_link').on('touchend',function(){
+		$(this).removeClass('return_link2');
+	});
+	
+ })
+</script> 
+   
+  <script>
+  var nav4 =(function(){
+		bindClick = function(els, mask){
+			if(!els || !els.length){return;}
+			var isMobile = "ontouchstart" in window;
+			for(var i=0,ci; ci = els[i]; i++){
+				ci.addEventListener("click", evtFn, false);
+			}
+
+			function evtFn(evt, ci){
+				ci = this;
+				for(var j=0,cj; cj = els[j]; j++){
+					if(cj != ci){
+						cj.classList.remove("on");
+					}
+				}
+				if(ci == mask){mask.classList.remove("on");return;}
+				switch(evt.type){
+					case "click":
+						var on = ci.classList.toggle("on");
+						mask.classList[on?"add":"remove"]("on");
+					break;
+				}
+			}
+			mask.addEventListener(isMobile?"touchstart":"click", evtFn, false);
+		}
+		return {"bindClick":bindClick};
+	})();
+
+function setMenu(){
+	  $(".wrap:not(.noNav)").before("<div class='return_index'><a href='javascript:history.go(-1);' class='return_link'></a><h1></h1></div>");
+	  if(history.length==1){
+		  $('.return_index a').attr('href','http://itry.com/html/menu.html');
+	  }
+	  if(document.title=='排行榜'){
+	      $(".ranking_content .time").attr({"top":"199px"});
+	  }
+
+	  $(".return_index h1").html(document.title);
+	  
+	  $('.wrap:not(.noMenu)').append('<div class="nav4">\
+		        <nav>\
+	            <div id="nav4_ul" class="nav_4">\
+	                <ul class="box">\
+	                	<li style="width:15%">\
+                			<a href="http://itry.com/html/menu.html" class="Click_bj"><span class="Home_page"></span></a>\
+                		</li>\
+	                    <li>\
+	                        <a href="appList.html" class="Click_bj"><span>开始赚钱</span></a>\
+	                    </li>\
+	                    <li>\
+	                        <a href="javascript:void(0);" class="Click_bj"><em class="connav2"></em><span>我的信息</span></a>\
+	                        <dl>\
+	                            <dd><a href="toPersonalCenter.html" class="Click_bj"><span>个人中心</span></a></dd>\
+	                            <dd><a href="toInviteFriendsOfXB.html?type=2" class="Click_bj"><span>邀请好友</span></a></dd>\
+	                            <dd><a href="toRankingList.html" class="Click_bj"><span>排行榜</span></a></dd>\
+	                            <dd><a href="toIncomeInfo.html" class="Click_bj"><span style="border-bottom:0px;">收入查询</span></a></dd>\
+	                            <span class="sk_foot_b"></span>\
+	                        </dl>\
+	                    </li>\
+	                    <li>\
+	                        <a href="javascript:void(0);" class="Click_bj"><em class="connav2"></em><span>更多</span></a>\
+	                        <dl>\
+	                            <dd><a href="aboutus.html" class="Click_bj"><span>关于我们</span></a></dd>\
+	                            <dd><a href="download.html" class="Click_bj"><span>下载小兵</span></a></dd>\
+	                            <dd><a href="notescontact.html" class="Click_bj"><span style="border-bottom:0px;">常见问题</span></a></dd>\
+	                            <span class="sk_foot_b"></span>\
+	                        </dl>\
+	                    </li>\
+	                </ul>\
+	            </div>\
+	        </nav>\
+	        <div id="nav4_masklayer" class="masklayer_div on">&nbsp;</div>\
+	    </div>');
+	  if(document.getElementById("nav4_ul") && document.getElementById("nav4_masklayer")){
+		  nav4.bindClick(document.getElementById("nav4_ul").querySelectorAll("li>a"), document.getElementById("nav4_masklayer"));
+	  }
+	  
+	$("#nav4_ul dl>dd a").click(function(){
+		$('.on').removeClass('on');
+	});
+}
+$(function(){
+	if(!/micromessenger/i.test(navigator.userAgent)){
+		setMenu();
+		if(document.title=='排行榜'){
+		  $(" .ranking_content .time").attr({"top":"199px"});
+		}
+	}
+})
+</script>
+
+<div id="alert_div"></div>
+
+<!doctype html>
+<html>
+<head>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta http-equiv="Cache-Control" name="no-store" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+<meta charset="utf-8">
+<title>试玩列表</title>
+<link href="css/sk_base3.css?v=1.1" rel="stylesheet" type="text/css">
+<link href="css/details_list3.css?v=1.6" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/after_load.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/wx_utils.js?v=1111"></script>
+<script type="text/javascript" charset="utf-8" src="js/region_config.js"></script>
+<script type="text/javascript" src="js/Shared_js.js"></script>
+<script type="text/javascript">
+function itryMarquee(target){
+	var initNum = Math.ceil($('#'+target).width()/$('#'+target+' span:eq(0)').width());
+	$('#'+target).html(new Array(initNum+2).join($('#'+target).html()));
+	var pos = parseInt($('#'+target+' span:eq(1)').offset().left-$('#'+target+' span:eq(0)').offset().left,10);
+	var obj = $('#'+target)[0];
+	return function(){
+		if(pos == obj.scrollLeft){
+			obj.scrollLeft = 1;
+		}else{
+			obj.scrollLeft++;
+		}
+	};
+}
+	 var payFlag = 0;  //控制跳到缺货页面 0-有付费应用 1-没有付费应用
+     var doingAppid='';
+     var doingOrderid='';
+     var doingDetails_url='';
+     var doingBundleId='';
+     var doingProcessName='';
+     var doingHasCopy='';
+     var noPlay = '0';
+	 token = 'A197F497C3C6951E4CAD6BDC507C397A';
+	 var timer=null;
+	 $(function(){
+		 $(window).bind("pageshow",function(){
+			 if(timer!=null){
+				 clearInterval(timer);
+			 }
+			 init();
+			 
+	     });
+	 });
+	 function init(){
+		 bridgeCallHideMenu();
+         try{getXBStatus()}catch(e){};
+         
+         if(""==1){
+             removeStore(shokey_param_key);
+             setStore(shokey_param_key, '564971055391E2F9DB3320CD7D674CE0');
+         }else{
+             checkLegal();
+         }
+         if(!"true"){
+        	 $('.try_msg_info').hide();
+        	 $('.wrap').css("padding","0px");
+         }else if(!/micromessenger/i.test(navigator.userAgent) && 'offline_xiaobing'=='online_xiaobing'){
+        	 $('#appList').click(function(){
+        		 $('.msg_xiaobing').show();
+	        	 $('.j_openxb').click(function(){
+	        		 try{getXBStatus()}catch(e){};
+	        	 });
+        	 });
+         }
+         getApp('15541672','564971055391E2F9DB3320CD7D674CE0');//试玩列表
+         getCantPlay('15541672');
+         getEggList('15541672');	//砸蛋列表
+	 }
+	 function download(){
+		 window.stop();
+		 location.href = 'http://itry.com/itry/download_xb_safari/564971055391E2F9DB3320CD7D674CE0/0';
+     }
+     //检查关监狱
+     function checkLegal(){
+         var data = {
+             oid_md5:'564971055391E2F9DB3320CD7D674CE0',
+             cur_oid_md5: $.trim(getStore(shokey_param_key)),
+             r:+new Date()
+         };
+         $.post("/shike/checkLegal",data,function(s){
+             if(s.status=='0'||s.status=='1'||s.status=='4'){
+                 removeStore(shokey_param_key);
+                 setStore(shokey_param_key, s.cur_oid_md5);
+             }else if(s.status=='2'){
+                 location.href = s.url;
+             }else if(s.status=='3'){
+                 location.href = s.url;
+             }
+         },"json");
+     }
+     function getwxurl(url){
+    	 if(/micromessenger/i.test(navigator.userAgent)){
+    		 return url+(url.indexOf('?')>0?'&':'?')+'&micromessage=true';
+    	 }else{
+    		 return url;
+    	 }
+     }
+     
+	 //app
+     function getApp(user_id,oid_md5){
+    	 $('#appList').html('');
+         doingAppid='';
+         doingOrderid='';
+         doingDetails_url='';
+         doingBundleId='';
+         doingProcessName='';
+         doingHasCopy='';
+         var allApp = [];
+         var repeatApp = [];
+         $.ajax({
+    		 type:"post",
+    		 url:"/shike/getApplist/"+user_id+"/"+oid_md5,
+    		 data:{r:+new Date()},
+    		 async:false,
+    		 success:function (back) {
+        	 
+             if(back != null && back.length >0){
+                $('#appList').show();
+                var appendStr = "";
+                var appendZeroStr = "";
+                $.each(back,function(i,n){
+                	if($.inArray(n.appid, allApp)>-1){
+                		if($.inArray(n.appid, repeatApp)==-1){
+                			repeatApp.push(n.appid);
+                		}
+                	}
+                	allApp.push(n.appid);
+                    if(n.status==0 || n.status==-9){
+                    	var ss = '等待下载';
+                    	if(n.status==-9){
+                    		ss = '等待复制关键词';
+                    	}
+                    	appendStr += "<div class='trial_list'><a href='javascript:;' class='Click_bj' onclick=\"btnStatus('15541672','"+n.order_id+"','"+n.appid+"','"+n.details_url+"','1')\">"
+                        +"<div class='trial_data cf'>"
+                        +"<div class='appicon'><img src='"+n.icon+"' alt=''/></div>"
+                        +"<div class='app_info fl'><div class='app_name'>"
+                        +"<h3><font style='font-size:32px;color:#ed1c24;' id='show_status'>"+ss+"</font>"
+                        +"<font id='deling_time' style='font-size:32px;color:#ed1c24;'></font></h3>"
+                        +"<p class='guild'>"
+                        +"<span>"+n.type_name+"</span>"
+                        +"<span>剩余"+n.order_status_disp+"个</span></p></div><div class='trial_price'>"
+                    	+"<span class='canplay"+n.appid+"' >"+changeTwoDecimal_f(n.down_price)+"</span>元<br>"
+                    	+"</div></div></div></a></div>";
+                    	doingAppid = n.appid; 
+                    	doingOrderid = n.order_id;
+                    	doingDetails_url = n.details_url;
+                    	doingBundleId = n.bundle_id;
+                    	doingProcessName = n.process_name;
+                    	doingHasCopy = n.status;
+                     	if( n.status==-9&&n.s_time!=''&&n.s_time.indexOf('-')==-1){
+                    		countDown(n.s_time);
+                    	}else{
+                    		getStatus(n.s_time);
+                    	}
+                     }else{
+                    	 if(n.order_status_disp>0){
+	                    	 appendStr += "<div class='trial_list' name='play_"+n.appid+"'><a href='javascript:;' class='Click_bj' onclick=\"btnStatus('15541672','"+n.order_id+"','"+n.appid+"','"+n.details_url+"','"+n.order_status_disp+"')\">"
+	                         +"<div class='trial_data cf'>"
+	                         +"<div class='appicon'><img src='"+n.icon+"' alt=''/></div>"
+	                         +"<div class='app_info fl'><div class='app_name'>"
+	                         +"<h3>"+n.search_word
+	                         +"</h3>"
+	                         +"<p class='guild'>"
+	                         +"<span>"+n.type_name+"</span>"
+	                         +"<span>剩余"+n.order_status_disp+"个</span></p></div><div class='trial_price'>"
+	                    	 +"<span class='canplay"+n.appid+"' >"+changeTwoDecimal_f(n.down_price)+"</span>元</div></div></div></a></div>";
+                    	 }else{
+                    		 appendZeroStr += "<div class='trial_list' name='play_"+n.appid+"'><a href='javascript:;' class='Click_bj' onclick=\"btnStatus('15541672','"+n.order_id+"','"+n.appid+"','"+n.details_url+"','"+n.order_status_disp+"')\">"
+                             +"<div class='trial_data cf'>"
+                             +"<div class='appicon'><img src='"+n.icon+"' alt=''/></div>"
+                             +"<div class='app_info fl'><div class='app_name'>"
+                             +"<h3>"+n.search_word
+                             +"</h3>"
+                             +"<p class='guild'>"
+                             +"<span>"+n.type_name+"</span>"
+                             +"<span>剩余"+n.order_status_disp+"个</span></p></div><div class='trial_price'>"
+                        	 +"<span class='canplay"+n.appid+"' >"+changeTwoDecimal_f(n.down_price)+"</span>元</div></div></div></a></div>";
+                    	 }
+                     }
+                });
+                $('#appList').append(appendStr+appendZeroStr);
+                 
+                for(var i=0;i<repeatApp.length;i++){
+                  var obj = document.getElementsByName("play_"+repeatApp[i]);
+                  var s = parseInt('1'+user_id.slice(-3))%obj.length;
+                  for(var j=0;j<obj.length;j++){
+                    if(s!=j){
+                      obj[j].style.display = "none";
+                    }
+                  }
+                }
+                
+                load_touch();
+            	
+             }else{
+            	getPlay('15541672');
+                $('#appList').hide();
+                
+                appFlag = 1;
+             }
+         }});
+     }
+     
+     
+	function changeTwoDecimal_f(x) {
+		return isNaN(x)?0:Number(x).toFixed(2);
+	}
+     
+	 //play
+     function getPlay(user_id){
+    	 $('#playList').html('');
+         $.post("/shike/playAppList/"+user_id, {r:+new Date()}, function (back) {
+             if(back != null && back.length >0){
+                $('#playList').show();
+                $('#playMsg').show();
+                var url = getwxurl("http://"+itrycom+"/shike/playAppDetails/APPID/ORDERID/USER_ID?play_url=PLAY_URL");
+                $.each(back,function(i,n){
+                	var order_status_disp_play;
+                	if(n.order_number == '-1'){
+                    	var leaveNum = Number(200000)-Number(n.click_number);
+                		order_status_disp_play = leaveNum>0?leaveNum:9;
+                	}else{
+                		var leaveNum = Number(n.under_number)-Number(n.click_number);
+                		order_status_disp_play = leaveNum>0?leaveNum:9;
+                	}
+                    $('#playList').append(
+                            "<div class='trial_list'><a href='"+url.replace('APPID', n.appid).replace('ORDERID',n.order_id).replace('USER_ID',user_id).replace('PLAY_URL',n.play_url)+"' class='Click_bj'><div class='trial_data cf'>"+
+                            "<div class='appicon'><img src='"+ n.icon+"' alt=''/></div><div class='app_info fl'><div class='app_name'>"+
+                            "<h3>"+ n.search_word+"</h3><p><span>"+ n.type_name+"</span><span>剩余"+ order_status_disp_play+"份</span></p></div>"+
+                            "<div class='trial_play'><span>Play</span></div></div></div></a></div>"
+                    		);
+                    load_touch();
+                });
+             }else{
+                $('#playList').hide();
+                payFlag = 1;
+                noPlay = '1';
+             }
+         }, "json");
+     }
+     //cantPlayList
+     function getCantPlay(user_id){
+    	 $('#cantPlayList').html('');
+         $.post("/shike/cantPlayLists/"+user_id, {flg:3,r:+new Date()}, function (back) {
+        	 var dataObj=eval(back[0].notPlayList);
+        	 var arr = [0];
+        	 if(!(back[0].playList.indexOf('no')>-1)){
+        		 arr = eval(back[0].playList);
+        	 }else{
+        		 var num = back[0].playList.split(':')[1];
+        		 if(num>dataObj.length){
+        			 $('#show_all').show();
+        			 $('#show_all').html('查看全部'+num+'款');
+        		 }
+        	 }
+              if(dataObj != null && dataObj.length >0){
+                 $('#cantPlayList').show();
+                 $.each(dataObj,function(i,n){
+                	 if(document.getElementsByClassName("canplay"+n.appid).length == 0){
+                		 if($.inArray(n.appid, arr)==-1){
+		                  	 $('#cantPlayList').append(
+		                             "<div class='trial_list'><a href='javascript:ishadPlay(1);' class='warm_prompt Click_bj'><div class='trial_data cf'>"+
+		                             "<div class='appicon'><img src='"+ n.icon+"' alt=''/></div><div class='app_info fl'><div class='app_name'>"+
+		                             "<h3>"+ n.name+"</h3><p><span>"+ n.type_name+"</span><span>剩余0份</span></p>"+
+		                             "</div><div class='trial_price'><span>"+n.moneyDisp+"</span>元</div></div></div></a></div>"
+		                          ); 
+                		 }
+                	 }
+                 });
+                 load_touch();
+             }else{
+                 $('#cantPlayList').hide();
+             } 
+         }, "json");
+     }
+     
+     //cantPlayList
+     function getAllCantPlay(user_id){
+    	 $('#show_all').hide();
+         $.post("/shike/cantPlayLists/"+user_id, {flg:0,r:+new Date()}, function (back) {
+        	 var dataObj=eval(back[0].notPlayList);
+        	 var arr = [0];
+        	 if(!(back[0].playList.indexOf('no')>-1)){
+        		 arr = eval(back[0].playList);
+        	 }
+              if(dataObj != null && dataObj.length >0){
+                 $('#cantPlayList').show();
+                 $('#cantPlayList').html('');
+                 $.each(dataObj,function(i,n){
+                	 if(document.getElementsByClassName("canplay"+n.appid).length == 0){
+                		 if($.inArray(n.appid, arr)==-1){
+		                  	 $('#cantPlayList').append(
+		                             "<div class='trial_list'><a href='javascript:ishadPlay(1);' class='warm_prompt Click_bj'><div class='trial_data cf'>"+
+		                             "<div class='appicon'><img src='"+ n.icon+"' alt=''/></div><div class='app_info fl'><div class='app_name'>"+
+		                             "<h3>"+ n.name+"</h3><p><span>"+ n.type_name+"</span><span>剩余0份</span></p>"+
+		                             "</div><div class='trial_price'><span>"+n.moneyDisp+"</span>元</div></div></div></a></div>"
+		                          ); 
+                		 }
+                	 }
+                 });
+                 load_touch();
+             }
+         }, "json");
+     }
+     
+     //保险砸蛋
+     function getEggList(user_id){
+    	 $.post("/shike/playEggList/"+user_id, {r:+new Date()}, function (back) {
+             if(back != null){
+                $('#eggList').html(
+                		"<div class='trial_list'><a href='"+back.eggUrl+"' class='Click_bj'><div class='trial_data cf'>"+
+                        "<div class='appicon'><img src='http://static.itry.com/images/"+back.eggImage+"' alt=''/></div><div class='app_info fl'><div class='app_name'>"+
+                        "<h3>"+back.eggname+"</h3><p>"+back.eggguild+"</p></div><div class='trial_price'  style='font-size:32px; margin-top:10px'>"+back.eggprice+"</div></div></div></a></div>"+
+                        "<div class='trial_list'><a href='javascript:inviteFriends()' class='Click_bj'><div class='trial_data cf'>"+
+                        "<div class='appicon'><img src='http://static.itry.com/images/yaoqingicon.png' alt=''/></div><div class='app_info fl'><div class='app_name'>"+
+                        "<h3>邀请好友</h3><p>试玩一个应用奖励1元 最高10元</p></div><div class='trial_price'><span>10.00</span>元</div></div></div></a></div>"
+                );
+                
+                load_touch();
+             }else{
+                $('#eggList').hide();
+                payFlag = 1;
+             }
+         }, "json");
+     }
+     function getYuGao(user_id){
+         $.post("/shike/getYuGao/"+user_id, {}, function (back) {
+			if(back.res){
+				$("#yugaoa").attr("href","/itry/toAppYugao/"+user_id);
+				$('#yugaomsg').html(back.msg);
+			}else{
+				$('#yugaomsg').html(back.msg);
+			}
+			setInterval(itryMarquee('scrollobj2'),10);
+		}, "json");
+     }
+       
+//跳转到邀请好友 
+function inviteFriends(){
+	if(/micromessenger/i.test(navigator.userAgent)){
+		location.href=openWxUrl+"&redirect_uri=http%3A%2F%2F"+itrycom+"%2Fitry%2Finvite%2FtoInviteFriendsNew2&response_type=code&scope=snsapi_base&state="+'15541672'+"_2#wechat_redirect";
+	}else{
+		location.href='http://itry.com/itry/invite/toInviteFriendsOfXB?type=2';
+	}
+}
+//时间差
+function compareMinutes(dateClick){
+	var dateClick2=new Date();
+	var date3=dateClick2.getTime()-dateClick;	//时间差的毫秒数
+	var minutes=Math.floor(date3/(60*1000));	//计算小时数后剩余的毫秒数
+	return minutes;
+}
+function getStatus(timer){
+	if(doingAppid!=''){
+        $.post("/shike/getAppStatus/"+doingBundleId+"/"+'15541672'+"/"+doingProcessName, {}, function (back) {
+        	if(back.error=='false'){
+        		if(back.flg=='downloading'){
+        			//下载中
+        			$('#show_status').html('下载中');
+        			
+        		}else if(back.flg=='waitOpen'){
+        			//等待打开
+        			$('#show_status').html('等待打开');
+        			if(back.timer!=''&&back.timer.indexOf('-')==-1){
+        				countDown(back.timer);
+        			}
+        		}else if(back.flg=='waitValidate'){
+        			$('#show_status').html('等待验证');
+        		}else{
+        			if(timer!=''&&timer.indexOf('-')==-1){
+        				countDown(timer);
+        			}
+        		}
+        	}
+		}, "json");
+	}
+}
+function countDown(time){
+    sys_second = parseInt(time/1000,10);
+    timer = setInterval(function(){
+        if (sys_second > 1) {
+            sys_second -= 1;
+            var hour = Math.floor((sys_second / 3600) % 24);
+            var minute = Math.floor((sys_second / 60) % 60);
+            var second = Math.floor(sys_second % 60);
+            hour = hour<10?"0"+hour:hour;//计算小时
+            minute=minute<10?"0"+minute:minute;//计算分钟
+            second=second<10?"0"+second:second;//计算秒杀
+            $("#deling_time").html(''+minute+':'+second );
+        } else {
+	            clearInterval(timer);
+	            if(sys_second==1){
+	            	init();
+	            }
+        }
+    }, 1000);
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+    <div class="trial_con cf">
+    	
+        <div class="trial_tips">
+            <div class="info">
+                <div class="left"><span></span></div>
+                    <div id="scrollobj"> 
+                        <span>温馨提示：试客新版上线了！新版试玩成功秘笈<a target="_blank" href="http://mp.weixin.qq.com/s?__biz=MjM5MDEzMDE1Ng==&mid=477539769&idx=1&sn=8b1e19f7032021a2ab118286d516251c">【点此查看】</a></span>
+                    </div>
+                <div class="right trial_tips_off"><span></span></div>
+            </div>
+        </div>
+        <script>
+	    $(function(){
+	    	setInterval(itryMarquee('scrollobj'),10);
+            $('.trial_tips_off').click(function(){
+                $('.trial_tips').addClass('off');
+                setStore('gonggao','温馨提示：试客新版上线了！新版试玩成功秘笈<a target="_blank" href="http://mp.weixin.qq.com/s?__biz=MjM5MDEzMDE1Ng==&mid=477539769&idx=1&sn=8b1e19f7032021a2ab118286d516251c">【点此查看】</a>');
+                ;
+            });
+            var gonggao = '温馨提示：试客新版上线了！新版试玩成功秘笈<a target="_blank" href="http://mp.weixin.qq.com/s?__biz=MjM5MDEzMDE1Ng==&mid=477539769&idx=1&sn=8b1e19f7032021a2ab118286d516251c">【点此查看】</a>';
+            if(getStore('gonggao')==gonggao){
+            	$(".trial_tips").addClass('off');
+            }
+	    });
+	    </script>
+        
+        <div class="msg_xb_tit_off"><img src="images/list_loadin1.gif" alt=""></div>
+        <p class="listtips" id="playMsg" style="display: none;">暂时还没有新的任务哦，不妨 Play 一下</p>
+        <div class="newtrial_list mb30 cf" id="appList">
+        
+        </div>
+
+        <!-- play应用 -->
+        <div class="newtrial_list mb30 cf" id="playList" style="display: none;">
+        </div>
+        <div class="newtrial_list mb30 cf" id="eggList">
+            <div class="trial_list">
+                <a href="javascript:inviteFriends()" class="Click_bj">
+                    <div class="trial_data cf">
+                        <div class="appicon"><img src="images/yaoqingicon.png" alt=""/></div>
+                        <div class="app_info fl">
+                            <div class="app_name">
+                                <h3>邀请好友</h3>
+                                <p>试玩一个应用奖励1元 最高10元</p>
+                            </div>
+                            <div class="trial_price">
+                                <span>10.00</span>元
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- 未抢到的应用 -->
+        <div class="newtrial_list trial_expire cf" id="cantPlayList"></div>
+
+         <div class="trial_more">
+            <p class="Click_bj" onclick="javascript:getAllCantPlay('15541672')" id="show_all" style="display: none;">查看全部31款</p>
+          <span class="trial_lodin"></span>
+        </div>
+     </div>
+    
+        <div class="online_xiaobing Click_bj" onclick="open_xb();"></div>
+    
+    
+    <!------您已经试玩过了------->
+    <div class="msg_played" style="display:none">
+    	<div class="fcbj" style="display:block"></div>
+        <div class="prompt_con cf" style="top:20%;display:block">
+            <div class="prompt_play" id="played_msg">
+            	<p>您已经试玩过了</p>
+            </div>
+            <div class="prompt_submit">
+                <a href="javascript:void(0);" class="back828282 msg_playedShut Click_bj" style=" margin-bottom:10px;">我知道了</a>
+                <a href="javascript:inviteFriends();" class="backe169bf8 msg_button_yq Click_bj">邀请好友赚取更多</a>
+            </div>
+        </div>
+    </div>
+    
+    <!--未完成任务提示-->
+    <div class="msg_not_task" style="display:none"  id='giveMsg'>
+    	<div class="fcbj" style="display:block"></div>
+        <div class="prompt_con cf" style="display:block;top:50%; margin-top:-250px;">
+        	<h4 class="msg">温馨提示</h4>
+            <div class="prompt_play" id="nowanmsg">
+            	<p>你有未完成的任务<br>不要太贪心哦！</p>
+            </div>
+            <div class="prompt_submit">
+            	<a href="javascript:hideTip();" class="backe169bf8 Click_bj" style="margin-bottom:10px;">去完成</a>
+                <a href="javascript:void(0);" class="backe7e7eb color169bf8 Click_bj msg_Shut" id="noguan">放弃</a>
+                <a href="javascript:;" class="backe7e7eb color169bf8 Click_bj" id="iknow" style="display: none;">我知道了</a>
+            </div>
+        </div>
+    </div>
+    <!--放弃任务提示-->
+    <div class="msg_not_task" style="display:none" id='giveUpMsg'>
+    <div class="fcbj" style="display:block"></div>
+        <div class="prompt_con cf" style="display:block;top:50%; margin-top:-250px;">
+        	<h4 class="msg">注意</h4>
+            <div class="prompt_play">
+            	<p>放弃任务就拿不到本次奖励了<br>确定吗？</p>
+            </div>
+            <div class="prompt_submit">
+            	<a href="javascript:hideTip();" class="backe169bf8 Click_bj" style="margin-bottom:10px;">继续任务</a>
+                <a href="javascript:giveUpApp();" class="back828282 Click_bj">放弃</a>
+            </div>
+        </div>
+    </div>
+    <!-----提示打开小兵----->
+    <div class="msg_xiaobing" style="display:none">
+    	<div class="fcbj ts_number" style="display:block"></div>
+        <div class="prompt_con cf" style=" display:block;top:20%">
+        	<h4 class="msg">温馨提示</h4>
+            <div class="prompt_play">
+            	<p>您的试客小兵未打开<br>请先打开小兵！</p>
+            </div>
+            <div class="prompt_submit">
+            	<a href="itry://card/show" class="backe169bf8 Click_bj j_openxb" style="margin-bottom:10px;">打开</a>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="give_order_id">
+<input type="hidden" id="give_appid">
+<input type="hidden" id="give_detail_url">
+<script type="text/jscript">
+$(function(){
+//进入详情自动提示	
+	$(".Warm_prompt").click(function(){
+		$(".msg_played").css("display","block");
+	});	
+	$(".msg_playedShut").click(function(){
+		$(".msg_played").css("display","none");
+	});
+	$(".online_xiaobing").click(function(){
+		if(doingAppid!=''){
+			$("#nowanmsg").html('<p>你有未完成的任务<br>赶快去完成吧！</p>');
+			$("#giveMsg").css("display","block");
+			$("#noguan").css("display","none");
+			$("#iknow").css("display","block");
+		}else{
+			$(".msg_xb_tit_off").addClass("msg_xb_tit")
+			setTimeout(function(){
+				$(".msg_xb_tit_off").removeClass("msg_xb_tit");
+				getApp('15541672','564971055391E2F9DB3320CD7D674CE0');//试玩列表
+			},1500);
+		}
+	});
+	$(".msg_not_task .fcbj").click(function(){
+		$(".msg_not_task").css("display","none");
+	});
+	$("#iknow").click(function(){
+		$("#giveMsg").css("display","none");
+	});
+	$(".msg_Shut").click(function(){
+		$("#giveMsg").css("display","none");
+		$("#giveUpMsg").css("display","block");
+	});
+	
+});
+    function ishadPlay(a){
+    	if(a==1){
+    		$('#played_msg').html('<p>哎呀～已经被抢光了!等等看吧</p>');
+    	}else{
+    		$('#played_msg').html('<p>该应用正在投放,但您已经试玩过了</p>');
+    	}
+  		$(".msg_played").css("display","block");
+    }
+    
+    function btnStatus(user_id,order_id,appid,detail_url,leave_num){
+
+    	if("true" && $('.offline_xiaobing').length>0 && !/micromessenger/i.test(navigator.userAgent) && 'offline_xiaobing'=='online_xiaobing'){
+       		$('.msg_xiaobing').show();
+        	$('.j_openxb').click(function(){
+        		try{getXBStatus()}catch(e){};
+        	});
+        	$('.ts_number').click(function(){$('.msg_xiaobing').hide();});
+        	return false;
+        }
+    	if(doingAppid==''||doingAppid==appid){
+    		if(doingAppid!=appid){
+            	if(leave_num<=0){
+                	$('#played_msg').html('<p>哎呀～暂时被抢光了!等等看吧</p>');
+              		$(".msg_played").css("display","block");
+              		return;
+            	}
+		    	$.ajax({
+		            type : "post",
+		            url : "/shike/getIsDownApp",
+		            data : {appid:appid,user_id:user_id},
+		            dataType: 'text',
+		            async : false,
+		            success : function(back){ 
+		            	if(back=="-1"){
+		            		$('.prompt_play').html('<p>哎呀~您已经下载过这个应用了~</p>');
+		        			$(".msg_played").css("display","block");
+		            	}else if(isNumber(back)){
+		                	
+		                	$.ajax({
+		                        type : "post",
+		                        url : "/shike/user_click_record",
+		                        data : {appid:appid,user_id:user_id,order_Id:order_id,type:"app",exec_type:'list'},
+		                        dataType: 'text',
+		                        async : false,
+		                        success : function(num){
+		                        	if(num=="-1"){
+		                        		$('.prompt_play').html('<p>哎呀~已经被抢光了!等等看吧</p>');
+		                        		$(".msg_played").show();
+		                        	}else{
+		                        		location.href = getwxurl(detail_url);
+		                        	}
+		                        }
+		                    });
+		                }
+		           	 }  
+		        }); 
+		}else{
+			$.ajax({
+		        type : "post",
+		        url : "/shike/user_click_record",
+		        data : {appid:appid,user_id:user_id,order_Id:order_id,type:"app",exec_type:'list'},
+		        dataType: 'text',
+		        async : false,
+		        success : function(num){
+		        	if(num=="-1"){
+		        		$('.prompt_play').html('<p>哎呀~已经被抢光了!等等看吧</p>');
+		        		$(".msg_played").show();
+		        	}else{
+		        		location.href = getwxurl(detail_url);
+		        	}
+		        }
+		    });
+		}
+    		
+    	}else{
+    		$("#give_order_id").val(order_id);
+    		$("#give_appid").val(appid);
+    		$("#give_detail_url").val(detail_url);
+			$("#noguan").css("display","block");
+			$("#iknow").css("display","none");
+    		$("#giveMsg").css("display","block");
+    		$("#nowanmsg").html('<p>你有未完成的任务<br>不要太贪心哦！</p>');
+    	 }
+    }
+    function giveUpApp(){
+    	$("#giveUpMsg").css("display","none");
+    	$.ajax({
+            type : "post",
+            url : "/shike/giveupApp",
+            data : {appid:doingAppid,order_id:doingOrderid,hasCopy:doingHasCopy,user_id:'15541672'},
+            dataType: 'text',
+            async : false,
+            success : function(back){
+	            	if(back=='1'){
+		                doingAppid='';
+		                doingOrderid='';
+		                doingDetails_url='';
+		            	init();
+	            	}
+            		/* if(back=='1'){
+            			doingAppid='';
+            			doingOrderid='';
+            			btnStatus('15541672',$("#give_order_id").val(),$("#give_appid").val(),$("#give_detail_url").val());
+            		} */
+           	 }  
+        }); 
+    }
+    function hideTip(){
+    	$("#giveMsg").hide();
+    	$("#giveUpMsg").hide();
+    	location.href = getwxurl(doingDetails_url);
+    }
+</script>
+</body>
+</html>

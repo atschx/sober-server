@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* CSS Document */
+/**************联系客服*************/
+.lianxi_kf{ width:99%; padding:12px 0.5%; margin:0 auto; text-align:center;}
+.lianxi_kf li{ width:33%; text-align:center; margin:20px 0px; float:left}
+.lianxi_kf li a{ background:url(../images/contact_icon.png) no-repeat; width:140px; height:150px; display:block; margin:0 auto;-webkit-tap-highlight-color:transparent;}
+.lianxi_kf li .novice{ background-position:0px 0px;}
+.lianxi_kf li .validation{background-position:0px -150px;}
+.lianxi_kf li .app_shiwan{background-position:0px -300px;}
+.lianxi_kf li .money{background-position:0px -450px;}
+.lianxi_kf li .yq_friends{background-position:0px -600px;}
+.lianxi_kf li .update{background-position:0px -750px;}
+.lianxi_kf li .other{background-position:0px -900px;}
+.lianxi_kf li .replace_icon{background-position-x:-140px;}
+
+
+/*****关于我们******/
+.xinlang_weibo,.tenxun_qq,.shangwu_ico{ background:url(../images/Small_label_icon.png) no-repeat;}
+.about_us{ width:100%; text-align:center;}
+.about_us .relevan_me{ margin-top:100px; margin-bottom:20px;}
+.about_us .relevan_me img{ margin:0 auto;}
+.about_us .relevan_me h4{ margin:40px auto; font-size:30px; color:#259df5}
+.about_us .relevan_me p{ font-size:30px; color:#787878}
+.about_buttom{ margin:40px 0px 30px 0px;}
+.about_buttom a{ border-radius:50px; border:1px solid #787878; padding:15px 20px 7px 20px; line-height:32px; font-size:24px; display:inline-block; color:#787878; margin:10px;}
+.about_buttom .xinlang_weibo{ width:47px; height:32px;display:inline-block; background-position:0px -920px;}
+.about_buttom .shangwu_ico{width:47px; height:32px;display:inline-block;background-position:5px -1263px;}
+
+.shangwu_us{ padding-top:30%; width:100%; text-align:center;}
+.shangwu_us p{ margin-top:50px; font-size:28px; color:#787878}
+.shangwu_us .tenxun_qq{border-radius:12px; border:1px solid #169bf8; padding:8px 22px 8px 60px; color:#169bf8; margin:50px 0px;display:inline-block;background-position:22px -950px; font-size:28px;}
+
+/******常见问题*****/
+.changjian_wenti{ width:94%; padding:5% 3%;}
+.changjian_wenti .bit{ width:100%;}
+.changjian_wenti .bit h1{ font-size:48px;}
+.changjian_wenti .bit p{ font-size:24px; margin-top:25px; color:#c3c3c3}
+.changjian_wenti .con{ width:100%; margin:40px 0px;}
+.changjian_wenti .con h4{display:inline-block; margin-bottom:20px;}
+.changjian_wenti .con h4 em{background:#169bf8; display:block; width:12px; height:60px; float:left;}
+.changjian_wenti .con h4 span{ display:inline-block; background:#e5e5e5; color:#7f7f7f; padding:8px 30px; font-size:36px;}
+.changjian_wenti .con p{line-height:50px;font-size:30px; color:#979797; margin:10px auto; width:100%;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

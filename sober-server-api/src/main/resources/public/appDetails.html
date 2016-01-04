@@ -1,0 +1,480 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="Pragma" content="no-cache" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+<link href="css/sk_base3.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/footer.css" media="all">
+<script type="text/javascript" charset="utf-8" src="js/jquery.min.1.11.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/store.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/before_submit.js"></script>
+
+<script>
+	function isBlank (value){
+	  return (value == null || value == undefined ) || ($.trim(value) === '');
+	}
+	function isNotBlank(value){
+	  return !this.isBlank(value);
+	}
+	function count(o){
+	  var t = typeof o;
+	  if(t == 'string'){
+	    return o.length;
+	  }else if(t == 'object'){
+	    var n = 0;
+	    for(var i in o){
+	      n++;
+	    }
+	    return n;
+	  }
+	  return false;
+	};
+
+	var agent_str = navigator.userAgent;
+	if(agent_str.indexOf("iPhone") > -1 ){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("iPad") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("iPod") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("Android") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}
+$(function(){
+	$('.Click_bj').on('touchstart',function(){
+		$(this).addClass('btn02');
+		this.blur();
+	});
+	$('.Click_bj').on('touchend',function(){
+		$(this).removeClass('btn02');
+	});
+	$('.return_link').on('touchstart',function(){
+		$(this).addClass('return_link2');
+		this.blur();
+	});
+	$('.return_link').on('touchend',function(){
+		$(this).removeClass('return_link2');
+	});
+	
+ })
+</script> 
+   
+  <script>
+  var nav4 =(function(){
+		bindClick = function(els, mask){
+			if(!els || !els.length){return;}
+			var isMobile = "ontouchstart" in window;
+			for(var i=0,ci; ci = els[i]; i++){
+				ci.addEventListener("click", evtFn, false);
+			}
+
+			function evtFn(evt, ci){
+				ci = this;
+				for(var j=0,cj; cj = els[j]; j++){
+					if(cj != ci){
+						cj.classList.remove("on");
+					}
+				}
+				if(ci == mask){mask.classList.remove("on");return;}
+				switch(evt.type){
+					case "click":
+						var on = ci.classList.toggle("on");
+						mask.classList[on?"add":"remove"]("on");
+					break;
+				}
+			}
+			mask.addEventListener(isMobile?"touchstart":"click", evtFn, false);
+		}
+		return {"bindClick":bindClick};
+	})();
+
+function setMenu(){
+	  $(".wrap:not(.noNav)").before("<div class='return_index'><a href='javascript:history.go(-1);' class='return_link'></a><h1></h1></div>");
+	  if(history.length==1){
+		  $('.return_index a').attr('href','http://itry.com/html/menu.html');
+	  }
+	  if(document.title=='排行榜'){
+	      $(".ranking_content .time").attr({"top":"199px"});
+	  }
+
+	  $(".return_index h1").html(document.title);
+	  
+	  $('.wrap:not(.noMenu)').append('<div class="nav4">\
+		        <nav>\
+	            <div id="nav4_ul" class="nav_4">\
+	                <ul class="box">\
+	                	<li style="width:15%">\
+                			<a href="http://itry.com/html/menu.html" class="Click_bj"><span class="Home_page"></span></a>\
+                		</li>\
+	                    <li>\
+	                        <a href="appList.html" class="Click_bj"><span>开始赚钱</span></a>\
+	                    </li>\
+	                    <li>\
+	                        <a href="javascript:void(0);" class="Click_bj"><em class="connav2"></em><span>我的信息</span></a>\
+	                        <dl>\
+	                            <dd><a href="toPersonalCenter.html" class="Click_bj"><span>个人中心</span></a></dd>\
+	                            <dd><a href="toInviteFriendsOfXB.html?type=2" class="Click_bj"><span>邀请好友</span></a></dd>\
+	                            <dd><a href="toRankingList.html" class="Click_bj"><span>排行榜</span></a></dd>\
+	                            <dd><a href="toIncomeInfo.html" class="Click_bj"><span style="border-bottom:0px;">收入查询</span></a></dd>\
+	                            <span class="sk_foot_b"></span>\
+	                        </dl>\
+	                    </li>\
+	                    <li>\
+	                        <a href="javascript:void(0);" class="Click_bj"><em class="connav2"></em><span>更多</span></a>\
+	                        <dl>\
+	                            <dd><a href="aboutus.html" class="Click_bj"><span>关于我们</span></a></dd>\
+	                            <dd><a href="download.html" class="Click_bj"><span>下载小兵</span></a></dd>\
+	                            <dd><a href="notescontact.html" class="Click_bj"><span style="border-bottom:0px;">常见问题</span></a></dd>\
+	                            <span class="sk_foot_b"></span>\
+	                        </dl>\
+	                    </li>\
+	                </ul>\
+	            </div>\
+	        </nav>\
+	        <div id="nav4_masklayer" class="masklayer_div on">&nbsp;</div>\
+	    </div>');
+	  if(document.getElementById("nav4_ul") && document.getElementById("nav4_masklayer")){
+		  nav4.bindClick(document.getElementById("nav4_ul").querySelectorAll("li>a"), document.getElementById("nav4_masklayer"));
+	  }
+	  
+	$("#nav4_ul dl>dd a").click(function(){
+		$('.on').removeClass('on');
+	});
+}
+$(function(){
+	if(!/micromessenger/i.test(navigator.userAgent)){
+		setMenu();
+		if(document.title=='排行榜'){
+		  $(" .ranking_content .time").attr({"top":"199px"});
+		}
+	}
+})
+</script>
+
+<div id="alert_div"></div>
+
+<!doctype html>
+<html>
+<head>
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta http-equiv="Cache-Control" name="no-store" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+<meta charset="utf-8">
+<title>应用详情</title>
+<link href="css/sk_base3.css?v=0519" rel="stylesheet" type="text/css">
+<link href="css/details_list3.css?v=3" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/zepto.js"></script>
+<script type="text/javascript" src="js/Shared_js.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/wx_utils.js?v=6"></script>
+<script type="text/javascript" charset="utf-8">
+var timer=null;
+var hasCopy='0';
+	$(function(){
+	    //直接下载隐藏微信右上角按钮
+	    if(!download_app_by_safari){
+	        bridgeCallHideMenu();
+	    }else{
+	    	bridgeCallShowMenu();
+	    }
+	    var s_time = '';
+       	if(s_time!=''&&s_time.indexOf('-')==-1){
+       		$("#deling").css('display','block');
+    		countDown(s_time); 
+    	}
+	});
+	function showHotKeywords(){
+	    $.post("/itry/getHotKeywords",{},function(s){
+	        $.each(s,function(i,n){
+	            $('.Hot_words p').eq(i).text(n);
+	        });
+	    },"json");
+	}
+	function countDown(time){
+	    var hour_elem = time.split(':')[0];
+	    var minute_elem = time.split(':')[1];
+	    var second_elem = time.split(':')[2];
+	    sys_second = hour_elem*3600+minute_elem*60+second_elem*1;
+	    timer = setInterval(function(){
+	        if (sys_second > 1) {
+	            sys_second -= 1;
+	            var hour = Math.floor((sys_second / 3600) % 24);
+	            var minute = Math.floor((sys_second / 60) % 60);
+	            var second = Math.floor(sys_second % 60);
+	            hour = hour<10?"0"+hour:hour;//计算小时
+	            minute=minute<10?"0"+minute:minute;//计算分钟
+	            second=second<10?"0"+second:second;//计算秒杀
+	            $("#deling_time").html(minute+':'+second);
+	        } else {
+	        	if(sys_second==0){
+	        		history.go(-1);
+	            	clearInterval(timer);
+	        	}
+	        }
+	    }, 1000);
+	}
+    function giveUpApp(){
+    	$.ajax({
+            type : "post",
+            url : "/shike/giveupApp",
+            data : {appid:'832444218',order_id:'32053',hasCopy:hasCopy,user_id:'15541672'},
+            dataType: 'text',
+            async : false,
+            success : function(back){
+	            	if(back=='1'){
+	            		history.go(-1);
+	            	}
+           	 }  
+        }); 
+    }
+</script>
+</head>
+<body>
+<div class="wrap">
+	<div class="detail_new cf">
+    	<div class="trial_detail">
+        	<h2 class="trial_bt">完成奖励 <span>2.00<font>元</font></span></h2>
+        	<div class="msg_i">试玩必读</div>
+            <div class="trial_info">
+            	<div class="info_list">
+                	<p>1. 长按拷贝关键词在AppStore搜索</p>
+                    <p>2. 找到该图标 <font>在第 7 名左右</font> </p>
+                    <p>3. 下载完10分钟内打开应用5分钟 </p>
+                    <p>4. 请勿使用共享账号</p>
+                    
+                </div>
+                <div class="rank"><span>在第 7 名左右</span></div>
+            </div>
+            <div class="top"></div>
+        </div>
+        <div class="app_detail cf">
+        	<div class="appicon"><img src="images/512x512bb.jpg" alt=""></div>
+            <div class="copykeyword cf">
+            	<div class="copy">
+            		<span oncopy="download_app()" id="copy_key">基金</span>
+                </div>
+            </div>
+            <p class="msg"><span id="deling" style="display: none;">复制倒计时：<label style="color:#f30; font-size:28px" id='deling_time'>
+            	</label></span><span>长按虚线框，拷贝关键词</span></p>
+            	<!-- <p class="msg"><span>复制倒计时：<label style="color:#f30; font-size:28px">05:55</label></span><span>长按虚线框，拷贝关键词</span></p> -->
+        </div>
+        <div class="abort">
+        	<a href="javascript:$('.msg_abort').css('display','block')" class="Click_bj">放弃任务</a>
+        </div>
+    </div>
+         <!------是否确定放弃------->
+    <div class="msg_abort" style="display:none">
+    	<div class="fcbj ts_number" style="display:block"></div>
+        <div class="prompt_con cf" style=" display:block;top:20%">
+        	<h4 class="msg">温馨提示</h4>
+            <div class="prompt_play">
+            	<p>是否确定放弃</p>
+            </div>
+            <div class="prompt_submit">
+            	<a href="javascript:giveUpApp();" class="backe169bf8 Click_bj" style="margin-bottom:10px;">确定</a><!------不再提去除a------->
+                <a href="javascript:$('.msg_abort').css('display','none');" class="back828282 Click_bj msg_Shut">取消</a>
+            </div>
+        </div>
+    </div>
+    <!------safari 打开提示------>
+    <div class="safari_top">
+    	<div class="fcbj" style="display:block"></div>
+        <div class="safari_img"><img src="http://static.itry.com/images/details_safari.png" alt=""></div>
+    </div>
+    
+        <div class="online_xiaobing Click_bj" onclick="open_xb();"></div>
+    
+    <div class="msg_ts_i" style="display:none;">
+    	<div class="fcbj" style="display:block"></div>
+        <div class="prompt_con cf" style="display:block">
+        	<h4 class="msg">温馨提示&nbsp;&nbsp;试玩必读</h4>
+            <ol class="prompt_info orderly" style="padding-bottom:10px;">
+            	<li>小伙伴们！试玩过程中请勿关闭试客小兵</li>
+                <li>请在 2 分钟内复制关键词并在AppStore搜索</li>
+                <li>请在10分钟内开始下载试玩任务</li>
+                <li>请在下载完成10分钟内打开试玩</li>
+            </ol>
+            <p style="padding:20px 30px 10px 45px;text-align:justify;font-size:24px">其实很简单的滴~不满足以上四点将视为小伙伴放弃任务哦！</p>
+            <p style="padding:0px 30px 0px 45px;text-align:justify;font-size:24px">上述规则如果遇到问题，可以直接在公众号联系我们的客服MM，我们将在工作日看到后第一时间帮您解决^_^</p>
+            <div class="prompt_submit" style="margin-top:50px">
+                <a href="javascript:void(0);" class="backe74646 Click_bj j_msg_ts_i">我知道了</a>
+            </div>
+        </div>
+    </div>
+    <!------您已经试玩过了------->
+    <div class="msg_played" style="display:none">
+    	<div class="fcbj" style="display:block"></div>
+        <div class="prompt_con cf" style="top:20%;display:block">
+            <div class="prompt_play">
+            	<p>您已经试玩过了</p>
+            </div>
+            <div class="prompt_submit">
+                <a href="javascript:void(0);" class="back828282 msg_playedShut Click_bj" style=" margin-bottom:10px;">我知道了</a>
+            </div>
+        </div>
+    </div>
+<script type="text/jscript">
+    $(function(){
+    	$('.msg_i').click(function(){
+    		$('.msg_ts_i').show();
+    		$('.j_msg_ts_i,.fcbj').click(function(){
+    			$('.msg_ts_i').hide();
+    		});
+    	});
+    	$(".msg_playedShut").click(function(){
+    		$(".msg_played").css("display","none");
+    	});
+    	
+		function getUserRemind(){
+			var va = getStore("user_remind"+"15541672");
+			if(typeof(va)=="undefined"){
+				return 1;
+			}else{
+				if(va==999){
+					return 3;
+				}else{
+					return 2;
+				}
+			}
+		}
+		
+		
+		$(".msg_Shut").click(function(){
+			$(".msg_xiaobing").css("display","none");
+		});	
+		$(".trial_detail .top").click(function(){
+			$(this).toggleClass("bottom");
+			$(".info_list").toggle();
+			$(".rank").toggle();
+			if(getStore("zhedie")=='true'){
+				setStore("zhedie","false");
+			}else{
+				setStore("zhedie","true");
+			}
+		});
+		
+		document.addEventListener("selectionchange", function(e) {
+			if(window.getSelection().anchorNode.parentNode.id == 'copy_key' && document.getElementById('copy_key').innerText != window.getSelection()){
+				var key = document.getElementById('copy_key');
+				window.getSelection().selectAllChildren(key);
+			}
+		}, false);
+		var zhe = getStore("zhedie");
+		if(zhe=='true'){
+			if(!$(".trial_detail .top").hasClass("bottom")){
+				$(".trial_detail .top").toggleClass("bottom");
+				$(".info_list").toggle();
+				$(".rank").toggle();
+			}
+		}
+	});	
+    
+    function onBridgeReady_(){
+        var NetType = '';
+        WeixinJSBridge.invoke('getNetworkType',{},
+                function(e){
+                    NetType=e.err_msg.replace("network_type:","");
+                });
+        return NetType;
+    }
+    function show_equ_info(NetType){
+        $.post("/itry/phone/"+NetType,{},function(s){
+            $('#operator').html(s.operator);
+            $('#net_info').addClass(s.net_info);
+            $('#hour_time').html(s.hour_time);
+        },"json");
+    }
+    function inite_net_type(){
+        if (typeof WeixinJSBridge == "undefined"){
+            if( document.addEventListener ){
+                document.addEventListener('WeixinJSBridgeReady', onBridgeReady_, false);
+            }else if (document.attachEvent){
+                document.attachEvent('WeixinJSBridgeReady', onBridgeReady_);
+                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady_);
+            }
+        }else{
+            onBridgeReady_();
+        }
+    }
+    
+    $(function(){
+    	if('' && !/micromessenger/i.test(navigator.userAgent)){
+    		download_start();
+    		window.setTimeout(function(){
+	    		window.opener = null;
+	    		window.open('','_self');
+	    		window.close();
+    		},800);
+    	}
+    });
+
+    function download_start(){
+    	if(window.location.href.indexOf("904201272")>0){
+    		window.location.href = "http://um0.cn/3H4Y8z";
+    	}else if(window.location.href.indexOf("837545884")>0){
+    		window.location.href = "http://qmqj2.xy.com/idf/vCUCiL";
+    	}else if(window.location.href.indexOf("895745892")>0){
+    		window.location.href = "http://gad.netease.com/mmad/click?s=4quwy5N2AFfdXrucyVhXSkuS%2B04%3D&project_id=10276472&monitor_type=4";
+    	}else if(window.location.href.indexOf("994823989")>0){
+    		window.location.href = "http://app.game4a.com:80/download.jsp?url=http://lnk8.cn/tYFxRp";
+    	}else if(window.location.href.indexOf("440676901")>0){
+    		window.location.href = "http://adpotato.fusetracking.com/tl?a=15&o=12";
+    	}else if(window.location.href.indexOf("1006588525")>0){
+    		window.location.href = "http://lnk8.cn/hQ9ARl";
+    	}else if(window.location.href.indexOf("1048349241")>0){
+    		window.location.href = "http://lnk8.cn/0whcEd";
+    	}else if(window.location.href.indexOf("1033104650")>0){
+    		window.location.href = "http://lnk8.cn/cAtwd0";
+    	}else if(window.location.href.indexOf("965099056")>0){
+    		window.location.href = "http://lnk8.cn/xNhY54";
+    	}else{
+    		window.location.href = down_app_url_by_safari;
+    	}
+    }
+    
+    function download_app(){
+    	hasCopy='0';
+			$.ajax({
+		        type : "post",
+		        url : "/shike/user_click_record",
+		        data : {appid:'832444218',user_id:'15541672',order_Id:'32053',type:"app",v_str:'8nKLbyub5vY8sMV1PoVJw6DhiD4W7E9JjmOtxK1I6Hw=',search_word:'基金',exec_type:'details'},
+		        dataType: 'text',
+		        async : false,
+		        success : function(num){
+					 if(timer!=null){
+						 clearInterval(timer);
+						 $("#deling").css('display','none');
+					 }
+		        	if(num=="-1"){
+		        		$('.prompt_play').html('<p>哎呀~已经被抢光了!等等看吧</p>');
+		        		$(".msg_played").show();
+		        	}else{
+		            	if(/micromessenger/i.test(navigator.userAgent)){
+		        			$(".safari_top").show();
+		        	        $(".Keyword_name").css({position: "absolute"});
+		        	        $(".Keyword_name").css('height','0px');
+		        	        $(".Keyword_name").css('width','0px');
+		        	        $(".Keyword_name").css('top','-100px');
+		        	        $(".Keyword_name").css('left','-100px');
+		        	        return;
+		            	}
+		            	download_start();
+		        	}
+		        }
+		    });
+    }
+    
+    inite_net_type();
+</script>
+
+</div>
+</body>
+</html>

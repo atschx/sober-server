@@ -1,0 +1,140 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="Pragma" content="no-cache" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+<link href="css/sk_base3.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/footer.css" media="all">
+<script type="text/javascript" charset="utf-8" src="js/jquery.min.1.11.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/store.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/before_submit.js"></script>
+
+<script>
+	function isBlank (value){
+	  return (value == null || value == undefined ) || ($.trim(value) === '');
+	}
+	function isNotBlank(value){
+	  return !this.isBlank(value);
+	}
+	function count(o){
+	  var t = typeof o;
+	  if(t == 'string'){
+	    return o.length;
+	  }else if(t == 'object'){
+	    var n = 0;
+	    for(var i in o){
+	      n++;
+	    }
+	    return n;
+	  }
+	  return false;
+	};
+
+	var agent_str = navigator.userAgent;
+	if(agent_str.indexOf("iPhone") > -1 ){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("iPad") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("iPod") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}else if(agent_str.indexOf("Android") >-1){
+		document.write('<meta content="width=device-width,initial-scale=1.0,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no" name="viewport">');
+	}
+$(function(){
+	$('.Click_bj').on('touchstart',function(){
+		$(this).addClass('btn02');
+		this.blur();
+	});
+	$('.Click_bj').on('touchend',function(){
+		$(this).removeClass('btn02');
+	});
+	$('.return_link').on('touchstart',function(){
+		$(this).addClass('return_link2');
+		this.blur();
+	});
+	$('.return_link').on('touchend',function(){
+		$(this).removeClass('return_link2');
+	});
+	
+ })
+</script> 
+  
+<style>
+.wrap {padding:0px 0px 0px 0px!important;}
+</style>
+
+<div id="alert_div"></div>
+
+<!doctype html>
+<html>
+<head>
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" /><!---默认的工具栏和菜单栏---->
+<meta http-equiv="Cache-Control" name="no-store" /><!---清除控制浏览器缓存---->
+<meta content="telephone=no" name="format-detection" /><!---屏蔽数字当作电话号码---->
+<meta content="email=no" name="format-detection" /><!---将不识别邮箱---->
+<meta charset="utf-8">
+<title>下载小兵</title>
+<link href="css/sk_base3.css?v=1.0" rel="stylesheet" type="text/css">
+<link href="css/details_list3.css?v=1.0" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/zepto.js"></script>
+<script type="text/javascript" src="js/Shared_js.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/wx_utils.js?v=1023"></script>
+<script type="text/javascript" charset="utf-8" src="js/download_xb.js"></script>
+<style>body{ background:#fafafc}</style>
+<script type="text/javascript" charset="utf-8">
+        $(function(){
+        	 //直接下载隐藏微信右上角按钮
+            if(!download_app_by_safari){
+                bridgeCallHideMenu();
+            }else{
+            	bridgeCallShowMenu();
+            }
+            //显示不同的样式
+            if(download_xb_by_safari){
+                $("#download_safari").show();
+            }else{
+                $("#download_direct").show();
+            }
+
+            //判断是在safari打开该页面后开始下载
+            if(false){
+            	var islock = '0';
+            	if(navigator.userAgent.indexOf('Version/9')>0 && /safari/i.test(navigator.userAgent)){
+                	$('.cf').html('<p><img src="/images/xb_download05.jpg" /></p><h4 style="font-size:30px; margin-bottom:30px;font-weight:normal">iOS9 的用户请注意！</h4><p style="font-size:24px; color:#a9a9a9">在桌面打开之前，请前往设置</p><p><img src="/images/xiazai_xbbz1.jpg"></p><h3 style="margin:30px 0px; font-size:30px; color:#2291ff; font-weight:normal">才能打开试客小兵，完成验证</h3>');
+                	$('.wrap').append('<div style="width:100%; background:#f5f5f9; text-align:center;"><img src="/images/xiazai_xbbz2.jpg" alt=""></div>');
+
+                	download_xb("4AD8B079524F0760C2CBE151E5964F15","false");
+            		return;
+            	}
+            	
+            	if(islock=="0"){
+            		$('.Wake_up_xb').html("<p style='margin-top:160px;'><img src='images/xb_download05.jpg' alt=''/></p>");
+            	}else{
+            		$('.xb_download').html("<p style='margin-top:160px;'><img src='images/xb_download05.jpg' alt=''/></p>");
+            	}
+            	
+                download_xb("4AD8B079524F0760C2CBE151E5964F15","false");
+            }
+        });
+    </script>
+</head>
+<body>
+<div id="download_safari"  class="wrap">
+	
+		<div class="Wake_up_xb cf">
+	    	<p class="share_top"><img src="images/xb_download04.jpg" alt=""/></p>
+	        <p><img src="images/xb_download05.jpg" alt=""/></p>
+	    </div>
+    
+    
+</div>
+<script src="js/after_load.js" type="text/javascript"></script>
+</body>
+</html>
