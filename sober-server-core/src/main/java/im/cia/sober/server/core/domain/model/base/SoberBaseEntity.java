@@ -7,10 +7,10 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class SoberBaseEntity extends SoberIdEntity {
 
-	private static final long serialVersionUID = -106383086688392929L;
+	private static final long serialVersionUID = 5828949333104667982L;
+	
 	protected Timestamp createdAt;
 	protected Long createdBy;
-
 	protected Timestamp updatedAt;
 	protected Long updatedBy;
 

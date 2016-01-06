@@ -17,7 +17,7 @@ public abstract class SoberIdEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID", unique = true, nullable = false)
+	@Column(name = "id", unique = true, nullable = false)
 	public Long getId() {
 		return id;
 	}
