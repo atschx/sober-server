@@ -3,9 +3,9 @@ package im.cia.sober.server.core.domain.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import im.cia.sober.server.core.domain.model.SoberApp;
+import im.cia.sober.server.core.domain.model.SoberAppSetting;
 
 @Repository
-public interface SoberAppRepository extends JpaRepository<SoberApp, Long> {
+public interface SoberAppSettingRepository extends JpaRepository<SoberAppSetting, Long> {
 
 }

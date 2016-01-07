@@ -15,5 +15,8 @@ public interface SoberUserRepository extends JpaRepository<SoberUser, Long> {
 	@Transactional
 	@Query("delete from SoberUser u where u.active = false")
 	void deleteInactiveUsers();
+	
+//	@Query("select u from SoberUser u where u.uid=?1")
+	SoberUser findByUid(Long uid);
 
 }
