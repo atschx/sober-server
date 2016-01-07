@@ -21,6 +21,9 @@ public class DataSourceConfig {
 
 	@Value("${spring.datasource.password}")
 	private String password;
+	
+	@Value("${spring.datasource.poolName}")
+	private String poolName;
 
 	@Value("${spring.datasource.url}")
 	private String dataSourceUrl;
@@ -48,7 +51,7 @@ public class DataSourceConfig {
 
 		Properties configProps = new Properties();
 		configProps.put("dataSourceClassName", dataSourceClassName);
-		// configProps.put("poolName",poolName);
+		 configProps.put("poolName",poolName);
 		// configProps.put("maximumPoolSize",maximumPoolSize);
 		// configProps.put("minimumIdle",minimumIdle);
 		configProps.put("connectionTimeout", connectionTimeout);
