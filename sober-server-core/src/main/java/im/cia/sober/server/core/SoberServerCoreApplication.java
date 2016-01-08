@@ -19,7 +19,7 @@ public class SoberServerCoreApplication {
 		SpringApplication.run(SoberServerCoreApplication.class, args);
 	}
 
-	// @Bean
+	 @Bean
 	public CommandLineRunner demo(final SoberUserRepository repository) {
 
 		final Logger logger = LoggerFactory.getLogger(SoberServerCoreApplication.class);
