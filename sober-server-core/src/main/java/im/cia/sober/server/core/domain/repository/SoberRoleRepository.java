@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import im.cia.sober.server.core.domain.model.SoberUser;
+import im.cia.sober.server.core.domain.model.SoberRole;
 
 @Repository
-public interface SoberUserRepository extends JpaRepository<SoberUser, Long> {
+public interface SoberRoleRepository extends JpaRepository<SoberRole, Long> {
 
 	@Modifying
 	@Transactional
