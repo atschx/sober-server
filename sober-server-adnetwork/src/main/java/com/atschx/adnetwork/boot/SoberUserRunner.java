@@ -18,11 +18,10 @@ public class SoberUserRunner implements ApplicationRunner, Ordered {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 
-		SoberUser soberUser = new SoberUser();
-		soberUser.setEmail("1" + System.currentTimeMillis() + "@1.com");
-		soberUser.setMobile("13818252513");
-		soberUser.setQq("34551232");
-		userRepository.save(soberUser);
+		userRepository.save(new SoberUser("astchx", "atschx@gmail.com"));
+		userRepository.save(new SoberUser("admin", "admin@atschx.com"));
+		userRepository.save(new SoberUser("test", "test@atschx.com"));
+		userRepository.save(new SoberUser("service", "service@atschx.com"));
 
 	}
 

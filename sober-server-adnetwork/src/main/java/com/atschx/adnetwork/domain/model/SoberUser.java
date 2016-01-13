@@ -32,10 +32,19 @@ public class SoberUser implements Serializable {
 	private String mobile;
 	private String qq;
 	private Byte status = 0; // 0.Pending 1.Active 2.Rejected 3.Blocked
-	private Byte type; // 1.person 2.company
+	private Byte type = 1; // 1.person 2.company
 	private SoberUser accountManager;// 账号管理者
 
 	private Set<SoberRole> roles = new HashSet<SoberRole>(0);
+	
+	public SoberUser() {
+	}
+
+	public SoberUser(String name, String email) {
+		super();
+		this.name = name;
+		this.email = email;
+	}
 
 	@Id
 	@GeneratedValue(generator = "sober_id_gen")

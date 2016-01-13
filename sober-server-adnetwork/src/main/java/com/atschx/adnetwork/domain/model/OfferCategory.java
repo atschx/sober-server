@@ -21,14 +21,14 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "offer_category")
-public class Category implements Serializable {
+public class OfferCategory implements Serializable {
 
 	private static final long serialVersionUID = 4239986398023471934L;
 	private Long id;
 	private String name;
 	private Integer level;
-	private Category parent;
-	private Set<Category> children = new HashSet<Category>(0);
+	private OfferCategory parent;
+	private Set<OfferCategory> children = new HashSet<OfferCategory>(0);
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -59,20 +59,20 @@ public class Category implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "parent_id")
-	public Category getParent() {
+	public OfferCategory getParent() {
 		return parent;
 	}
 
-	public void setParent(Category parent) {
+	public void setParent(OfferCategory parent) {
 		this.parent = parent;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "parent")
-	public Set<Category> getChildren() {
+	public Set<OfferCategory> getChildren() {
 		return children;
 	}
 
-	public void setChildren(Set<Category> children) {
+	public void setChildren(Set<OfferCategory> children) {
 		this.children = children;
 	}
 

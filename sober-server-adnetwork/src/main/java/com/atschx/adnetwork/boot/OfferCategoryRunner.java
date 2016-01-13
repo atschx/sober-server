@@ -1,4 +1,4 @@
-package com.atschx.adnetwork.domain.repository;
+package com.atschx.adnetwork.boot;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -6,7 +6,7 @@ import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CategoryRunner implements ApplicationRunner, Ordered {
+public class OfferCategoryRunner implements ApplicationRunner, Ordered {
 
 	@Override
 	public int getOrder() {

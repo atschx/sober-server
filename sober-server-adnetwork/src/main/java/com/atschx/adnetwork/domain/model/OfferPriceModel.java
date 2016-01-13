@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "offer_price_model")
-public class PriceModel implements Serializable {
+public class OfferPriceModel implements Serializable {
 
 	private static final long serialVersionUID = 3062045571216489434L;
 
@@ -19,14 +19,14 @@ public class PriceModel implements Serializable {
 	private String code;
 	private String description;
 
-	public PriceModel() {
+	public OfferPriceModel() {
 	}
 
-	public PriceModel(String code) {
+	public OfferPriceModel(String code) {
 		this(code, null);
 	}
 
-	public PriceModel(String code, String description) {
+	public OfferPriceModel(String code, String description) {
 		super();
 		this.code = code;
 		this.description = description;

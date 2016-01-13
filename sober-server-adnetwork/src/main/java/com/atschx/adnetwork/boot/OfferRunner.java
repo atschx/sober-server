@@ -1,4 +1,4 @@
-package com.atschx.adnetwork.domain.repository;
+package com.atschx.adnetwork.boot;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
