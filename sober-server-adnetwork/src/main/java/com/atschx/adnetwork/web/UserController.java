@@ -5,23 +5,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atschx.adnetwork.domain.model.SoberUser;
-
 @RestController
 public class UserController  extends AdNetworkController {
-
-
-	/**
-	 * 注册(signup)
-	 * 
-	 * @param user
-	 * @return
-	 */
-	@RequestMapping(value = "/signup", method = { RequestMethod.PUT })
-	String signup(SoberUser user) {
-
-		return "signup success";
-	}
 
 
 	@RequestMapping(value = "/user/reset")
