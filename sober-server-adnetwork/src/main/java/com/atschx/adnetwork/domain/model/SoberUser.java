@@ -1,4 +1,4 @@
-package im.cia.sober.server.core.domain.model;
+package com.atschx.adnetwork.domain.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -25,12 +26,14 @@ public class SoberUser implements Serializable {
 	private static final long serialVersionUID = -1682971951403080170L;
 
 	protected Long id;
+	private String name;// company/用户名
 	private String email;
 	private String password;
 	private String mobile;
 	private String qq;
-	private Boolean active = false;// 1.激活 0.冻结
+	private Byte status = 0; // 0.Pending 1.Active 2.Rejected 3.Blocked
 	private Byte type; // 1.person 2.company
+	private SoberUser accountManager;// 账号管理者
 
 	private Set<SoberRole> roles = new HashSet<SoberRole>(0);
 
@@ -50,6 +53,14 @@ public class SoberUser implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Column(name = "email", length = 50, unique = true)
@@ -88,21 +99,20 @@ public class SoberUser implements Serializable {
 		this.qq = qq;
 	}
 
-	@Column(name = "active", nullable = false)
-	public Boolean getActive() {
-		return active;
-	}
-
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
-
 	public Byte getType() {
 		return type;
 	}
 
 	public void setType(Byte type) {
 		this.type = type;
+	}
+
+	public Byte getStatus() {
+		return status;
+	}
+
+	public void setStatus(Byte status) {
+		this.status = status;
 	}
 
 	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
@@ -115,6 +125,16 @@ public class SoberUser implements Serializable {
 
 	public void setRoles(Set<SoberRole> roles) {
 		this.roles = roles;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "manager_id")
+	public SoberUser getAccountManager() {
+		return accountManager;
+	}
+
+	public void setAccountManager(SoberUser accountManager) {
+		this.accountManager = accountManager;
 	}
 
 }

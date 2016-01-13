@@ -1,4 +1,4 @@
-package im.cia.sober.server.core.domain.model;
+package com.atschx.adnetwork.domain.model;
 
 import java.io.Serializable;
 
@@ -23,7 +23,6 @@ public class SoberRole implements Serializable {
 	public SoberRole() {
 		this(null);
 	}
-
 	
 	public SoberRole(String code) {
 		super();
@@ -57,15 +56,5 @@ public class SoberRole implements Serializable {
 	public void setCode(String code) {
 		this.code = code;
 	}
-
-	// private Set<SoberUser> users = new HashSet<SoberUser>();
-	//
-	// public Set<SoberUser> getUsers() {
-	// return users;
-	// }
-	//
-	// public void setUsers(Set<SoberUser> users) {
-	// this.users = users;
-	// }
 
 }

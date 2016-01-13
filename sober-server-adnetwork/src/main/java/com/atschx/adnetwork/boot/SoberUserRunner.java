@@ -1,4 +1,4 @@
-package im.cia.sober.server.core.runner;
+package com.atschx.adnetwork.boot;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -6,8 +6,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
-import im.cia.sober.server.core.domain.model.SoberUser;
-import im.cia.sober.server.core.domain.repository.SoberUserRepository;
+import com.atschx.adnetwork.domain.model.SoberUser;
+import com.atschx.adnetwork.domain.repository.SoberUserRepository;
 
 @Component
 public class SoberUserRunner implements ApplicationRunner, Ordered {
@@ -22,7 +22,6 @@ public class SoberUserRunner implements ApplicationRunner, Ordered {
 		soberUser.setEmail("1" + System.currentTimeMillis() + "@1.com");
 		soberUser.setMobile("13818252513");
 		soberUser.setQq("34551232");
-		soberUser.setActive(true);
 		userRepository.save(soberUser);
 
 	}

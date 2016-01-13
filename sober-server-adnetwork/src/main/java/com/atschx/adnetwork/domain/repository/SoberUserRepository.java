@@ -1,20 +1,21 @@
-package im.cia.sober.server.core.domain.repository;
+package com.atschx.adnetwork.domain.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import im.cia.sober.server.core.domain.model.SoberUser;
+import com.atschx.adnetwork.domain.model.SoberUser;
 
 @Repository
 public interface SoberUserRepository extends JpaRepository<SoberUser, Long> {
 
 	@Modifying
 	@Transactional
-	@Query("delete from SoberUser u where u.active = false")
-	void deleteInactiveUsers();
-	
+	@Query("delete from SoberUser u where u.status =:status ")
+	void deleteUsersByStatus(@Param("status") String status);
+
 
 }
