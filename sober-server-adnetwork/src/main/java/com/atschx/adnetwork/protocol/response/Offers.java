@@ -1,4 +1,4 @@
-package com.atschx.adnetwork.protocol;
+package com.atschx.adnetwork.protocol.response;
 
 import java.util.List;
 

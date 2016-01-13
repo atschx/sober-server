@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class OfferController extends AbstractController {
+public class OfferController extends AdNetworkController {
 
 	// 分页获取Offer
 	@RequestMapping(value = "/offers", method = { RequestMethod.GET })

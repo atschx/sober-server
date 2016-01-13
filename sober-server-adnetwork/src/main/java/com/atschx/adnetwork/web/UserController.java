@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.atschx.adnetwork.domain.model.SoberUser;
 
 @RestController
-public class UserController  extends AbstractController {
+public class UserController  extends AdNetworkController {
+
 
 	/**
 	 * 注册(signup)
@@ -22,18 +23,6 @@ public class UserController  extends AbstractController {
 		return "signup success";
 	}
 
-	/**
-	 * 登录(signin)
-	 * 
-	 * @param user
-	 * @return
-	 */
-	@RequestMapping(value = "/signin", method = { RequestMethod.POST })
-	String signin(SoberUser user) {
-
-		return "signin success";
-
-	}
 
 	@RequestMapping(value = "/user/reset")
 	String resetPassword(String email) {
