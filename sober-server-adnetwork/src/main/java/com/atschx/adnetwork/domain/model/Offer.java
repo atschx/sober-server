@@ -7,11 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,11 +30,11 @@ public class Offer implements Serializable {
 	private Long id;
 	private String logo;// logo资源url
 	private String name;// 广告名称
-	private AdNetwork.ClearingCycle clearingCycle;// 结算周期：周结 月结
 	private Double price;// 单价
-	private OfferPriceModel priceModel;// 计价方式 0 CPA 默认
-	private String effDef;// 有效定义 effectiveDefinition
+	private AdNetwork.OfferPriceModel priceModel;// 计价方式 0 CPA 默认
+	private AdNetwork.ClearingCycle clearingCycle;// 结算周期：周结 月结
 	private Byte platform;// 投放平台
+	private String effDef;// 有效定义 effectiveDefinition
 	private Byte status = 0;// offer状态 0 等待审核 1通过审核 -1 驳回
 	private Date createdAt; // 创建时间
 
@@ -86,9 +83,8 @@ public class Offer implements Serializable {
 		return price;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "price_model")
-	public OfferPriceModel getPriceModel() {
+	@Enumerated(EnumType.STRING)
+	public AdNetwork.OfferPriceModel getPriceModel() {
 		return priceModel;
 	}
 
@@ -148,7 +144,7 @@ public class Offer implements Serializable {
 		this.price = price;
 	}
 
-	public void setPriceModel(OfferPriceModel priceModel) {
+	public void setPriceModel(AdNetwork.OfferPriceModel priceModel) {
 		this.priceModel = priceModel;
 	}
 
