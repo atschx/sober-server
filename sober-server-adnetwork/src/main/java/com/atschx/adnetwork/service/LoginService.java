@@ -13,7 +13,9 @@ public class LoginService {
 
 	public LoginResult login(String email, String password) {
 
-		logger.debug(email + "登录!");
+		if(logger.isDebugEnabled()){
+			logger.debug(email + "登录!");
+		}
 		
 		return new LoginResult();
 	}

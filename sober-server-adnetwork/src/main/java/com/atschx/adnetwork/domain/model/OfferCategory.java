@@ -30,6 +30,15 @@ public class OfferCategory implements Serializable {
 	private OfferCategory parent;
 	private Set<OfferCategory> children = new HashSet<OfferCategory>(0);
 
+	public OfferCategory() {
+	}
+
+	public OfferCategory(String name, Integer level) {
+		super();
+		this.name = name;
+		this.level = level;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, nullable = false)

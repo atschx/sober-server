@@ -5,14 +5,21 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+
+import com.atschx.adnetwork.domain.AdNetwork;
 
 /**
  * 广告
@@ -26,15 +33,25 @@ public class Offer implements Serializable {
 	private Long id;
 	private String logo;// logo资源url
 	private String name;// 广告名称
-	private String clearingCycle;// 结算周期：周结 月结
+	private AdNetwork.ClearingCycle clearingCycle;// 结算周期：周结 月结
 	private Double price;// 单价
-	private Byte countingWay = 0;// 计价方式 0 CPA 默认
+	private OfferPriceModel priceModel;// 计价方式 0 CPA 默认
 	private String effDef;// 有效定义 effectiveDefinition
 	private Byte platform;// 投放平台
 	private Byte status = 0;// offer状态 0 等待审核 1通过审核 -1 驳回
-
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt; // 创建时间
+
+	public Offer() {
+		super();
+	}
+
+	public Offer(String name, Double price, String effDef, Date createdAt) {
+		super();
+		this.name = name;
+		this.price = price;
+		this.effDef = effDef;
+		this.createdAt = createdAt;
+	}
 
 	@Id
 	@GeneratedValue(generator = "sober_id_gen")
@@ -50,80 +67,93 @@ public class Offer implements Serializable {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	@Column(name = "logo")
 	public String getLogo() {
 		return logo;
-	}
-
-	public void setLogo(String logo) {
-		this.logo = logo;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	@Column(name = "platform")
+	public Byte getPlatform() {
+		return platform;
 	}
 
-	public String getClearingCycle() {
-		return clearingCycle;
-	}
-
-	public void setClearingCycle(String clearingCycle) {
-		this.clearingCycle = clearingCycle;
-	}
-
+	@Column(name = "price")
 	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
-		this.price = price;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "price_model")
+	public OfferPriceModel getPriceModel() {
+		return priceModel;
 	}
 
-	public Byte getCountingWay() {
-		return countingWay;
+	@Column(name = "status")
+	public Byte getStatus() {
+		return status;
 	}
 
-	public void setCountingWay(Byte countingWay) {
-		this.countingWay = countingWay;
-	}
-
+	@Column(name = "eff_def")
 	public String getEffDef() {
 		return effDef;
+	}
+
+	
+	@Enumerated(EnumType.STRING)
+	public AdNetwork.ClearingCycle getClearingCycle() {
+		return clearingCycle;
+	}
+
+	public void setClearingCycle(AdNetwork.ClearingCycle clearingCycle) {
+		this.clearingCycle = clearingCycle;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created_at")
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public void setEffDef(String effDef) {
 		this.effDef = effDef;
 	}
 
-	public Byte getPlatform() {
-		return platform;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public void setPlatform(Byte platform) {
 		this.platform = platform;
 	}
 
-	public Byte getStatus() {
-		return status;
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public void setPriceModel(OfferPriceModel priceModel) {
+		this.priceModel = priceModel;
 	}
 
 	public void setStatus(Byte status) {
 		this.status = status;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
 	}
 
 }
