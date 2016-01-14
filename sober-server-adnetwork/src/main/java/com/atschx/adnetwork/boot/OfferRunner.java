@@ -24,6 +24,7 @@ public class OfferRunner implements ApplicationRunner, Ordered {
 		Offer offer = new Offer("下载并注册QQ", 2.2, "下载注册用户，留存2周算作一个", new Date());
 		offer.setClearingCycle(AdNetwork.ClearingCycle.WEEK);
 		offer.setPriceModel(AdNetwork.OfferPriceModel.CPA);
+		offer.setPlatform(AdNetwork.Platform.ANDROID);
 		offerRepository.save(offer);
 
 	}
