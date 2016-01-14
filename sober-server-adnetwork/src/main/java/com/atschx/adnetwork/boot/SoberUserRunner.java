@@ -18,10 +18,12 @@ public class SoberUserRunner implements ApplicationRunner, Ordered {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 
-		userRepository.save(new SoberUser("astchx", "atschx@gmail.com"));
-		userRepository.save(new SoberUser("admin", "admin@atschx.com"));
-		userRepository.save(new SoberUser("test", "test@atschx.com"));
-		userRepository.save(new SoberUser("service", "service@atschx.com"));
+		//测试数据密码采用明文
+		SoberUser atschx = new SoberUser("astchx", "atschx@gmail.com","atschx");
+		SoberUser admin = new SoberUser("admin", "admin@atschx.com","admin");
+		
+		userRepository.save(atschx);
+		userRepository.save(admin);
 
 	}
 

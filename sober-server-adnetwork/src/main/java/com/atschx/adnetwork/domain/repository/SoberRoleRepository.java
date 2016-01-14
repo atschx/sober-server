@@ -7,6 +7,7 @@ import com.atschx.adnetwork.domain.model.SoberRole;
 
 @Repository
 public interface SoberRoleRepository extends JpaRepository<SoberRole, Long> {
-
+	
+	SoberRole findRoleByCode(String code);
 
 }

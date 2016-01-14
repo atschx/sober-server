@@ -15,6 +15,8 @@ public class SignupController {
 	@Autowired
 	SignupService signupService;
 
+	//http://www.exoclick.com/signup-verify/?token=60025f12efde97c3afac2fdde5fb2af277608a5d
+	//https://www.exoclick.com/signup-verify/?token=60025f12efde97c3afac2fdde5fb2af277608a5d
 	@RequestMapping(value = "signup", method = { RequestMethod.POST })
 	SignupResult signup(SoberUser user) {
 

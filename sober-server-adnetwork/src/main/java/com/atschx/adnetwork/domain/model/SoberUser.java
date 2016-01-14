@@ -41,9 +41,14 @@ public class SoberUser implements Serializable {
 	}
 
 	public SoberUser(String name, String email) {
+		this(name, email, null);
+	}
+	
+	public SoberUser(String name, String email, String password) {
 		super();
 		this.name = name;
 		this.email = email;
+		this.password = password;
 	}
 
 	@Id
