@@ -1,5 +1,7 @@
 package com.atschx.adnetwork.domain.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,6 +20,10 @@ public interface SoberUserRepository extends JpaRepository<SoberUser, Long> {
 	void deleteUsersByStatus(@Param("status") String status);
 	
 	SoberUser findUserByName(String name);
+	
+	//分页
+	@Query("select user from SoberUser user join user.roles role where role.code = ?1")
+	Page<SoberUser> findByRoleCode(String code,Pageable pageable);
 
 
 }
