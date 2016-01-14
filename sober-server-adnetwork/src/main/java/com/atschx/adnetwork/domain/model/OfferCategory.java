@@ -9,12 +9,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 /**
  * 广告类别
@@ -40,7 +42,14 @@ public class OfferCategory implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "sober_id_gen")
+	@GenericGenerator(name = "sober_id_gen", strategy = "enhanced-table", parameters = {
+			@Parameter(name = "table_name", value = "id_generator"),
+			@Parameter(name = "value_column_name", value = "next"),
+			@Parameter(name = "segment_column_name", value = "segment_name"),
+			@Parameter(name = "segment_value", value = "offer_category_seq"),
+			@Parameter(name = "initial_value", value = "10000"), @Parameter(name = "increment_size", value = "10"),
+			@Parameter(name = "optimizer", value = "pooled-lo") })
 	@Column(name = "id", unique = true, nullable = false)
 	public Long getId() {
 		return id;

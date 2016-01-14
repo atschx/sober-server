@@ -54,7 +54,7 @@ public class SoberUser implements Serializable {
 	@Id
 	@GeneratedValue(generator = "sober_id_gen")
 	@GenericGenerator(name = "sober_id_gen", strategy = "enhanced-table", parameters = {
-			@Parameter(name = "table_name", value = "sober_id_generator"),
+			@Parameter(name = "table_name", value = "id_generator"),
 			@Parameter(name = "value_column_name", value = "next"),
 			@Parameter(name = "segment_column_name", value = "segment_name"),
 			@Parameter(name = "segment_value", value = "sober_user_seq"),
