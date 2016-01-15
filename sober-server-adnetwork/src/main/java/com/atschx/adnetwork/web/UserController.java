@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atschx.adnetwork.domain.model.SoberUser;
-import com.atschx.adnetwork.domain.repository.SoberUserRepository;
+import com.atschx.adnetwork.domain.model.User;
+import com.atschx.adnetwork.domain.repository.UserRepository;
 
 @RestController
 public class UserController extends AdNetworkController {
 	
 	
 	@Autowired
-	SoberUserRepository soberUserRepository;
+	UserRepository soberUserRepository;
 
 	@RequestMapping(value = "/user/reset")
 	String resetPassword(String email) {
@@ -40,7 +40,7 @@ public class UserController extends AdNetworkController {
 	}
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public Page<SoberUser> getEntryByPageable(
+	public Page<User> getEntryByPageable(
 			@PageableDefault(value = 15, sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
 			@RequestParam(value = "role", defaultValue = "") String role) {
 		

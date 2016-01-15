@@ -16,12 +16,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name = "sober_user")
-public class SoberUser implements Serializable {
+public class User implements Serializable {
 
 	private static final long serialVersionUID = -1682971951403080170L;
 
@@ -33,18 +35,18 @@ public class SoberUser implements Serializable {
 	private String qq;
 	private Byte status = 0; // 0.Pending 1.Active 2.Rejected 3.Blocked
 	private Byte type = 1; // 1.person 2.company
-	private SoberUser accountManager;// 账号管理者
+	private User accountManager;// 账号管理者
 
-	private Set<SoberRole> roles = new HashSet<SoberRole>(0);
+	private Set<Role> roles = new HashSet<Role>(0);
 	
-	public SoberUser() {
+	public User() {
 	}
 
-	public SoberUser(String name, String email) {
+	public User(String name, String email) {
 		this(name, email, null);
 	}
 	
-	public SoberUser(String name, String email, String password) {
+	public User(String name, String email, String password) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -129,25 +131,26 @@ public class SoberUser implements Serializable {
 		this.status = status;
 	}
 
+	@Fetch(FetchMode.JOIN)
 	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
 	@JoinTable(name = "sober_user_role", joinColumns = {
 			@JoinColumn(name = "user_id", nullable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "role_id", nullable = false) })
-	public Set<SoberRole> getRoles() {
+	public Set<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<SoberRole> roles) {
+	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "manager_id")
-	public SoberUser getAccountManager() {
+	public User getAccountManager() {
 		return accountManager;
 	}
 
-	public void setAccountManager(SoberUser accountManager) {
+	public void setAccountManager(User accountManager) {
 		this.accountManager = accountManager;
 	}
 

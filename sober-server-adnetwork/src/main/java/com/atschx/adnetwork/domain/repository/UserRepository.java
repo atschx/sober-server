@@ -6,24 +6,28 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.atschx.adnetwork.domain.model.SoberUser;
+import com.atschx.adnetwork.domain.model.User;
 
-@Repository
-public interface SoberUserRepository extends JpaRepository<SoberUser, Long> {
+@Transactional(readOnly = true)
+public interface UserRepository extends JpaRepository<User, Long> {
 
 	@Modifying
 	@Transactional
 	@Query("delete from SoberUser u where u.status =:status ")
 	void deleteUsersByStatus(@Param("status") String status);
 	
-	SoberUser findUserByName(String name);
+	User findUserByName(String name);
 	
 	//分页
 	@Query("select user from SoberUser user join user.roles role where role.code = ?1")
-	Page<SoberUser> findByRoleCode(String code,Pageable pageable);
+	Page<User> findByRoleCode(String code,Pageable pageable);
 
+	@Override
+	void delete(Iterable<? extends User> entities);
+	
+	@Query("select user from SoberUser user where user.email like :email")
+	Iterable<User> findUsersByEmail(@Param("email") String email);
 
 }

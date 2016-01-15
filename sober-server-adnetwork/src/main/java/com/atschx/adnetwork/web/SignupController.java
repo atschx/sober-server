@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atschx.adnetwork.domain.model.SoberUser;
+import com.atschx.adnetwork.domain.model.User;
 import com.atschx.adnetwork.protocol.response.SignupResult;
 import com.atschx.adnetwork.service.SignupService;
 
@@ -18,7 +18,7 @@ public class SignupController {
 	//http://www.exoclick.com/signup-verify/?token=60025f12efde97c3afac2fdde5fb2af277608a5d
 	//https://www.exoclick.com/signup-verify/?token=60025f12efde97c3afac2fdde5fb2af277608a5d
 	@RequestMapping(value = "signup", method = { RequestMethod.POST })
-	SignupResult signup(SoberUser user) {
+	SignupResult signup(User user) {
 
 		return signupService.signup(user);
 

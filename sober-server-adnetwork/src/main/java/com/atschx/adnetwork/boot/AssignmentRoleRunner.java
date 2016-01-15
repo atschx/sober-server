@@ -1,7 +1,6 @@
 package com.atschx.adnetwork.boot;
 
 import java.util.HashSet;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -9,29 +8,49 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
-import com.atschx.adnetwork.domain.model.SoberRole;
-import com.atschx.adnetwork.domain.model.SoberUser;
-import com.atschx.adnetwork.domain.repository.SoberRoleRepository;
-import com.atschx.adnetwork.domain.repository.SoberUserRepository;
+import com.atschx.adnetwork.domain.model.Role;
+import com.atschx.adnetwork.domain.model.User;
+import com.atschx.adnetwork.domain.repository.RoleRepository;
+import com.atschx.adnetwork.domain.repository.UserRepository;
 
 @Component
 public class AssignmentRoleRunner implements ApplicationRunner, Ordered {
 
 	@Autowired
-	SoberRoleRepository roleRepository;
+	RoleRepository roleRepository;
 
 	@Autowired
-	SoberUserRepository userRepository;
+	UserRepository userRepository;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 
-		SoberRole supervisorRole = roleRepository.findRoleByCode("ROLE_SUPERVISOR");
-		HashSet<SoberRole> roles = new HashSet<SoberRole>();
+		Role supervisorRole = roleRepository.findRoleByCode("ROLE_SUPERVISOR");
+		
+		HashSet<Role> roles = new HashSet<Role>();
 		roles.add(supervisorRole);
 		
-		List<SoberUser> users = userRepository.findAll();
-		for (SoberUser soberUser : users) {
+		
+		Iterable<User> findUsersByEmail = userRepository.findUsersByEmail("%@gmail.com");
+		for (User soberUser : findUsersByEmail) {
+			soberUser.setRoles(roles);
+			userRepository.saveAndFlush(soberUser);
+		}
+		
+		roles.remove(supervisorRole);
+		Role advertiserRole = roleRepository.findRoleByCode("ROLE_ADVERTISER");
+		roles.add(advertiserRole);
+		Iterable<User> advertisers = userRepository.findUsersByEmail("%@advertiser.com");
+		for (User soberUser : advertisers) {
+			soberUser.setRoles(roles);
+			userRepository.saveAndFlush(soberUser);
+		}
+		
+		roles.remove(advertiserRole);
+		Role publisherRole = roleRepository.findRoleByCode("ROLE_PUBLISHER");
+		roles.add(publisherRole);
+		Iterable<User> publishers = userRepository.findUsersByEmail("%@publisher.com");
+		for (User soberUser : publishers) {
 			soberUser.setRoles(roles);
 			userRepository.saveAndFlush(soberUser);
 		}

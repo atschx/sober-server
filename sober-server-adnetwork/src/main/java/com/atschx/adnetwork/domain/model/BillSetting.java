@@ -14,17 +14,17 @@ public class BillSetting implements Serializable {
 
 	private static final long serialVersionUID = -6786124795888596376L;
 
-	private SoberUser user;
+	private User user;
 	private String billAddress;
 
 	@Id
 	@OneToOne
 	@JoinColumn(name = "uid")
-	public SoberUser getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(SoberUser user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 

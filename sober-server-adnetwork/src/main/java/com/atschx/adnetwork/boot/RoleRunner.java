@@ -6,14 +6,14 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
-import com.atschx.adnetwork.domain.model.SoberRole;
-import com.atschx.adnetwork.domain.repository.SoberRoleRepository;
+import com.atschx.adnetwork.domain.model.Role;
+import com.atschx.adnetwork.domain.repository.RoleRepository;
 
 @Component
-public class SoberRoleRunner implements ApplicationRunner, Ordered {
+public class RoleRunner implements ApplicationRunner, Ordered {
 
 	@Autowired
-	SoberRoleRepository roleRepository;
+	RoleRepository roleRepository;
 
 	@Override
 	public int getOrder() {
@@ -23,11 +23,11 @@ public class SoberRoleRunner implements ApplicationRunner, Ordered {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 
-		roleRepository.save(new SoberRole("ROLE_SUPERVISOR"));
+		roleRepository.save(new Role("ROLE_SUPERVISOR"));
 		// Advertiser(sell traffic)
-		roleRepository.save(new SoberRole("ROLE_ADVERTISER"));
+		roleRepository.save(new Role("ROLE_ADVERTISER"));
 		// Publisher(buy traffic)
-		roleRepository.save(new SoberRole("ROLE_PUBLISHER"));
+		roleRepository.save(new Role("ROLE_PUBLISHER"));
 
 	}
 

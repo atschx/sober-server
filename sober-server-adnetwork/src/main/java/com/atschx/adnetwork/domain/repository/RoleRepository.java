@@ -3,11 +3,11 @@ package com.atschx.adnetwork.domain.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.atschx.adnetwork.domain.model.SoberRole;
+import com.atschx.adnetwork.domain.model.Role;
 
 @Repository
-public interface SoberRoleRepository extends JpaRepository<SoberRole, Long> {
+public interface RoleRepository extends JpaRepository<Role, Long> {
 	
-	SoberRole findRoleByCode(String code);
+	Role findRoleByCode(String code);
 
 }

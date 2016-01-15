@@ -13,18 +13,18 @@ import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name = "sober_role")
-public class SoberRole implements Serializable {
+public class Role implements Serializable {
 
 	private static final long serialVersionUID = 7572081951087586464L;
 
 	private Long id;
 	private String code;
 	
-	public SoberRole() {
+	public Role() {
 		this(null);
 	}
 	
-	public SoberRole(String code) {
+	public Role(String code) {
 		super();
 		this.code = code;
 	}

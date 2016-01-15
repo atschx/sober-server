@@ -17,7 +17,7 @@ public class SoberUserToken implements Serializable {
 
 	private static final long serialVersionUID = -7603323230870617113L;
 	
-	private SoberUser user;
+	private User user;
 	private String token;
 	private Long expiresIn;
 
@@ -46,11 +46,11 @@ public class SoberUserToken implements Serializable {
 	@Id
 	@OneToOne
 	@JoinColumn(name = "uid")
-	public SoberUser getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(SoberUser user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 

@@ -35,6 +35,7 @@ public class Offer implements Serializable {
 	private AdNetwork.ClearingCycle clearingCycle;// 结算周期：周结 月结
 	private AdNetwork.Platform platform;// 投放平台
 	private String effDef;// 有效定义 effectiveDefinition
+	
 	private Byte status = 0;// offer状态 0 等待审核 1通过审核 -1 驳回
 	private Date createdAt; // 创建时间
 

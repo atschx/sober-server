@@ -26,10 +26,14 @@ public class OfferCategoryRunner implements ApplicationRunner, Ordered {
 		OfferCategory education = new OfferCategory("教育", 1);
 		OfferCategory life = new OfferCategory("生活", 1);
 		OfferCategory trip = new OfferCategory("旅游", 1);
+		OfferCategory game = new OfferCategory("游戏", 1);
+		OfferCategory enjoy = new OfferCategory("娱乐", 1);
 
 		offerCategoryRepository.save(education);
 		offerCategoryRepository.save(life);
 		offerCategoryRepository.save(trip);
+		offerCategoryRepository.save(game);
+		offerCategoryRepository.save(enjoy);
 
 		OfferCategory onlineCourse = new OfferCategory("网络课程", 2);
 		onlineCourse.setParent(education);
