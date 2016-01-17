@@ -25,7 +25,7 @@ public class AssignmentRoleRunner implements ApplicationRunner, Ordered {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 
-		Role supervisorRole = roleRepository.findRoleByCode("ROLE_SUPERVISOR");
+		Role supervisorRole = roleRepository.findByCode("ROLE_SUPERVISOR");
 		
 		HashSet<Role> roles = new HashSet<Role>();
 		roles.add(supervisorRole);
@@ -38,7 +38,7 @@ public class AssignmentRoleRunner implements ApplicationRunner, Ordered {
 		}
 		
 		roles.remove(supervisorRole);
-		Role advertiserRole = roleRepository.findRoleByCode("ROLE_ADVERTISER");
+		Role advertiserRole = roleRepository.findByCode("ROLE_ADVERTISER");
 		roles.add(advertiserRole);
 		Iterable<User> advertisers = userRepository.findUsersByEmail("%@advertiser.com");
 		for (User soberUser : advertisers) {
@@ -47,7 +47,7 @@ public class AssignmentRoleRunner implements ApplicationRunner, Ordered {
 		}
 		
 		roles.remove(advertiserRole);
-		Role publisherRole = roleRepository.findRoleByCode("ROLE_PUBLISHER");
+		Role publisherRole = roleRepository.findByCode("ROLE_PUBLISHER");
 		roles.add(publisherRole);
 		Iterable<User> publishers = userRepository.findUsersByEmail("%@publisher.com");
 		for (User soberUser : publishers) {

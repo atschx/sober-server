@@ -153,5 +153,12 @@ public class User implements Serializable {
 	public void setAccountManager(User accountManager) {
 		this.accountManager = accountManager;
 	}
+	
+	public void addRole(Role role) {
+		if (null == this.roles) {
+			this.roles = new HashSet<Role>();
+		}
+		this.roles.add(role);
+	}
 
 }
