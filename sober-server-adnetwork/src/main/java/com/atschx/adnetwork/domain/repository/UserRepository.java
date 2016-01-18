@@ -29,7 +29,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Override
 	void delete(Iterable<? extends User> entities);
 	
-	@Query("select user from User user where user.email like :email")
-	Iterable<User> findUsersByEmail(@Param("email") String email);
+//	@Query("select user from User user where user.email like :email")
+//	Iterable<User> findUsersByEmail(@Param("email") String email);
+	
+	
+	Iterable<User> findByEmailLike(@Param("email") String email);
 
 }

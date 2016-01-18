@@ -31,7 +31,7 @@ public class AssignmentRoleRunner implements ApplicationRunner, Ordered {
 		roles.add(supervisorRole);
 		
 		
-		Iterable<User> findUsersByEmail = userRepository.findUsersByEmail("%@gmail.com");
+		Iterable<User> findUsersByEmail = userRepository.findByEmailLike("%@gmail.com");
 		for (User soberUser : findUsersByEmail) {
 			soberUser.setRoles(roles);
 			userRepository.saveAndFlush(soberUser);
@@ -40,7 +40,7 @@ public class AssignmentRoleRunner implements ApplicationRunner, Ordered {
 		roles.remove(supervisorRole);
 		Role advertiserRole = roleRepository.findByCode("ROLE_ADVERTISER");
 		roles.add(advertiserRole);
-		Iterable<User> advertisers = userRepository.findUsersByEmail("%@advertiser.com");
+		Iterable<User> advertisers = userRepository.findByEmailLike("%@advertiser.com");
 		for (User soberUser : advertisers) {
 			soberUser.setRoles(roles);
 			userRepository.saveAndFlush(soberUser);
@@ -49,7 +49,7 @@ public class AssignmentRoleRunner implements ApplicationRunner, Ordered {
 		roles.remove(advertiserRole);
 		Role publisherRole = roleRepository.findByCode("ROLE_PUBLISHER");
 		roles.add(publisherRole);
-		Iterable<User> publishers = userRepository.findUsersByEmail("%@publisher.com");
+		Iterable<User> publishers = userRepository.findByEmailLike("%@publisher.com");
 		for (User soberUser : publishers) {
 			soberUser.setRoles(roles);
 			userRepository.saveAndFlush(soberUser);

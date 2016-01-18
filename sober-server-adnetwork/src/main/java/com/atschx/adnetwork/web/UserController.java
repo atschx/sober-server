@@ -16,7 +16,6 @@ import com.atschx.adnetwork.domain.repository.UserRepository;
 @RestController
 public class UserController extends AdNetworkController {
 	
-	
 	@Autowired
 	UserRepository soberUserRepository;
 
@@ -33,8 +32,10 @@ public class UserController extends AdNetworkController {
 	String advertisers(@RequestParam(name = "status") Byte status,
 			@RequestParam(name = "manager", required = false) Long manager,
 			@RequestParam(name = "name", required = false) String name,
-			@RequestParam(name = "offset", defaultValue = "0") Integer offset,
-			@RequestParam(name = "offset", defaultValue = "20") Integer limit) {
+			@RequestParam(name = "page", defaultValue = "0") Integer page,
+			@RequestParam(name = "size", defaultValue = "20") Integer size) {
+		
+		
 
 		return "";
 	}
