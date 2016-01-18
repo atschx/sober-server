@@ -24,7 +24,6 @@ public class SignupController {
 	 * 供Ajax校验email的唯一性
 	 */
 	@RequestMapping(value = "checkEmail")
-	// @ResponseBody
 	public String checkEmail(@RequestParam("email") String email) {
 		logger.debug("前端传入登录名称:" + email);
 		if (accountService.findUserByEmail(email) == null) {
@@ -34,22 +33,33 @@ public class SignupController {
 		}
 	}
 
-	/**
-	 * 注册用户基础字段：email password mobile
+	/** 
+	 * 基于邮箱注册
 	 * 
-	 * @param user
+	 * @param email
+	 * @param name
+	 * @param password
 	 * @return
 	 */
-	@RequestMapping(value = "signup", method = { RequestMethod.POST })
-	public SignupResult signup(User user) {
+	@RequestMapping(value = "signup-with-email", method = { RequestMethod.POST })
+	public SignupResult signup(
+			@RequestParam("email") String email,
+			@RequestParam(value = "name", required = false) String name, 
+			@RequestParam("password") String password) {
+		
+		User user = new User(name, email, password);
 		return accountService.register(user);
+		
 	}
 
-	// signup-verify/?token=60025f12efde97c3afac2fdde5fb2af277608a5d
+	/**
+	 * 注册激活验证
+	 * @param token
+	 * @return
+	 */
 	@RequestMapping(value = "signup-verify", method = { RequestMethod.GET })
 	public String signupVerify(@RequestParam("token") String token) {
 		User user = accountService.active(token);
-		return (null != user) ? (String.valueOf(user.getStatus().equals(1))) : "false";
+		return (null != user) ? (String.valueOf(user.getStatus() == 1)) : "false";
 	}
-
 }

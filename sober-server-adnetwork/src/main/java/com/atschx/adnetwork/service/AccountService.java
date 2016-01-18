@@ -38,26 +38,28 @@ public class AccountService {
 	@Transactional
 	public SignupResult register(User user) {
 
-		userRepository.save(user);
+		userRepository.saveAndFlush(user);
 
-		final String token = UUID.fromString(user.getEmail()).toString().replace("-", "");
+		final String token = UUID.randomUUID().toString().replaceAll("-", "");
 		tokenRepository.save(new Token(token, user.getId(), System.currentTimeMillis() + 1000 * 60 * 60 * 24));
-		// 注册成功要求用户前往
-		//// http://www.exoclick.com/signup-verify/?token=60025f12efde97c3afac2fdde5fb2af277608a5d
-		mailService.sendMail(user.getEmail(), "schh0313@126.com", "注册成功，请激活登录",
-				"您可以点击这里：http://localhost:8080/signup-verify/?token=" + token);
-
+		
+		if (user.getId() != null) {
+			mailService.sendMail(user.getEmail(), "schh0313@126.com", "注册成功，请激活登录",
+					"您可以点击这里：http://localhost:8080/signup-verify/?token=" + token);
+		}
+		
 		return new SignupResult(user.getId());
 	}
-	
-	public User active(String token){
+
+	public User active(String token) {
 		Token tokenObj = tokenRepository.getOne(token);
 		User user = null;
-		if(null!=tokenObj){
+		if (null != tokenObj) {
 			user = userRepository.findOne(tokenObj.getUid());
-			user.setStatus((byte)1);//设置用户状态为激活 active
+			user.setStatus((byte) 1);// 设置用户状态为激活 active
 			userRepository.saveAndFlush(user);
 		}
+		tokenRepository.delete(token);
 		return user;
 	}
 
