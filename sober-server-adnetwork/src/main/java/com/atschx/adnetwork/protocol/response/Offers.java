@@ -16,4 +16,4 @@ public class Offers {
 		this.data = data;
 	}
 
-}
+}	
