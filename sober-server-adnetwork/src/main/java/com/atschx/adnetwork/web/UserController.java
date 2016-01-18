@@ -44,7 +44,7 @@ public class UserController extends AdNetworkController {
 			@PageableDefault(value = 15, sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
 			@RequestParam(value = "role", defaultValue = "") String role) {
 		
-		if("".equals(role)){
+		if("".equals(role)){ 
 			return soberUserRepository.findAll(pageable);
 		}
 

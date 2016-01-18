@@ -17,6 +17,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import com.atschx.adnetwork.domain.AdNetwork;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * 广告
@@ -111,6 +112,7 @@ public class Offer implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "created_at")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+08:00")
 	public Date getCreatedAt() {
 		return createdAt;
 	}

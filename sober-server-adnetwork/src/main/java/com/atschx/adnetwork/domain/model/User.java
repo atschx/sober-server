@@ -21,6 +21,8 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "sober_user")
 public class User implements Serializable {
@@ -136,6 +138,7 @@ public class User implements Serializable {
 	@JoinTable(name = "sober_user_role", joinColumns = {
 			@JoinColumn(name = "user_id", nullable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "role_id", nullable = false) })
+	@JsonIgnore
 	public Set<Role> getRoles() {
 		return roles;
 	}

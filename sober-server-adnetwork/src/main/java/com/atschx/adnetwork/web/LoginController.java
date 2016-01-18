@@ -10,17 +10,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atschx.adnetwork.protocol.response.LoginResult;
 import com.atschx.adnetwork.service.LoginService;
+import com.atschx.adnetwork.service.MailService;
 
 @RestController
 public class LoginController {
 
 	@Autowired
 	LoginService loginService;
+	
+	@Autowired
+	MailService mailService;
 
 	/**
 	 * 1.login(目前仅支持邮箱登录)
 	 */
-	@RequestMapping(value = "/login", method = { RequestMethod.POST })
+	@RequestMapping(value = "/login", method = { RequestMethod.GET })
 	LoginResult login(
 			@RequestParam String email,
 			@RequestParam String password,
