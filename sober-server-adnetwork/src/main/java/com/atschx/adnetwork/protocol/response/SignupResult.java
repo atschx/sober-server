@@ -6,6 +6,14 @@ public class SignupResult extends Result {
 
 	private Long uid;
 
+	public SignupResult() {
+	}
+
+	public SignupResult(Long uid) {
+		super();
+		this.uid = uid;
+	}
+
 	public Long getUid() {
 		return uid;
 	}

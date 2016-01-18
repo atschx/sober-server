@@ -5,20 +5,18 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "sober_user_token")
-public class SoberUserToken implements Serializable {
+@Table(name = "sober_token")
+public class Token implements Serializable {
 
 	private static final long serialVersionUID = -7603323230870617113L;
-	
-	private User user;
+
 	private String token;
+	private Long uid;
 	private Long expiresIn;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -26,7 +24,19 @@ public class SoberUserToken implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt; // 修改时间
+	
+	public Token() {
+		super();
+	}
+	
+	public Token(String token, Long uid, Long expiresIn) {
+		super();
+		this.token = token;
+		this.uid = uid;
+		this.expiresIn = expiresIn;
+	}
 
+	@Id
 	public String getToken() {
 		return token;
 	}
@@ -43,15 +53,12 @@ public class SoberUserToken implements Serializable {
 		this.expiresIn = expiresIn;
 	}
 
-	@Id
-	@OneToOne
-	@JoinColumn(name = "uid")
-	public User getUser() {
-		return user;
+	public Long getUid() {
+		return uid;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUid(Long uid) {
+		this.uid = uid;
 	}
 
 	public Date getCreatedAt() {
