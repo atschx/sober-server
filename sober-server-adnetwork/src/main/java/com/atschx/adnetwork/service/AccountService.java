@@ -16,14 +16,17 @@ import com.atschx.adnetwork.protocol.response.SignupResult;
 @Service
 public class AccountService {
 
-	@Autowired
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
+	private final TokenRepository tokenRepository;
+	private final MailService mailService;
 
 	@Autowired
-	private TokenRepository tokenRepository;
-
-	@Autowired
-	private MailService mailService;
+	public AccountService(UserRepository userRepository, TokenRepository tokenRepository, MailService mailService) {
+		super();
+		this.userRepository = userRepository;
+		this.tokenRepository = tokenRepository;
+		this.mailService = mailService;
+	}
 
 	public User findUserByEmail(String email) {
 		return userRepository.findByEmail(email);
@@ -42,12 +45,12 @@ public class AccountService {
 
 		final String token = UUID.randomUUID().toString().replaceAll("-", "");
 		tokenRepository.save(new Token(token, user.getId(), System.currentTimeMillis() + 1000 * 60 * 60 * 24));
-		
+
 		if (user.getId() != null) {
 			mailService.sendMail(user.getEmail(), "schh0313@126.com", "注册成功，请激活登录",
 					"您可以点击这里：http://localhost:8080/signup-verify/?token=" + token);
 		}
-		
+
 		return new SignupResult(user.getId());
 	}
 
