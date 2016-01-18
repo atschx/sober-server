@@ -38,6 +38,7 @@
 		<module>sober-server-core</module>
 		<module>sober-server-api</module>
 		<module>sober-server-dashboard</module>
+		<module>sober-server-adnetwork</module>
 	</modules>
 
 </project>
