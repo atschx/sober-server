@@ -15,6 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -81,6 +82,7 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
+	@NotNull
 	@Column(name = "email", length = 50, unique = true)
 	public String getEmail() {
 		return email;
