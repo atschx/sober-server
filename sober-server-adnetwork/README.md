@@ -1,11 +1,13 @@
 # Sober Ad Network `外`网协议
 
-协议列表
+> 协议列表
+> 
+> 1. 用户注册（支持Advertiser、Publisher两种角色）
+> 2. ajax邮箱唯一性校验
+> 3. 激活用户账号（用户点击邮箱中的链接直接激活）
+> 4. 获取user列表（按角色查询）
 
-1. 用户注册（支持Advertiser、Publisher两种角色）
-2. ajax邮箱唯一性校验
-3. 获取Advertiser列表
-4. 获取offer列表
+注意：所有协议均支持跨域访问。目前未做全局token可用性校验。
 
 ## 1.用户注册(signup)
 
@@ -38,7 +40,7 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 
 > 同一个邮箱仅允许一个帐号
 
-**GET** http://192.168.1.195:8080/signup-with-email?email=xxx
+**GET** http://192.168.1.195:8080/check-email?email=xxx
 
 参数：email 必填
 
@@ -46,21 +48,78 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 
 ”true“ 可用 “false” 不可用
 
+## 3.激活帐号(signup-verify)
 
+> 邮箱中的链接用于激活帐号
 
-## 2.用户登录获取access_token
-
-> 第一阶段仅支持基于email和password进行登录
-
-**POST** http://localhost:8080/login
+**GET** http://192.168.1.195:8080/signup-verify
 
 `请求参数`
 
-* email 
-* password
+* token (必填)
 
 `返回`
 
-``` json
-{"ret":"0","access_token":null,"expires_in":null}
+”true“ 可用 “false” 不可用
+
+## 4.用户列表
+
+> 分页请求，统一返回如下JSON结构。
+
+**GET** http://192.168.1.195:8080/users?role=ROLE_ADVERTISER&page=1&size=2
+
+> 参数列表(全部可选):
+> 
+> role  取值 ：ROLE_ADVERTISER,ROLE_PUBLISHER,ROLE_SUPERVISOR
+> 
+> page 第几页
+> 
+> size   每页条数
+
+返回数据
+
+``` JSON
+{
+  "content": [
+    {
+      "id": 60007, 
+      "name": "advertiser-5", 
+      "email": "advertiser-5@advertiser.com", 
+      "password": "advertiser", 
+      "mobile": null, 
+      "qq": null, 
+      "status": 0, 
+      "type": 1, 
+      "accountManager": null
+    }, 
+    {
+      "id": 60006, 
+      "name": "advertiser-4", 
+      "email": "advertiser-4@advertiser.com", 
+      "password": "advertiser", 
+      "mobile": null, 
+      "qq": null, 
+      "status": 0, 
+      "type": 1, 
+      "accountManager": null
+    }
+  ], 
+  "last": false, 
+  "totalElements": 8, 
+  "totalPages": 4, 
+  "size": 2, 
+  "number": 1, 
+  "sort": [
+    {
+      "direction": "DESC", 
+      "property": "id", 
+      "ignoreCase": false, 
+      "nullHandling": "NATIVE", 
+      "ascending": false
+    }
+  ], 
+  "first": false, 
+  "numberOfElements": 2
+}
 ```
+
