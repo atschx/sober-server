@@ -7,8 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,12 +20,12 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import com.atschx.adnetwork.domain.AdNetwork;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * 广告
  */
 @Entity
+
 @Table(name = "offers")
 public class Offer implements Serializable {
 
@@ -36,20 +39,27 @@ public class Offer implements Serializable {
 	private AdNetwork.ClearingCycle clearingCycle;// 结算周期：周结 月结
 	private AdNetwork.Platform platform;// 投放平台
 	private String effDef;// 有效定义 effectiveDefinition
-	
 	private Byte status = 0;// offer状态 0 等待审核 1通过审核 -1 驳回
-	private Date createdAt; // 创建时间
+
+	private User createdBy;
+
+	private Date createdDate;
+
+	private User lastModifiedBy;
+
+	private Date lastModifiedDate;
 
 	public Offer() {
 		super();
 	}
 
-	public Offer(String name, Double price, String effDef, Date createdAt) {
+	public Offer(String name, Double price, String effDef) {
 		super();
 		this.name = name;
 		this.price = price;
 		this.effDef = effDef;
-		this.createdAt = createdAt;
+		this.setCreatedDate(new Date());
+		this.setLastModifiedDate(new Date());
 	}
 
 	@Id
@@ -58,9 +68,8 @@ public class Offer implements Serializable {
 			@Parameter(name = "table_name", value = "id_generator"),
 			@Parameter(name = "value_column_name", value = "next"),
 			@Parameter(name = "segment_column_name", value = "segment_name"),
-			@Parameter(name = "segment_value", value = "offer_seq"),
-			@Parameter(name = "initial_value", value = "1"), @Parameter(name = "increment_size", value = "10"),
-			@Parameter(name = "optimizer", value = "pooled-lo") })
+			@Parameter(name = "segment_value", value = "offer_seq"), @Parameter(name = "initial_value", value = "1"),
+			@Parameter(name = "increment_size", value = "10"), @Parameter(name = "optimizer", value = "pooled-lo") })
 	@Column(name = "id", unique = true, nullable = false)
 	public Long getId() {
 		return id;
@@ -110,17 +119,6 @@ public class Offer implements Serializable {
 		this.clearingCycle = clearingCycle;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_at")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+08:00")
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
 	public void setEffDef(String effDef) {
 		this.effDef = effDef;
 	}
@@ -151,6 +149,44 @@ public class Offer implements Serializable {
 
 	public void setStatus(Byte status) {
 		this.status = status;
+	}
+
+	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
+	@JoinColumn(name = "created_by", nullable = false)
+	public User getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "last_modified_by")
+	public User getLastModifiedBy() {
+		return lastModifiedBy;
+	}
+
+	public void setLastModifiedBy(User lastModifiedBy) {
+		this.lastModifiedBy = lastModifiedBy;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getLastModifiedDate() {
+		return lastModifiedDate;
+	}
+
+	public void setLastModifiedDate(Date lastModifiedDate) {
+		this.lastModifiedDate = lastModifiedDate;
 	}
 
 }

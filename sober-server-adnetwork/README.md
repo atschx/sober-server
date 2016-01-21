@@ -74,13 +74,27 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 > 
 > email & password 必填
 
-返回参数
+`返回数据`
+
+成功登录
 
 ``` JSON
-
+{
+  "ret": "0", 
+  "token": "273ae6e812ac4ccfb7677ab8ae9dacf5", 
+  "expires": 1453441218073
+}
 ```
 
+登录失败
 
+``` JSON
+{
+  "ret": "1", 
+  "token": null, 
+  "expires": null
+}
+```
 
 ## 5.用户列表
 

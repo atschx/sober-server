@@ -1,15 +1,24 @@
 package com.atschx.adnetwork.domain.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "sober_role")
@@ -19,16 +28,16 @@ public class Role implements Serializable {
 
 	private Long id;
 	private String code;
-	
+	private Set<User> users = new HashSet<User>(0);
+
 	public Role() {
 		this(null);
 	}
-	
+
 	public Role(String code) {
 		super();
 		this.code = code;
 	}
-
 
 	@Id
 	@GeneratedValue(generator = "sober_id_gen")
@@ -55,6 +64,20 @@ public class Role implements Serializable {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+//	@JsonInclude(JsonInclude.Include.NON_EMPTY)
+	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
+	@JoinTable(name = "sober_user_role", joinColumns = {
+			@JoinColumn(name = "role_id", nullable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "user_id", nullable = false) })
+	@JsonIgnore
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 
 }

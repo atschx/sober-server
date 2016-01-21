@@ -13,17 +13,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.atschx.adnetwork.domain.model.Offer;
 import com.atschx.adnetwork.domain.repository.OfferRepository;
 
+/**
+ * offer
+ */
 @RestController
 public class OfferController extends AdNetworkController {
-	
+
+	private final OfferRepository offerRepository;
+
 	@Autowired
-	OfferRepository offerRepository;
+	public OfferController(OfferRepository offerRepository) {
+		this.offerRepository = offerRepository;
+	}
 
 	// 分页获取Offer
 	@RequestMapping(value = "/offers", method = { RequestMethod.GET })
 	Page<Offer> offers(@PageableDefault(value = 15, sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
 			@RequestParam(value = "name", defaultValue = "") String name) {
-		
+
 		return offerRepository.findAll(pageable);
 	}
 

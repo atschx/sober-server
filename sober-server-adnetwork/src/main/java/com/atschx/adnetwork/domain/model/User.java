@@ -17,14 +17,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+// @Inheritance
+// @DiscriminatorColumn(name="USER_TYPE")
+//// @ForceDiscriminator
 @Table(name = "sober_user")
 public class User implements Serializable {
 
@@ -41,14 +42,14 @@ public class User implements Serializable {
 	private User accountManager;// 账号管理者
 
 	private Set<Role> roles = new HashSet<Role>(0);
-	
+
 	public User() {
 	}
 
 	public User(String name, String email) {
 		this(name, email, null);
 	}
-	
+
 	public User(String name, String email, String password) {
 		super();
 		this.name = name;
@@ -135,7 +136,7 @@ public class User implements Serializable {
 		this.status = status;
 	}
 
-	@Fetch(FetchMode.JOIN)
+	// @JsonInclude(JsonInclude.Include.NON_EMPTY)
 	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
 	@JoinTable(name = "sober_user_role", joinColumns = {
 			@JoinColumn(name = "user_id", nullable = false) }, inverseJoinColumns = {
@@ -158,7 +159,7 @@ public class User implements Serializable {
 	public void setAccountManager(User accountManager) {
 		this.accountManager = accountManager;
 	}
-	
+
 	public void addRole(Role role) {
 		if (null == this.roles) {
 			this.roles = new HashSet<Role>();

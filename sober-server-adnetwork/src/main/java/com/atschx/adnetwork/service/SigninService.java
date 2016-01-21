@@ -39,7 +39,7 @@ public class SigninService {
 				final String token = UUID.randomUUID().toString().replaceAll("-", "");
 				final long expires = System.currentTimeMillis() + 1000 * 60 * 60 * 24;
 				tokenRepository.save(new Token(token, user.getId(), expires));
-				return new SigninResult(token, expires);
+				return new SigninResult(token, expires,user.getRoles());
 			}
 		}
 
