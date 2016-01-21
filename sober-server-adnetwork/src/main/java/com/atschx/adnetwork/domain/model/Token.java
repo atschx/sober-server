@@ -17,23 +17,23 @@ public class Token implements Serializable {
 
 	private String token;
 	private Long uid;
-	private Long expiresIn;
+	private Long expires;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt; // 创建时间
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt; // 修改时间
-	
+
 	public Token() {
 		super();
 	}
-	
-	public Token(String token, Long uid, Long expiresIn) {
+
+	public Token(String token, Long uid, Long expires) {
 		super();
 		this.token = token;
 		this.uid = uid;
-		this.expiresIn = expiresIn;
+		this.expires = expires;
 	}
 
 	@Id
@@ -45,12 +45,12 @@ public class Token implements Serializable {
 		this.token = token;
 	}
 
-	public Long getExpiresIn() {
-		return expiresIn;
+	public Long getExpires() {
+		return expires;
 	}
 
-	public void setExpiresIn(Long expiresIn) {
-		this.expiresIn = expiresIn;
+	public void setExpires(Long expires) {
+		this.expires = expires;
 	}
 
 	public Long getUid() {

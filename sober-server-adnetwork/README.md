@@ -62,7 +62,27 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 
 ”true“ 可用 “false” 不可用
 
-## 4.用户列表
+## 4.用户登录(Signin)
+
+> 第一阶段：仅支持用户邮箱及密码登录。
+
+**POST** http://192.168.1.195:8080/signin-with-email/{role}
+
+> PathParam
+> 
+> 参数列表：
+> 
+> email & password 必填
+
+返回参数
+
+``` JSON
+
+```
+
+
+
+## 5.用户列表
 
 > 分页请求，统一返回如下JSON结构。
 

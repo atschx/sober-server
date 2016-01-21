@@ -34,12 +34,12 @@ public class UserController extends AdNetworkController {
 	 * @return
 	 */
 	@RequestMapping(value = "/advertisers", method = { RequestMethod.GET })
-	public String advertisers(
+	public Page<User> advertisers(
 			@PageableDefault(value = 15, sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
 			ServletRequest request) {
 		
 		//获取请求中的参数信息
-		
+		return soberUserRepository.findAll(pageable);
 
 		// 统一处理查询条件
 		//
@@ -47,7 +47,7 @@ public class UserController extends AdNetworkController {
 		// * @param manager
 		// * @param name
 
-		return "";
+//		return "";
 	}
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)

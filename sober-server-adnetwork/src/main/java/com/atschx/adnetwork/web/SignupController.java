@@ -23,7 +23,7 @@ public class SignupController {
 	/**
 	 * 供Ajax校验email的唯一性
 	 */
-	@RequestMapping(value = "checkEmail",method={RequestMethod.GET})
+	@RequestMapping(value = "check-email",method={RequestMethod.GET})
 	public String checkEmail(@RequestParam("email") String email) {
 		logger.debug("前端传入登录名称:" + email);
 		if (accountService.findUserByEmail(email) == null) {
