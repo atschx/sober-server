@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -23,9 +24,6 @@ import org.hibernate.annotations.Parameter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-// @Inheritance
-// @DiscriminatorColumn(name="USER_TYPE")
-//// @ForceDiscriminator
 @Table(name = "sober_user")
 public class User implements Serializable {
 
@@ -42,6 +40,7 @@ public class User implements Serializable {
 	private User accountManager;// 账号管理者
 
 	private Set<Role> roles = new HashSet<Role>(0);
+	private Set<Offer> offers = new HashSet<Offer>(0);
 
 	public User() {
 	}
@@ -165,6 +164,16 @@ public class User implements Serializable {
 			this.roles = new HashSet<Role>();
 		}
 		this.roles.add(role);
+	}
+
+	@OneToMany(mappedBy = "createdBy", fetch = FetchType.LAZY)
+	@JsonIgnore
+	public Set<Offer> getOffers() {
+		return offers;
+	}
+
+	public void setOffers(Set<Offer> offers) {
+		this.offers = offers;
 	}
 
 }

@@ -29,5 +29,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Transactional
 	@Query("delete from User u where u.status =:status ")
 	void deleteUsersByStatus(@Param("status") String status);
+	
+	
 
 }

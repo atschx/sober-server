@@ -1,7 +1,5 @@
 package com.atschx.adnetwork.web;
 
-import javax.servlet.ServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,40 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atschx.adnetwork.domain.model.User;
 import com.atschx.adnetwork.domain.repository.UserRepository;
+import com.atschx.adnetwork.protocol.Result;
 
 @RestController
 public class UserController extends AdNetworkController {
 
-	private final UserRepository soberUserRepository;
+	private final UserRepository userRepository;
 
 	@Autowired
-	public UserController(UserRepository soberUserRepository) {
-		this.soberUserRepository = soberUserRepository;
-	}
-
-	/**
-	 * 查询广告主.
-	 * 
-	 * @param page
-	 * @param size
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping(value = "/advertisers", method = { RequestMethod.GET })
-	public Page<User> advertisers(
-			@PageableDefault(value = 15, sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
-			ServletRequest request) {
-		
-		//获取请求中的参数信息
-		return soberUserRepository.findAll(pageable);
-
-		// 统一处理查询条件
-		//
-		// * @param status
-		// * @param manager
-		// * @param name
-
-//		return "";
+	public UserController(UserRepository userRepository) {
+		this.userRepository = userRepository;
 	}
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
@@ -56,10 +30,49 @@ public class UserController extends AdNetworkController {
 			@RequestParam(value = "role", defaultValue = "") String role) {
 
 		if ("".equals(role)) {
-			return soberUserRepository.findAll(pageable);
+			return userRepository.findAll(pageable);
 		}
 
-		return soberUserRepository.findByRoleCode(role, pageable);
+		return userRepository.findByRoleCode(role, pageable);
 	}
-
+	
+	/**
+	 * 修改密码
+	 * 
+	 * @param uid
+	 * @param oldPassword
+	 * @param newPassword
+	 * @return
+	 */
+	@RequestMapping(value = "/change-password", method = RequestMethod.POST)
+	Result changePassword(
+			@RequestParam Long uid,
+			@RequestParam String oldPassword,
+			@RequestParam String newPassword){
+		
+		Result ret = new Result();
+		User user = userRepository.findOne(uid);
+		
+		if (user != null) {
+			if(!user.getPassword().equals(oldPassword)){
+				ret.setRet("1");// 密码不对
+			}else{
+				if(oldPassword.equals(newPassword)){
+					ret.setRet("2");// 新密码不能和就密码一致
+				}else{
+					try {
+						//update 
+						user.setPassword(newPassword);
+						userRepository.saveAndFlush(user);
+					} catch (Exception e) {
+						ret.setRet("500");
+					}
+				}
+			}
+		}else{
+			ret.setRet("-1");// 不存在此用户
+		}
+		
+		return new Result();
+	}
 }

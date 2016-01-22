@@ -17,8 +17,12 @@ public class SignupController {
 
 	private static final Logger logger = LoggerFactory.getLogger(SignupController.class);
 
+	private final AccountService accountService;
+
 	@Autowired
-	private AccountService accountService;
+	public SignupController(AccountService accountService) {
+		this.accountService = accountService;
+	}
 
 	/**
 	 * 供Ajax校验email的唯一性

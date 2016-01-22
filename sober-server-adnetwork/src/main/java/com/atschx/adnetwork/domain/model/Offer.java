@@ -20,6 +20,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import com.atschx.adnetwork.domain.AdNetwork;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * 广告
@@ -153,6 +154,7 @@ public class Offer implements Serializable {
 
 	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "created_by", nullable = false)
+	@JsonIgnore
 	public User getCreatedBy() {
 		return createdBy;
 	}
@@ -170,8 +172,9 @@ public class Offer implements Serializable {
 		this.createdDate = createdDate;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "last_modified_by")
+	@JsonIgnore
 	public User getLastModifiedBy() {
 		return lastModifiedBy;
 	}

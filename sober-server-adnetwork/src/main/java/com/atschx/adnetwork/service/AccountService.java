@@ -48,7 +48,7 @@ public class AccountService {
 
 		if (user.getId() != null) {
 			mailService.sendMail(user.getEmail(), "schh0313@126.com", "注册成功，请激活登录",
-					"您可以点击这里：http://localhost:8080/signup-verify/?token=" + token);
+					"您可以点击这里：http://192.168.1.195:8080/signup-verify/?token=" + token);
 		}
 
 		return new SignupResult(user.getId());

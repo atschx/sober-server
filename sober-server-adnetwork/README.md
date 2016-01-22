@@ -96,7 +96,19 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 }
 ```
 
-## 5.用户列表
+## 5.用户退出(signout)
+
+> 此部分操作很简单：直接清空用户对应的token.
+
+**GET** http://192.168.1.195:8080/signout?uid=xxxx&token=xxxx
+
+> 参数说明：
+> 
+> uid & token
+
+返回结果：true or false 
+
+## 6.用户列表
 
 > 分页请求，统一返回如下JSON结构。
 
@@ -155,5 +167,41 @@ PS：填写注册时，email字段需要ajax判断是否适用。
   "first": false, 
   "numberOfElements": 2
 }
+```
+
+## 7.修改密码
+
+**POST** http://192.168.1.195:8080/change-password
+
+> 参数列表(必填),前缀加下划线用于区分 Header中的uid数据
+> 
+> uid
+> 
+> _old
+> 
+> _new
+
+返回ret值说明
+
+``` JAVA
+		if (user != null) {
+			if(!user.getPassword().equals(oldPassword)){
+				ret.setRet("1");// 密码不对
+			}else{
+				if(oldPassword.equals(newPassword)){
+					ret.setRet("2");// 新密码不能和就密码一致
+				}else{
+					try {
+						//update 
+						user.setPassword(newPassword);
+						userRepository.saveAndFlush(user);
+					} catch (Exception e) {
+						ret.setRet("500");
+					}
+				}
+			}
+		}else{
+			ret.setRet("-1");// 不存在此用户
+		}
 ```
 
