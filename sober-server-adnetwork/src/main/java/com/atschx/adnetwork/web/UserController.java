@@ -39,10 +39,8 @@ public class UserController extends AdNetworkController {
 			ServletRequest request) {
 		
 		//获取请求中的参数信息
-		
 
 		// 统一处理查询条件
-		//
 		// * @param status
 		// * @param manager
 		// * @param name
