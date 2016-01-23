@@ -14,11 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -41,14 +40,15 @@ public class User implements Serializable {
 	private User accountManager;// 账号管理者
 
 	private Set<Role> roles = new HashSet<Role>(0);
-	
+	private Set<Offer> offers = new HashSet<Offer>(0);
+
 	public User() {
 	}
 
 	public User(String name, String email) {
 		this(name, email, null);
 	}
-	
+
 	public User(String name, String email, String password) {
 		super();
 		this.name = name;
@@ -135,7 +135,7 @@ public class User implements Serializable {
 		this.status = status;
 	}
 
-	@Fetch(FetchMode.JOIN)
+	// @JsonInclude(JsonInclude.Include.NON_EMPTY)
 	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
 	@JoinTable(name = "sober_user_role", joinColumns = {
 			@JoinColumn(name = "user_id", nullable = false) }, inverseJoinColumns = {
@@ -158,12 +158,22 @@ public class User implements Serializable {
 	public void setAccountManager(User accountManager) {
 		this.accountManager = accountManager;
 	}
-	
+
 	public void addRole(Role role) {
 		if (null == this.roles) {
 			this.roles = new HashSet<Role>();
 		}
 		this.roles.add(role);
+	}
+
+	@OneToMany(mappedBy = "createdBy", fetch = FetchType.LAZY)
+	@JsonIgnore
+	public Set<Offer> getOffers() {
+		return offers;
+	}
+
+	public void setOffers(Set<Offer> offers) {
+		this.offers = offers;
 	}
 
 }

@@ -17,13 +17,17 @@ public class SignupController {
 
 	private static final Logger logger = LoggerFactory.getLogger(SignupController.class);
 
+	private final AccountService accountService;
+
 	@Autowired
-	private AccountService accountService;
+	public SignupController(AccountService accountService) {
+		this.accountService = accountService;
+	}
 
 	/**
 	 * 供Ajax校验email的唯一性
 	 */
-	@RequestMapping(value = "checkEmail")
+	@RequestMapping(value = "check-email",method={RequestMethod.GET})
 	public String checkEmail(@RequestParam("email") String email) {
 		logger.debug("前端传入登录名称:" + email);
 		if (accountService.findUserByEmail(email) == null) {
