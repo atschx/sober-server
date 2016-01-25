@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atschx.adnetwork.domain.model.User;
 import com.atschx.adnetwork.domain.repository.UserRepository;
+import com.atschx.adnetwork.mapper.JsonMapper;
 import com.atschx.adnetwork.protocol.Result;
 
 @RestController
@@ -24,6 +26,12 @@ public class UserController extends AdNetworkController {
 		this.userRepository = userRepository;
 	}
 
+	/**
+	 * 用户列表
+	 * @param pageable
+	 * @param role
+	 * @return
+	 */
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public Page<User> users(
 			@PageableDefault(value = 15, sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
@@ -72,6 +80,27 @@ public class UserController extends AdNetworkController {
 		}else{
 			ret.setRet("-1");// 不存在此用户
 		}
+		
+		return new Result();
+	}
+	
+	/**
+	 * 获取用户资料
+	 */
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	User userDetial(@RequestParam Long uid){
+		return userRepository.findOne(uid);
+	}
+	
+	/**
+	 * 更新用户资料
+	 */
+	@RequestMapping(value = "/user", method = RequestMethod.PUT)
+	Result updateUser(@RequestParam Long uid,@RequestBody String json){
+		
+		JsonMapper jsonMapper=JsonMapper.nonEmptyMapper();
+		User user = jsonMapper.fromJson(json, User.class);
+		userRepository.saveAndFlush(user);
 		
 		return new Result();
 	}

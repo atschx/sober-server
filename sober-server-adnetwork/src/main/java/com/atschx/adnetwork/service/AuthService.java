@@ -13,7 +13,6 @@ import com.atschx.adnetwork.domain.repository.TokenRepository;
 import com.atschx.adnetwork.domain.repository.UserRepository;
 import com.atschx.adnetwork.protocol.response.SigninResult;
 
-
 @Service
 public class AuthService {
 
@@ -46,7 +45,10 @@ public class AuthService {
 
 		return new SigninResult("1");
 	}
-	
+
+	/**
+	 * 目前signout操作直接清除token。
+	 */
 	public void signout(Long uid) {
 		Token token = tokenRepository.findByUid(uid);
 		if (null != token) {
