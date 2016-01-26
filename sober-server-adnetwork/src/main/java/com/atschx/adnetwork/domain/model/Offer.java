@@ -43,11 +43,8 @@ public class Offer implements Serializable {
 	private Byte status = 0;// offer状态 0 等待审核 1通过审核 -1 驳回
 
 	private User createdBy;
-
 	private Date createdDate;
-
 	private User lastModifiedBy;
-
 	private Date lastModifiedDate;
 
 	public Offer() {

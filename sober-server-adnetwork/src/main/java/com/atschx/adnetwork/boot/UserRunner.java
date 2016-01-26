@@ -25,6 +25,10 @@ public class UserRunner implements ApplicationRunner, Ordered {
 		atschx.setMobile("13800001101");
 		userRepository.save(atschx);
 		userRepository.save(admin);
+		
+		User ck = new User("ck", "kang.chen@dpocket.cn", "chenkang");
+		ck.setMobile("13800001101");
+		userRepository.save(ck);
 
 		// 广告主
 		for (int i = 0; i < 8; i++) {

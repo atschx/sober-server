@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atschx.adnetwork.domain.model.User;
 import com.atschx.adnetwork.domain.repository.UserRepository;
-import com.atschx.adnetwork.mapper.JsonMapper;
 import com.atschx.adnetwork.protocol.Result;
 
 @RestController
@@ -55,8 +54,8 @@ public class UserController extends AdNetworkController {
 	@RequestMapping(value = "/change-password", method = RequestMethod.POST)
 	Result changePassword(
 			@RequestParam Long uid,
-			@RequestParam String oldPassword,
-			@RequestParam String newPassword){
+			@RequestParam(name="_old") String oldPassword,
+			@RequestParam(name="_new") String newPassword){
 		
 		Result ret = new Result();
 		User user = userRepository.findOne(uid);
@@ -95,13 +94,17 @@ public class UserController extends AdNetworkController {
 	/**
 	 * 更新用户资料
 	 */
-	@RequestMapping(value = "/user", method = RequestMethod.PUT)
-	Result updateUser(@RequestParam Long uid,@RequestBody String json){
-		
-		JsonMapper jsonMapper=JsonMapper.nonEmptyMapper();
-		User user = jsonMapper.fromJson(json, User.class);
-		userRepository.saveAndFlush(user);
-		
-		return new Result();
+	@RequestMapping(value = "/user", method = { RequestMethod.POST }, consumes = { "application/json; charset=UTF-8" })
+	Result updateUser(@RequestParam Long uid, @RequestBody User _new) {
+
+		User oldUser = userRepository.findOne(uid);
+		if (oldUser != null) {
+			oldUser.setName(_new.getName());
+			oldUser.setQq(_new.getQq());
+			userRepository.save(oldUser);
+			return new Result();
+		}
+
+		return new Result("1");
 	}
 }
