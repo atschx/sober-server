@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.atschx.adnetwork.domain.AdNetwork;
 import com.atschx.adnetwork.domain.model.Offer;
 import com.atschx.adnetwork.domain.repository.OfferRepository;
 
@@ -52,6 +53,15 @@ public class OfferController extends AdNetworkController {
 			@RequestParam Long offerId){
 		
 		return offerRepository.findOne(offerId);
+	}
+	
+	/**
+	 * 计价模式
+	 * @return
+	 */
+	@RequestMapping(value = "/price-model", method = { RequestMethod.GET })
+	AdNetwork.PriceModel[] priceModel(){
+		return AdNetwork.PriceModel.values();
 	}
 	
 }

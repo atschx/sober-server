@@ -388,3 +388,37 @@ PS：请求的Header中需要带uid
 }
 ```
 
+## 14.流量主申请Offer
+
+**POST** http://192.168.1.195:8080/apply-offer?publisher=1111&offer=xxx
+
+> 参数说明
+> 
+> publisher  流量主id
+> 
+> offer 被申请的offerId
+
+返回值
+
+``` JSON
+{
+  "ret":"0",
+  "aid":zxxxxx
+}
+```
+
+## 15.流量主申请的Offer列表
+
+**GET** http://192.168.1.195:8080/publisher-apply-offers?page=1&size=2&publisher=1111&status=1&offer=xxx
+
+> 参数说明
+> 
+> publisher 
+> 
+> status
+> 
+> offer
+
+返回列表数据
+
+> 暂无

@@ -36,7 +36,7 @@ public class User implements Serializable {
 	private String mobile;
 	private String qq;
 	private Byte status = 0; // 0.Pending 1.Active 2.Rejected 3.Blocked
-	private Byte type = 1; // 1.person 2.company
+	private Byte fiscalStatus;	// 账号属性：1.person 2.company
 	private User accountManager;// 账号管理者
 
 	private Set<Role> roles = new HashSet<Role>(0);
@@ -119,12 +119,12 @@ public class User implements Serializable {
 		this.qq = qq;
 	}
 
-	public Byte getType() {
-		return type;
+	public Byte getFiscalStatus() {
+		return fiscalStatus;
 	}
 
-	public void setType(Byte type) {
-		this.type = type;
+	public void setFiscalStatus(Byte fiscalStatus) {
+		this.fiscalStatus = fiscalStatus;
 	}
 
 	public Byte getStatus() {

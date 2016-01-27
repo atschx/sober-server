@@ -7,6 +7,8 @@ public interface AdNetwork {
 	 */
 	enum Platform {
 		IOS, ANDROID
+		
+		//pc端 wap站 安卓 ios 安卓平板 ios平板
 	}
 
 	/**
@@ -19,13 +21,13 @@ public interface AdNetwork {
 	/**
 	 * 计费方式
 	 */
-	enum OfferPriceModel {
+	enum PriceModel {
 
 		CPS("Cost Per Sale"), CPA("Cost Per Action");
 
 		private String description;
 
-		private OfferPriceModel(String description) {
+		private PriceModel(String description) {
 			this.description = description;
 		}
 
