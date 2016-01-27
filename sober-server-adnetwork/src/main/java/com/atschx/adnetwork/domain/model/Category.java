@@ -22,20 +22,20 @@ import org.hibernate.annotations.Parameter;
  * 广告类别
  */
 @Entity
-@Table(name = "offer_category")
-public class OfferCategory implements Serializable {
+@Table(name = "category")
+public class Category implements Serializable {
 
 	private static final long serialVersionUID = 4239986398023471934L;
 	private Long id;
 	private String name;
 	private Integer level;
-	private OfferCategory parent;
-	private Set<OfferCategory> children = new HashSet<OfferCategory>(0);
+	private Category parent;
+	private Set<Category> children = new HashSet<Category>(0);
 
-	public OfferCategory() {
+	public Category() {
 	}
 
-	public OfferCategory(String name, Integer level) {
+	public Category(String name, Integer level) {
 		super();
 		this.name = name;
 		this.level = level;
@@ -77,20 +77,20 @@ public class OfferCategory implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "parent_id")
-	public OfferCategory getParent() {
+	public Category getParent() {
 		return parent;
 	}
 
-	public void setParent(OfferCategory parent) {
+	public void setParent(Category parent) {
 		this.parent = parent;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "parent")
-	public Set<OfferCategory> getChildren() {
+	public Set<Category> getChildren() {
 		return children;
 	}
 
-	public void setChildren(Set<OfferCategory> children) {
+	public void setChildren(Set<Category> children) {
 		this.children = children;
 	}
 

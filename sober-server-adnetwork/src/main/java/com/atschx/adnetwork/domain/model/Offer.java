@@ -34,13 +34,14 @@ public class Offer implements Serializable {
 	private Long id;
 	private String name;// 广告名称
 	private String url;// offer URL
-
 	private String logo;// logo资源url
 	private Double price;// 单价
+	
 	private AdNetwork.PriceModel priceModel;// 计价方式 0 CPA 默认
 	private AdNetwork.ClearingCycle clearingCycle;// 结算周期：周结 月结
 	private AdNetwork.Platform platform;// 投放平台
 	private String effDef;// 有效定义 effectiveDefinition
+	
 	private Byte status = 0;// offer状态 0 pending 等待审核 1 active 通过审核 -1 rejected -2 blocked
 
 	private User createdBy;

@@ -19,6 +19,9 @@ import org.hibernate.annotations.Parameter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * 流量主申请的offer列表
+ */
 @Entity
 @Table(name = "publisher_with_offers")
 public class PublisherWithOffer implements Serializable {
