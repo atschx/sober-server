@@ -26,28 +26,27 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 广告
  */
 @Entity
-
 @Table(name = "offers")
 public class Offer implements Serializable {
 
 	private static final long serialVersionUID = -6037020426406852806L;
 
 	private Long id;
-	private String logo;// logo资源url
 	private String name;// 广告名称
+	private String url;// offer URL
+	private String logo;// logo资源url
 	private Double price;// 单价
-	private AdNetwork.OfferPriceModel priceModel;// 计价方式 0 CPA 默认
+	
+	private AdNetwork.PriceModel priceModel;// 计价方式 0 CPA 默认
 	private AdNetwork.ClearingCycle clearingCycle;// 结算周期：周结 月结
 	private AdNetwork.Platform platform;// 投放平台
 	private String effDef;// 有效定义 effectiveDefinition
-	private Byte status = 0;// offer状态 0 等待审核 1通过审核 -1 驳回
+	
+	private Byte status = 0;// offer状态 0 pending 等待审核 1 active 通过审核 -1 rejected -2 blocked
 
 	private User createdBy;
-
 	private Date createdDate;
-
 	private User lastModifiedBy;
-
 	private Date lastModifiedDate;
 
 	public Offer() {
@@ -97,7 +96,7 @@ public class Offer implements Serializable {
 	}
 
 	@Enumerated(EnumType.STRING)
-	public AdNetwork.OfferPriceModel getPriceModel() {
+	public AdNetwork.PriceModel getPriceModel() {
 		return priceModel;
 	}
 
@@ -144,7 +143,7 @@ public class Offer implements Serializable {
 		this.price = price;
 	}
 
-	public void setPriceModel(AdNetwork.OfferPriceModel priceModel) {
+	public void setPriceModel(AdNetwork.PriceModel priceModel) {
 		this.priceModel = priceModel;
 	}
 
@@ -190,6 +189,14 @@ public class Offer implements Serializable {
 
 	public void setLastModifiedDate(Date lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

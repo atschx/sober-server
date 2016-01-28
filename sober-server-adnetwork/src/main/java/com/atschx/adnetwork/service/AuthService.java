@@ -14,7 +14,6 @@ import com.atschx.adnetwork.domain.repository.TokenRepository;
 import com.atschx.adnetwork.domain.repository.UserRepository;
 import com.atschx.adnetwork.protocol.response.SigninResult;
 
-
 @Service
 public class AuthService {
 
@@ -41,13 +40,16 @@ public class AuthService {
 				final String token = UUID.randomUUID().toString().replaceAll("-", "");
 				final long expires = System.currentTimeMillis() + 1000 * 60 * 60 * 24;
 				tokenRepository.save(new Token(token, user.getId(), expires));
-				return new SigninResult(token, expires, user.getRoles());
+				return new SigninResult(user.getId(),token, expires, user.getRoles());
 			}
 		}
 
 		return new SigninResult("1");
 	}
-	
+
+	/**
+	 * 目前signout操作直接清除token。
+	 */
 	public void signout(Long uid) {
 		List<Token> tokens = tokenRepository.findByUid(uid);
 		if(null!=tokens){

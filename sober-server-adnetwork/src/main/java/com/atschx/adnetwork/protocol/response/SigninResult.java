@@ -8,6 +8,7 @@ import com.atschx.adnetwork.protocol.Result;
 
 public class SigninResult extends Result {
 
+	private Long uid;
 	private String token;
 	private Long expires;
 	private Set<Role> roles = new HashSet<Role>(0);
@@ -29,6 +30,15 @@ public class SigninResult extends Result {
 		this.token = token;
 		this.expires = expires;
 		this.setRoles(roles);
+	}
+	
+
+	public SigninResult(Long uid, String token, Long expires, Set<Role> roles) {
+		super();
+		this.uid = uid;
+		this.token = token;
+		this.expires = expires;
+		this.roles = roles;
 	}
 
 	public String getToken() {
@@ -53,6 +63,14 @@ public class SigninResult extends Result {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Long getUid() {
+		return uid;
+	}
+
+	public void setUid(Long uid) {
+		this.uid = uid;
 	}
 
 }

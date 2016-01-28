@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +25,12 @@ public class UserController extends AdNetworkController {
 		this.userRepository = userRepository;
 	}
 
+	/**
+	 * 用户列表
+	 * @param pageable
+	 * @param role
+	 * @return
+	 */
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public Page<User> users(
 			@PageableDefault(value = 15, sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
@@ -47,8 +54,8 @@ public class UserController extends AdNetworkController {
 	@RequestMapping(value = "/change-password", method = RequestMethod.POST)
 	Result changePassword(
 			@RequestParam Long uid,
-			@RequestParam String oldPassword,
-			@RequestParam String newPassword){
+			@RequestParam(name="_old") String oldPassword,
+			@RequestParam(name="_new") String newPassword){
 		
 		Result ret = new Result();
 		User user = userRepository.findOne(uid);
@@ -74,5 +81,30 @@ public class UserController extends AdNetworkController {
 		}
 		
 		return new Result();
+	}
+	
+	/**
+	 * 获取用户资料
+	 */
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	User userDetial(@RequestParam Long uid){
+		return userRepository.findOne(uid);
+	}
+	
+	/**
+	 * 更新用户资料
+	 */
+	@RequestMapping(value = "/user", method = { RequestMethod.POST }, consumes = { "application/json; charset=UTF-8" })
+	Result updateUser(@RequestParam Long uid, @RequestBody User _new) {
+
+		User oldUser = userRepository.findOne(uid);
+		if (oldUser != null) {
+			oldUser.setName(_new.getName());
+			oldUser.setQq(_new.getQq());
+			userRepository.save(oldUser);
+			return new Result();
+		}
+
+		return new Result("1");
 	}
 }

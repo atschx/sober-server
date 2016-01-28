@@ -7,7 +7,11 @@
 > 3. 激活用户账号（用户点击邮箱中的链接直接激活）
 > 4. 获取user列表（按角色查询）
 
-注意：所有协议均支持跨域访问。目前未做全局token可用性校验。
+注意：
+
+1. 所有协议均支持跨域访问。
+2. 全局基于token校验操作合法性及安全性。
+3. 登录之后的请求协议头中统一添加 uid属性
 
 ## 1.用户注册(signup)
 
@@ -205,3 +209,216 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 		}
 ```
 
+## 8.查看用户详情
+
+**GET** http://192.168.1.195:8080/user?uid=60000
+
+``` JSON
+{
+  "id": 60000, 
+  "name": "astchx", 
+  "email": "atschx@gmail.com", 
+  "password": "atschx", 
+  "mobile": "13800001101", 
+  "qq": null, 
+  "status": 0, 
+  "type": 1, 
+  "accountManager": null
+}
+```
+
+
+
+## 9.修改用户资料
+
+**PUT** http://192.168.1.195:8080/user?uid=60000
+
+请求结构
+
+``` JSON
+{
+  "id": 60000, 
+  "name": "astchx", 
+  "email": "atschx@gmail.com", 
+  "password": "atschx", 
+  "mobile": "13800001101", 
+  "qq": null, 
+  "status": 0, 
+  "type": 1, 
+  "accountManager": null
+}
+```
+
+返回结构
+
+``` JSON
+{
+  "ret":"0"
+}
+```
+
+
+
+## 10.Offer列表
+
+**GET** http://192.168.1.195:8080/offers
+
+> offer列表
+> 
+> - 管理员可看到所有（可冻结及驳回）
+> - 广告主可看到所有自己发布的offer(我的offer)
+> - 流量主可以看到所有已通过审核正在竞价的offer(可申请)
+
+参数列表(参数全部可选)
+
+> page
+> 
+> size
+> 
+> owner
+> 
+> status
+
+`返回数据` (http://192.168.1.195:8080/offers?owner=60000&page=0&size=1 样例数据)
+
+``` JSON
+{
+  "content": [
+    {
+      "id": 10, 
+      "logo": null, 
+      "name": "下载并注册QQ9", 
+      "price": 2.2, 
+      "priceModel": "CPA", 
+      "clearingCycle": "WEEK", 
+      "platform": "ANDROID", 
+      "effDef": "下载注册用户，留存2周算作一个", 
+      "status": 0, 
+      "createdDate": 1453692772324, 
+      "lastModifiedDate": 1453692772324
+    }
+  ], 
+  "last": false, 
+  "totalPages": 10, 
+  "totalElements": 10, 
+  "size": 1, 
+  "number": 0, 
+  "first": true, 
+  "sort": [
+    {
+      "direction": "DESC", 
+      "property": "id", 
+      "ignoreCase": false, 
+      "nullHandling": "NATIVE", 
+      "ascending": false
+    }
+  ], 
+  "numberOfElements": 1
+}
+```
+
+## 11.创建Offer
+
+> 广告主可以在系统中创建offer。第一阶段，offer对应的附件信息单独提供。
+
+**POST** http://192.168.1.195:8080/offer
+
+请求结构：
+
+``` JSON
+{
+  "id": 10, 
+  "logo": null, 
+  "name": "下载并注册QQ9", 
+  "price": 2.2, 
+  "priceModel": "CPA", 
+  "clearingCycle": "WEEK", 
+  "platform": "ANDROID", 
+  "effDef": "下载注册用户，留存2周算作一个"
+}
+```
+
+PS：请求的Header中需要带uid
+
+`返回结构`
+
+## 12.查看Offer详情
+
+> 用户点击对应的Offer可以获取到所有Offer相关的信息
+
+**GET** http://192.168.1.195:8080/offer?offerId=10
+
+> 参数说明：offerId
+
+返回数据(第一阶段)
+
+``` JSON
+{
+  "id": 10, 
+  "logo": null, 
+  "name": "下载并注册QQ9", 
+  "price": 2.2, 
+  "priceModel": "CPA", 
+  "clearingCycle": "WEEK", 
+  "platform": "ANDROID", 
+  "effDef": "下载注册用户，留存2周算作一个", 
+  "status": 0, 
+  "createdDate": 1453693769314, 
+  "lastModifiedDate": 1453693769314
+}
+```
+
+## 13.修改Offer信息
+
+> 广告主可以适当的调整Offer中的内容，但不能处理价格信息？？
+
+**PUT**  http://192.168.1.195:8080/offer?offerId=10
+
+``` JSON
+{
+  "id": 10, 
+  "logo": null, 
+  "name": "下载并注册QQ9", 
+  "price": 2.2, 
+  "priceModel": "CPA", 
+  "clearingCycle": "WEEK", 
+  "platform": "ANDROID", 
+  "effDef": "下载注册用户，留存2周算作一个", 
+  "status": 0, 
+}
+```
+
+## 14.流量主申请Offer
+
+**POST** http://192.168.1.195:8080/apply-offer?publisher=1111&offer=xxx
+
+> 参数说明
+> 
+> publisher  流量主id
+> 
+> offer 被申请的offerId
+
+返回值
+
+``` JSON
+{
+  "ret":"0",
+  "aid":zxxxxx
+}
+```
+
+## 15.流量主申请的Offer列表
+
+**GET** http://192.168.1.195:8080/publisher-apply-offers?page=1&size=2&publisher=1111&status=1&offer=xxx
+
+> 参数说明
+> 
+> publisher 
+> 
+> status
+> 
+> offer
+
+返回列表数据
+
+> 暂无

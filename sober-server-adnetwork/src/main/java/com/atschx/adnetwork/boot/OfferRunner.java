@@ -28,7 +28,7 @@ public class OfferRunner implements ApplicationRunner, Ordered {
 		for (int i = 0; i < 10; i++) {
 			Offer offer = new Offer("下载并注册QQ" + i, 2.2, "下载注册用户，留存2周算作一个");
 			offer.setClearingCycle(AdNetwork.ClearingCycle.WEEK);
-			offer.setPriceModel(AdNetwork.OfferPriceModel.CPA);
+			offer.setPriceModel(AdNetwork.PriceModel.CPA);
 			offer.setPlatform(AdNetwork.Platform.ANDROID);
 			offer.setCreatedBy(user);
 			offer.setLastModifiedBy(user);

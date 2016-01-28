@@ -6,14 +6,14 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
-import com.atschx.adnetwork.domain.model.OfferCategory;
-import com.atschx.adnetwork.domain.repository.OfferCategoryRepository;
+import com.atschx.adnetwork.domain.model.Category;
+import com.atschx.adnetwork.domain.repository.CategoryRepository;
 
 @Component
 public class OfferCategoryRunner implements ApplicationRunner, Ordered {
 
 	@Autowired
-	OfferCategoryRepository offerCategoryRepository;
+	CategoryRepository offerCategoryRepository;
 
 	@Override
 	public int getOrder() {
@@ -23,11 +23,11 @@ public class OfferCategoryRunner implements ApplicationRunner, Ordered {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 
-		OfferCategory education = new OfferCategory("教育", 1);
-		OfferCategory life = new OfferCategory("生活", 1);
-		OfferCategory trip = new OfferCategory("旅游", 1);
-		OfferCategory game = new OfferCategory("游戏", 1);
-		OfferCategory enjoy = new OfferCategory("娱乐", 1);
+		Category education = new Category("教育", 1);
+		Category life = new Category("生活", 1);
+		Category trip = new Category("旅游", 1);
+		Category game = new Category("游戏", 1);
+		Category enjoy = new Category("娱乐", 1);
 
 		offerCategoryRepository.save(education);
 		offerCategoryRepository.save(life);
@@ -35,7 +35,7 @@ public class OfferCategoryRunner implements ApplicationRunner, Ordered {
 		offerCategoryRepository.save(game);
 		offerCategoryRepository.save(enjoy);
 
-		OfferCategory onlineCourse = new OfferCategory("网络课程", 2);
+		Category onlineCourse = new Category("网络课程", 2);
 		onlineCourse.setParent(education);
 		offerCategoryRepository.save(onlineCourse);
 
