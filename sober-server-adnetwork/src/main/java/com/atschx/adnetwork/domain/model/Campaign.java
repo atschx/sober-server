@@ -3,6 +3,7 @@ package com.atschx.adnetwork.domain.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -18,4 +19,6 @@ public class Campaign implements Serializable{
 
 	private static final long serialVersionUID = 2636434054520316559L;
 
+	@Id
+	private Long id;
 }

@@ -3,6 +3,7 @@ package com.atschx.adnetwork.domain.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -14,5 +15,7 @@ import javax.persistence.Table;
 public class Material implements Serializable {
 
 	private static final long serialVersionUID = 6660737699817609280L;
-
+	
+	@Id
+	private Long id;
 }
