@@ -20,10 +20,10 @@ public class Token implements Serializable {
 	private Long expires;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdAt; // 创建时间
+	private Date createdAt=new Date(); // 创建时间
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date updatedAt; // 修改时间
+	private Date updatedAt=new Date(); // 修改时间
 
 	public Token() {
 		super();

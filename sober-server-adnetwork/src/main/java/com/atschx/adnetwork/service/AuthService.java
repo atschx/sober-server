@@ -1,5 +1,6 @@
 package com.atschx.adnetwork.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -50,10 +51,16 @@ public class AuthService {
 	 * 目前signout操作直接清除token。
 	 */
 	public void signout(Long uid) {
-		Token token = tokenRepository.findByUid(uid);
-		if (null != token) {
-			tokenRepository.delete(token);
+		List<Token> tokens = tokenRepository.findByUid(uid);
+		if(null!=tokens){
+			for (Token token : tokens) {
+				tokenRepository.delete(token);
+			}
 		}
+//		Token token = tokens;
+//		if (null != token) {
+//		}
 	}
 
+	
 }
