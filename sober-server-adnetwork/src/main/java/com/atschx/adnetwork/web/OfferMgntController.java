@@ -33,7 +33,7 @@ public class OfferMgntController {
 	 *            json结构
 	 * @return
 	 */
-	@RequestMapping(value = "/offer", method = { RequestMethod.POST }, consumes = { "application/json; charset=UTF-8" })
+	@RequestMapping(value = "/create-offer", method = { RequestMethod.POST }, consumes = { "application/json; charset=UTF-8" })
 	public Result createOffer(
 			@RequestParam("advertiser") Long advertiserId, 
 			@RequestBody Offer offer) {

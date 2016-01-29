@@ -277,7 +277,9 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 > 
 > owner
 > 
-> status
+> status 
+> 
+> ​	**offer状态 0 pending 等待审核 1 active 通过审核 -1 rejected -2 blocked**
 
 `返回数据` (http://192.168.1.195:8080/offers?owner=60000&page=0&size=1 样例数据)
 
@@ -321,7 +323,7 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 
 > 广告主可以在系统中创建offer。第一阶段，offer对应的附件信息单独提供。
 
-**POST** http://192.168.1.195:8080/offer
+**POST** http://192.168.1.195:8080/create-offer?advertiser=xxxx
 
 请求结构：
 
@@ -372,7 +374,7 @@ PS：请求的Header中需要带uid
 
 > 广告主可以适当的调整Offer中的内容，但不能处理价格信息？？
 
-**PUT**  http://192.168.1.195:8080/offer?offerId=10
+**POST**  http://192.168.1.195:8080/modify-offer?offerId=10
 
 ``` JSON
 {

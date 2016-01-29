@@ -18,6 +18,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * 流量主申请的offer列表
@@ -54,8 +55,11 @@ public class PublisherWithOffer implements Serializable {
 		this.id = id;
 	}
 
+	
+	@JsonInclude(JsonInclude.Include.NON_EMPTY)
 	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "offer")
+	@JsonIgnore
 	public Offer getOffer() {
 		return offer;
 	}
