@@ -12,7 +12,7 @@
 
 注：内部协议与外部协议不通。
 
-[内部协议](https://github.com/atschx/sober-server/tree/master/sober-server-adnetwork/adnetwork-internal.md)
+[内部协议](https://github.com/atschx/sober-server/tree/master/sober-server-adnetwork/sober-adnetwork-internal.md)
 
-[外部协议](https://github.com/atschx/sober-server/tree/master/sober-server-adnetwork/adnetwork-external.md)
+[外部协议](https://github.com/atschx/sober-server/tree/master/sober-server-adnetwork/sober-adnetwork-external.md)
 
