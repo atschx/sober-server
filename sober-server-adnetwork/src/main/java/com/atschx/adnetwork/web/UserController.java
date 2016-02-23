@@ -65,7 +65,7 @@ public class UserController extends AdNetworkController {
 				ret.setRet("1");// 密码不对
 			}else{
 				if(oldPassword.equals(newPassword)){
-					ret.setRet("2");// 新密码不能和就密码一致
+					ret.setRet("2");// 新密码不能和旧密码一致
 				}else{
 					try {
 						//update 
@@ -80,7 +80,7 @@ public class UserController extends AdNetworkController {
 			ret.setRet("-1");// 不存在此用户
 		}
 		
-		return new Result();
+		return ret;
 	}
 	
 	/**
@@ -101,6 +101,7 @@ public class UserController extends AdNetworkController {
 		if (oldUser != null) {
 			oldUser.setName(_new.getName());
 			oldUser.setQq(_new.getQq());
+			oldUser.setMobile(_new.getMobile());
 			userRepository.save(oldUser);
 			return new Result();
 		}
