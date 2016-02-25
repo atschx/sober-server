@@ -59,7 +59,7 @@ public class PublisherWithOffer implements Serializable {
 	@JsonInclude(JsonInclude.Include.NON_EMPTY)
 	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "offer")
-	@JsonIgnore
+//	@JsonIgnore
 	public Offer getOffer() {
 		return offer;
 	}
