@@ -32,7 +32,7 @@ public class PublisherWithOffer implements Serializable {
 	private Long id;
 	private Offer offer;
 	private User publisher;
-	private Byte status = 0;// apply,approved,rejected,blocked
+	private Byte status = 0;// 0 apply, 1 approved,－1 rejected, －2 blocked
 	private Date createdDate = new Date();
 	private User lastModifiedBy;
 	private Date lastModifiedDate = new Date();
