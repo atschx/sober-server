@@ -10,9 +10,9 @@
 >
 > 核心流程：
 >
-> [**广告主**创建 offer ](#1. 创建 offer )
+> [**广告主**创建 offer ](#1.创建offer)
 >
-> [**流量主**申请 offer](#2. 申请 offer )
+> [**流量主**申请 offer](#2.申请offer)
 >
 > **管理员**审核广告主创建的offer、处理流量主的申请、同时控制账号的使用权。
 >
@@ -26,7 +26,7 @@
 
 [外部协议](https://github.com/atschx/sober-server/tree/master/sober-server-adnetwork/sober-adnetwork-external.md)
 
-## 1. 创建 offer 
+## 1.创建offer
 
 > 广告主根据自己需求，在系统中创建offer
 
@@ -68,7 +68,7 @@ offer-attachment 基础字段：
 
 monitor 部分待考虑
 
-## 2. 申请 offer 
+## 2.申请offer
 
 > 流量主 `publisher` 按分类、按价格、按状态 检索 管理员 已审核过的offer 
 
