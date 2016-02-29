@@ -43,6 +43,7 @@ offer的基础字段(此部分存在信息即可提交)：
   - 1 approval 
   - 2 rejected 
 - advertiser (a offer belongs to one advertiser) 
+- replay
 
 ### 1.1 子流程：上传附加资源
 
@@ -76,8 +77,6 @@ monitor 部分待考虑
 
 ​	
 
-- 渠道备注（因目前流程原因此部必不可少）
-
 系统产生的记录为：
 
 offer_apply_list
@@ -89,8 +88,23 @@ offer_apply_list
   - 0 pending 
   - 1 approval
   - 2 rejected 
-- remark (流量主申请offer时 填写)
-- replay （在offer被拒绝时由管理员填写）
+- remark （ 流量主申请 offer 时 填写 ）
+- replay （ 拒绝 publisher 的申请时 管理员填写）
 
 对于同一个 offer ，publisher 不可重复申请（但在展示界面依然展示已申请的offer)
 
+##3.管理员操作
+
+> 管理员 可以负责几个指定账号的管理权限。因此在展示数据时，需要先获取到当前管理员 incharge的账号列表，然后获取相应的数据。可以K号等
+
+批准 offer 
+
+按创建时间，按价格，按广告主，按分类 展示所有未审核的offer（同时支持按状态查询offer）。
+
+批准 申请
+
+按申请时间，按流量主，展示等待通过的申请
+
+用户管理
+
+禁用某个用户，同时停止掉所有相关的offer及列表。
