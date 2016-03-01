@@ -30,14 +30,15 @@
 
 > 广告主根据自己需求，在系统中创建offer
 
-offer的基础字段(此部分存在信息即可提交)：
+offers 数据结构说明
 
-- cover 用户依据需要上传offer对应的图片，可选。
+- id 唯一性标识
 - name 必填
-- desc  必填 描述性说明
+- cover 用户依据需要上传offer对应的图片，可选。
 - price 价格 ¥ 人名币价格
-- price-model  计价模式 CPA/CPS/CPM
-- clearing-cycle 结算周期 month/week/day
+- price_model  计价模式 CPA/CPS/CPM
+- clearing_cycle 结算周期 month/week/day
+- eff_desc  必填 有效定义
 - status 状态
   - 0 pending for approval
   - 1 approval 
@@ -45,7 +46,7 @@ offer的基础字段(此部分存在信息即可提交)：
 - advertiser (a offer belongs to one advertiser) 
 - replay
 
-### 1.1 子流程：上传附加资源
+### 1.1 offer 附加资源
 
 > 因广告主创建offer时需要提供各种个样的文件(如小版本应用包)，server存储路径
 >
@@ -53,19 +54,22 @@ offer的基础字段(此部分存在信息即可提交)：
 >
 > 上传成功后，server生成对应的短链。
 
-offer-attachment 基础字段：
+offer-attachments 数据结构说明：
 
-- server-path
-- short-url
-- hash
+- id  附件id
+- name 附件名称 一般为文件名
+- offer_id 关联的offer
+- store_path server对附件的存储路径
+- short_url 每个附件对应的下载短链
+- checksum 文件校验码
 
 **注意** 此部分文件生命周期随offer周期，过期之后由后台作业定时删除。
 
-### 1.2 offer 管理
+### 1.2 offer 管理（广告主对自己创建的 offer ）
 
 > 广告主可以对创建的 offer 进行下架。
 
-检索条件：offer's advertiser = current login advertiser
+检索条件：offer's advertiser = current login (user) advertiser
 
 monitor 部分待考虑
 
