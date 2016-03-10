@@ -1,7 +1,7 @@
 # Sober Ad Network `外`网协议
 
 > 协议列表
-> 
+>
 > 1. 用户注册（支持Advertiser、Publisher两种角色）
 > 2. ajax邮箱唯一性校验
 > 3. 激活用户账号（用户点击邮箱中的链接直接激活）
@@ -10,7 +10,7 @@
 注意：
 
 1. 所有协议均支持跨域访问。
-2. 全局基于token校验操作合法性及安全性。
+2. 全局基于token校验操作合法性及安全性
 3. 登录之后的请求协议头中统一添加 uid属性
 
 ## 1.用户注册(signup)
@@ -20,11 +20,11 @@
 **POST** http://192.168.1.195:8080/signup-with-email
 
 > 请求参数
-> 
+>
 > name
-> 
+>
 > email(必填)
-> 
+>
 > password(必填)
 
 注册成功之后，引导用户激活（第一阶段基于邮箱，后期基于手机验证）
@@ -73,9 +73,9 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 **POST** http://192.168.1.195:8080/signin-with-email/{role}
 
 > PathParam
-> 
+>
 > 参数列表：
-> 
+>
 > email & password 必填
 
 `返回数据`
@@ -107,7 +107,7 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 **GET** http://192.168.1.195:8080/signout?uid=xxxx&token=xxxx
 
 > 参数说明：
-> 
+>
 > uid & token
 
 返回结果：true or false 
@@ -119,11 +119,11 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 **GET** http://192.168.1.195:8080/users?role=ROLE_ADVERTISER&page=1&size=2
 
 > 参数列表(全部可选):
-> 
+>
 > role  取值 ：ROLE_ADVERTISER,ROLE_PUBLISHER,ROLE_SUPERVISOR
-> 
+>
 > page 第几页
-> 
+>
 > size   每页条数
 
 返回数据
@@ -178,11 +178,11 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 **POST** http://192.168.1.195:8080/change-password
 
 > 参数列表(必填),前缀加下划线用于区分 Header中的uid数据
-> 
+>
 > uid
-> 
+>
 > _old
-> 
+>
 > _new
 
 返回ret值说明
@@ -264,7 +264,7 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 **GET** http://192.168.1.195:8080/offers
 
 > offer列表
-> 
+>
 > - 管理员可看到所有（可冻结及驳回）
 > - 广告主可看到所有自己发布的offer(我的offer)
 > - 流量主可以看到所有已通过审核正在竞价的offer(可申请)
@@ -272,11 +272,11 @@ PS：填写注册时，email字段需要ajax判断是否适用。
 参数列表(参数全部可选)
 
 > page
-> 
+>
 > size
-> 
+>
 > owner
-> 
+>
 > status
 
 `返回数据` (http://192.168.1.195:8080/offers?owner=60000&page=0&size=1 样例数据)
@@ -393,9 +393,9 @@ PS：请求的Header中需要带uid
 **POST** http://192.168.1.195:8080/apply-offer?publisher=1111&offer=xxx
 
 > 参数说明
-> 
+>
 > publisher  流量主id
-> 
+>
 > offer 被申请的offerId
 
 返回值
@@ -412,11 +412,11 @@ PS：请求的Header中需要带uid
 **GET** http://192.168.1.195:8080/publisher-apply-offers?page=1&size=2&publisher=1111&status=1&offer=xxx
 
 > 参数说明
-> 
+>
 > publisher 
-> 
+>
 > status
-> 
+>
 > offer
 
 返回列表数据
