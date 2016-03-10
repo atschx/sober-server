@@ -32,17 +32,17 @@ public class AdNetworkConfig {
 		};
 	}
 
-	@Bean
-	public DataSource realDataSource() {
-		return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
-	}
-	
-
-	@Bean
-	@Primary
-	public DataSource dataSource() {
-		return new DataSourceSpy(realDataSource());
-	}
+//	@Bean
+//	public DataSource realDataSource() {
+//		return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
+//	}
+//	
+//
+//	@Bean
+//	@Primary
+//	public DataSource dataSource() {
+//		return new DataSourceSpy(realDataSource());
+//	}
 	
 //	@Bean
 //	@Primary
