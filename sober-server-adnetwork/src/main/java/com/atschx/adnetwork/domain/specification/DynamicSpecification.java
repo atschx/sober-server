@@ -5,7 +5,7 @@ package com.atschx.adnetwork.domain.specification;
  */
 public class DynamicSpecification {
 	
-	//时间限制
-	//条数限制
+	// 时间限制
+	// 条数限制
 
 }
