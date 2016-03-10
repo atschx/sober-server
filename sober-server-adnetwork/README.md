@@ -15,10 +15,6 @@
 > [**流量主**申请 offer](#2申请offer)
 >
 > **管理员**审核广告主创建的offer、处理流量主的申请、同时控制账号的使用权。
->
-> [](#)
->
-> ​	
 
 注：内部协议与外部协议不通，因此单独列出：
 
@@ -40,10 +36,10 @@ offers 数据结构说明
 - clearing_cycle 结算周期 month/week/day
 - eff_desc  必填 有效定义
 - status 状态
-  - 0 pending for approval
-  - 1 approval 
-  - 2 rejected 
-- advertiser (a offer belongs to one advertiser) 
+  - 0 pending 
+  - 1 approved 
+  - 2 rejected
+- advertiser_id (a offer belongs to one advertiser) 
 - replay
 
 ### 1.1 offer 附加资源
@@ -77,9 +73,7 @@ monitor 部分待考虑
 
 > 流量主 `publisher` 按分类、按价格、按状态 检索 管理员 已审核过的offer 
 
-选中一个指定的 offer 后，点击 apply，即产生一次申请 offer 请求。
-
-​	
+选中一个指定的 offer 后，点击 apply，即产生一次申请 offer 请求。​
 
 系统产生的记录为：
 
@@ -89,9 +83,9 @@ offer_apply_list
 - offer id 
 - publisher 
 - status (目前申请的状态
-  - 0 pending 
-  - 1 approval
-  - 2 rejected 
+  - 0 pending  挂起
+  - 1 approved 通过
+  - 2 rejected 驳回
 - remark （ 流量主申请 offer 时 填写 ）
 - replay （ 拒绝 publisher 的申请时 管理员填写）
 
